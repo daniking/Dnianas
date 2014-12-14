@@ -1,5 +1,5 @@
-/storage/views
-/storage/sessions
+app/storage/views
+app/storage/sessions
 /bootstrap/compiled.php
 /vendor
 composer.phar
