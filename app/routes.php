@@ -1,16 +1,4 @@
 <?php
-
-App::bind('Dnianas\Repositories\Post\PostRepositoryInterface', function()
-{
-   return new Dnianas\Repositories\Post\PostRepository;
-});
-
-App::bind('Dnianas\Repositories\User\UserRepositoryInterface', function()
-{
-   return new Dnianas\Repositories\User\UserRepository;
-});
-
-
 /**
  * Apply a CSRF (Cross-site Request Frogery) filter to every post requests
  */
@@ -87,8 +75,10 @@ Route::get('/posts/get/{last_id}', 'PostController@get');
  */
 Route::get('user/{username}', function($username) {
     $user = User::where('username', '=', $username)
-    ->with('about')
+    ->with('about', 'posts')
     ->first();
+
+    // $user = $this->getCurrentUserPosts();
 
     return View::make('profile.user')->withUser($user);
 }); 

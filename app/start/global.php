@@ -93,7 +93,13 @@ require app_path().'/Dnianas/Support/helpers.php';
 /**
  * Binding to start them up!
  */
-App::bind(
-    'Dnianas\Repositories\UserRepositoryInterface',
-    'Dnianas\Repositories\UserRepository'
-    );
+
+App::bind('Dnianas\Repositories\Post\PostRepositoryInterface', function()
+{
+   return new Dnianas\Repositories\Post\PostRepository;
+});
+
+App::bind('Dnianas\Repositories\User\UserRepositoryInterface', function()
+{
+   return new Dnianas\Repositories\User\UserRepository;
+});
