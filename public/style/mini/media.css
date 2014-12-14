@@ -1,0 +1,487 @@
+@media screen and (max-width: 1300px) {
+	#rig_reg {
+		position: relative;
+		left: 250px;
+		top: 140px;
+	}
+
+	#rig_log {
+		height: 140px;
+	}
+
+	#maincontainer {
+		min-height: 615px;
+	}
+}
+
+@media all and (width: 1024px) {
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		top:0px;
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:30px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+
+
+@media screen and (max-width: 1024px){
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		position:relative;
+		top:0px;
+
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:30px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+@media screen and (max-width: 1280px){
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		position:relative;
+		top:0px;
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:30px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+@media screen and (max-width: 1360px){
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		position:relative;
+		top:0px;
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:-500px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		position:relative;
+		top:0px;
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:30px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		position:relative;
+		top:0px;
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:30px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		position:relative;
+		top:0px;
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:30px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		position:relative;
+		top:0px;
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:30px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		position:relative;
+		top:0px;
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:30px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}	
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+
+
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+	.header,._fixs{
+		position:relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin: 0;
+
+	}
+	.main_con{
+		position: relative;
+		top:0px;
+	}
+	.main_messg_box{
+		position:relative;
+		top:0px;
+	}
+	.logo{
+		background:rgba(0,0,0,0.2);
+		display:block;
+		width:70px;height:30px;
+		background-image:url(../../img/logodnia.png);
+		background-position:center;
+		background-repeat:no-repeat;
+		position:relative;
+		top:10px;
+		left:30px;
+		border:1px solid rgba(0, 0, 0, .2);
+		cursor:pointer;
+		transition: all 0.4s ease-out;
+		-webkit-border-radius: 5px;
+		float:none;
+	}
+	.logo:hover{
+		background-image:url(../../img/hover.png);
+		background-color: #fff;
+		transition: all 0.4s ease-out;
+		border:1px solid rgba(0, 0, 0, .3);
+	}	
+	.main_con_prof{
+		position: relative;
+		top:-10px;
+	}
+}
+
+

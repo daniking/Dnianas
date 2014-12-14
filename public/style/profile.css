@@ -1,0 +1,222 @@
+.main_con_prof{
+	min-height: 600px;
+	border-right: 0;
+    margin-left: -0px;
+    display: block;
+    width: 1000px;
+	margin: 0 auto;
+    position: relative;
+    zoom: 1;
+	top:50px;
+
+}
+.cover11{
+	width:900px;
+	background:#333;
+	height:350px;
+	position: relative;
+	top:10px;
+}
+#coversus img{
+	height:350px;
+	width:100%;
+	margin-top:-11px;
+
+}
+.ri_messs_fo232{
+	width:80px;
+	height:200px;
+	float:right;
+	position:relative;
+	top:-300px;
+	right:30px;
+}
+.bot_sasda22131{
+	width:80px;
+	height:30px;
+	outline:none;
+	background:rgba(0,0,0,0.2);
+	border:1px solid rgba(0,0,0,0.2);
+	color:#fff;
+	cursor:pointer;
+	border-radius:30px;
+	margin:3px 0px;
+	transition: all 0.4s ease-out;
+
+}
+.bot_sasda22131:hover{
+	background:rgba(0,0,0,0.4);
+	transition: all 0.4s ease-out;
+	border:1px solid rgba(0,0,0,0.4);
+}
+._bord12{
+	position:inherit;
+	z-index:80;
+}
+.prof-membpic{
+    height: 350px;
+    width: 200px;
+	background-color: #fff;
+	background:#000;
+	position:relative;
+	z-index:90;
+	top:-350px;
+	background: rgba(0, 0, 0, .3);
+	text-align:center;
+
+}
+.profilpicusers{
+    height: 160px;
+    width: 160px;
+	 border: 4px solid #fff;
+	 -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+	 position:relative;
+	 border-radius:100px;
+
+}
+.prof-membpic h1{
+	color: #fff;
+    text-rendering: optimizelegibility;
+    text-shadow: 0 0 3px rgba(0,0,0,.8);
+	font-family: 'Open Sans';
+	font-size:18px;
+	font-weight:600;
+}
+.prof-membpic h2{
+	color: #fff;
+    text-rendering: optimizelegibility;
+    text-shadow: 0 0 3px rgba(0,0,0,.8);
+	font-family: 'Open Sans';
+	font-size:15px;
+	font-weight:400;
+	margin:5px 0px;
+	padding:2px ;
+}
+.prof-membpic h2 span{
+	position:relative;
+	left:10px;
+}
+.repotblock{
+	position:relative;
+	top:10px;
+	cursor:pointer;
+	opacity:0.8;
+	transition: all 0.4s ease-out;
+}
+.repotblock:hover{
+	transition: all 0.4s ease-out;
+	opacity:1;
+	
+}
+.ab_prof_mem{
+	width:900px;
+	height:40px;
+	position:relative;
+	top:-350px;
+	z-index:80;
+	-webkit-border-radius: 2px;
+}
+
+#user_lin_192{
+	background-color: #fff;
+	border-bottom:1px solid #DDDEDE;
+	width:900px;
+	height:40px;
+}
+#user_lin_192 a{
+	color: #3b5998;
+    font-size: 14px;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    text-decoration: none;
+    padding: 11px 14px;
+    position: relative;
+    top: 10px;
+	transition: all 0.4s ease-out;
+}
+#user_lin_192 a:hover{
+	transition: all 0.4s ease-out;
+	color:#000;
+}
+._212xls{
+    left: 50%;
+    margin-left: -8px;
+	margin-top:1px;
+    position: absolute;
+	border-radius:10px 10px 0px 0px;
+	display: flex;
+	border-width: 0 8.5px 8.5px;
+	animation: gb__a .2s;
+	border-color: transparent;
+    border-bottom-color: #DDDEDE;
+    border-style: dashed dashed solid;
+}
+#lf_lin_us{
+	border-right:1px solid #DDDEDE;
+}
+.leftabot{
+	height:500px;
+	width:250px;
+	background:#fff;
+	border:1px solid #DDDEDE;
+	margin-top:-340px;
+	float:left;
+}
+#user_hoprofily{
+	min-height:500px;
+	width:630px;
+	background:#fff;
+	border:1px solid #DDDEDE;
+	float:right;
+	position:relative;
+	top:-340px;
+	right:100px;
+}
+#memb_sos h1{
+	color: #6a7480;
+    font-size: 16px;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    padding: 10px;
+    border-bottom: 1px solid #E3E5E8;
+	font-weight:500;
+}
+
+#memb_sos h2{
+	font-size: 15px;
+    color: #6a7480;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    margin-left: 10px;
+	padding:10px 10px;
+	border-bottom: 1px solid #E3E5E8;
+}
+#memb_sos span{
+	font-weight: bold;
+    font-family: 'Open Sans';
+    text-shadow: none;
+    font-size: 14px;
+    color: #3b5998;
+    margin-left: 10px;
+}
+.text-about {
+color: #6a7480;
+font-size: 16px;
+font-family: 'Open Sans';
+font-weight: 300;
+padding: 10px;
+border-bottom: 1px solid #E3E5E8;
+}
+.about-you{
+color: #4e5665;
+font-size: 13px;
+font-family: 'Open Sans';
+line-height: 18px;
+overflow: hidden;
+word-wrap: break-word;
+unicode-bidi: embed;
+width: 200px;
+text-align: center;
+border-bottom: 1px solid #E3E5E8;
+padding:0px 10px;
+}
