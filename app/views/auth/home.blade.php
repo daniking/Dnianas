@@ -6,7 +6,7 @@
     <link href="{{ asset('style/mini/media.css') }}" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <title>Dnianas</title>
-    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body dir="ltr" background="img/white_wall_hash.png">
     <div id="header">
