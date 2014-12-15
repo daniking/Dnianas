@@ -5,7 +5,7 @@ body {
 	line-height: 1.28;
     text-align: left;
     direction: ltr;
-    font-family: source-sans-pro, Arial;
+    font-family: 'Source Sans Pro', Arial;
 }
 
 h1 {
@@ -255,7 +255,7 @@ p{
 	margin: 6px 0;
 	display: inline;
     margin-bottom: 0;
-	font-size: 14px;
+	font-size: 15px;
 	text-align: right;
 	font-weight: normal;
     line-height: 1.38;
@@ -314,6 +314,7 @@ p{
 	transition: all 0.4s ease-out;
 }
 .comment{
+		font-family: Arial;
 	    vertical-align: top;
 		outline:none;
 		border: 0;
@@ -342,6 +343,7 @@ p{
 		padding-top: 4px;
 }
 .normal {
+		font-family: Arial;
 		vertical-align: top;
 		outline:none;
 		border: 0;
