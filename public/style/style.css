@@ -5,7 +5,7 @@ body {
 	line-height: 1.28;
     text-align: left;
     direction: ltr;
-	font-family: Helvetica;
+    font-family: source-sans-pro, Arial;
 }
 
 h1 {
@@ -199,8 +199,7 @@ border-bottom:1px solid #314E6B;
 }
 .users_adds{
 	width:530px;
-	min-height:0px;
-	font-family: 'lucida grande';
+	min-height:0
 	float:left;
 	background:#FFF;
 	border:1px solid #DDDEDE;
@@ -219,17 +218,16 @@ border-bottom:1px solid #314E6B;
 	width:100%;
 	height:40px;
 }
-#clicksows{
-	width:40px;
-	height:40px;
-	position:relative;
-	left:10px;
-	top:10px;
-	border-radius:5px;
-	cursor:pointer;
+#clicksows {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	left: 5px;
+	top: 25px;
+	border-radius: 5px;
+	cursor: pointer;
 }
-#abo_users_po a{
-	font-family: Helvetica;
+#abo_users_po {
 	font-size:15px;
 	font-weight: bolder;
 	position:relative;
@@ -237,14 +235,15 @@ border-bottom:1px solid #314E6B;
 	top:-15px;
 	font-weight:600;
 }
-.data_post{
-	font-family: Helvetica, sans-serif;
-	font-size:10px;
+.data_post {
+	font-size:11px;
 	position:relative;
-	right:100px;
-	top:2px;
+	right:97px;
+	top:19px;
+	margin: 1px;
 	color: #9197a3;
 }
+
 p{
 	display: block;
    -webkit-margin-before: 1em;
@@ -353,8 +352,7 @@ p{
         text-align: start;
 		overflow: hidden;
 		min-height: 30px;
-		font-size:14px;
-		font-family: Helvetica;
+		font-size:14p
 		font-weight:400;
 		background:fff;	
 		color: #141823;
@@ -372,15 +370,14 @@ p{
     -webkit-resize: none;
     resize: none;
 }
-.links_users_homes{
-	background:#FFF;
-	min-height:30px;
-	width:514px;
-	border-bottom:1px solid #DDDEDE;
-	border-left:1px solid #DDDEDE;
-	border-right:1px solid #DDDEDE;
-	padding:8px;
-
+.links_users_homes {
+	background: #FFF;
+	min-height: 30px;
+	width: 520px;
+	border-bottom: 1px solid #DDDEDE;
+	border-left: 1px solid #DDDEDE;
+	border-right: 1px solid #DDDEDE;
+	padding: 5px;
 }
 
 .poster_memb a{
@@ -395,8 +392,21 @@ p{
 .poster_memb a:hover{
 	color:#022A3F;
 }
-.ri_st11{
-	border-right:1px solid #DDDEDE;
+
+.links_users_homes a {
+	border-radius: 2px;
+	margin-top: 2px;
+	font-size: 15px;
+	padding: 6px 12px;
+	margin-left:1px;
+	position: relative;
+	top: 4px;
+}
+
+.links_users_homes a:hover {
+	color: #06B;
+	background-color: #F9FAFF;
+	transition: background-color 0.2s ease-out;
 }
 .share-post{
 	background-color: #033E5C;
@@ -408,9 +418,8 @@ p{
     color:#fff;
 	text-decoration:none;
 	font-size:15px;
-    
 	font-weight:300;
-	height:25px;
+	height:29px;
 	position:relative;
 	left:-2px;
 	top:1px
