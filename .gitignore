@@ -1,3 +1,4 @@
+/.idea
 app/storage/views
 app/storage/sessions
 /bootstrap/compiled.php
