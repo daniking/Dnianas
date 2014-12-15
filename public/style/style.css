@@ -270,7 +270,7 @@ p{
 	padding:10px;
 }
 .place_com_li{
-	min-height:60px;
+	min-height:50px;
 	width:100%;
 }
 .place_com_li button{
@@ -278,10 +278,11 @@ p{
 	border:none;
 	background:#FFF;
 	padding:2px 5px;
+	margin-top: 20px;
 	position:relative;
 	left:10px;
 	cursor:pointer;
-	font-size:12px;
+	font-size:13px;
 	opacity:0.6;
 	transition: all 0.4s ease-out;
 }
