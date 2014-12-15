@@ -1,5 +1,7 @@
-@if($errors)
-    @foreach($errors->all() as $error)
-        <div class="error">{{ $error }}</div>
-    @endforeach 
+@if($errors->count())
+    <blockquote class="error">
+        @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach 
+    </blockquote>
 @endif

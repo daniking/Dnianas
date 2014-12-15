@@ -3,7 +3,7 @@ body{
 	padding:0px;
 	background-color: rgba(0,0,0,0.4);
 	color:#444;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .allbodyweb{
 	width:100%;
@@ -561,8 +561,8 @@ p{
 
 
 blockquote.error {
-	font-family: source-sans-pro, Helvetica, sans-serif;
-	background: #EC4450;
+	font-family: 'Source Sans Pro', Helvetica, sans-serif;
+	background: #EC4A50;
 	color: #fff;
 	font-size: 18px;
 	border-radius: 2px;
