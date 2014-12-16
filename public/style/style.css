@@ -205,11 +205,12 @@ border-bottom:1px solid #314E6B;
 	border:1px solid #DDDEDE;
 }
 .tab_post {
-	border:1px solid #DDDEDE;
+	border:1px solid #DDDEDD;
 	width:530px;
+	border-radius: 2px;
 	min-height:82px;
 	background:#FFF;
-	margin:5px 0px;
+	margin:9px 0px;
 	float:left;
 	position:relative;
 	unicode-bidi: bidi-override;
@@ -262,6 +263,7 @@ p{
     overflow: hidden;
 	direction:ltr;
 	float:right;
+	color: #222;
 	padding:10px;
 }
 .aft_pos_user{
@@ -325,12 +327,11 @@ p{
         text-transform: none;
         text-align: start;
 		overflow: hidden;
-		width:100%;
+		width:98.2%;
 		height: 29px;
 		font-size:13px;
 		font-weight:400;
 		background:#fff;
-		
 		color: #141823;
 		padding:5px 5px;
 		resize: none;

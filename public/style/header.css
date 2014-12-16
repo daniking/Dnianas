@@ -64,13 +64,13 @@
 .search-peple {
 	height: 25px;
 	width: 450px;
+	font-size: 1rem;
 	outline: none;
 	background: #033E5C;
-	font-weight: 300;
-	color: rgba(255,255,255,.69);
+	color: rgba(255,255,255,.75);
 	border: 0px;
 	-webkit-border-radius: 5px;
-	padding: 3px;
+	padding: 4px;
 	position: relative;
 }
 .search_submit{
@@ -89,7 +89,7 @@
 	left: -35px;
 	-webkit-border-radius: 1px 1px;
 	outline:none;
-	transition: all 0.4s ease-out;
+	transition: all 0.2s ease-in;
 
 }
 .search_submit:hover{
@@ -97,7 +97,7 @@
 	background-position:center;
 	background-repeat:no-repeat;
 	background-color: #033E5C;
-	transition: all 0.4s ease-out;
+	transition: all 0.2s ease-in;
 
 }
 
@@ -150,23 +150,8 @@
 	transition: all 0.4s ease-out;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .search-peple::-webkit-input-placeholder {
-	color: #8EACBB;
+	color: #8EA2BB;
 }
 .search-peple:-moz-placeholder {
 	color: #8EACBB;
