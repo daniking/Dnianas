@@ -62,7 +62,7 @@ class PostController extends BaseController
 
     }
 
-    public function get($last_id) 
+    public function latest($last_id) 
     {
         $posts = $this->posts->greaterThan($last_id);
 

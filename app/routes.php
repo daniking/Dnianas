@@ -65,7 +65,7 @@ Route::post('posts/create', 'PostController@create');
 /*
 * When the short polling wants new posts
  */
-Route::get('/posts/get/{last_id}', 'PostController@get');
+Route::get('/posts/latest/{last_id}', 'PostController@latest');
 
 
 /*
