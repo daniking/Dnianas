@@ -5,9 +5,13 @@
     <div class="error" style="display:none"></div>
     <div class="message" style="display:none"></div>
     @include('home.post-add')
-    @foreach($posts as $p)  
-        @include('home._partials.post') 
-    @endforeach
+    @if($posts->count())
+        @foreach($posts as $p)  
+            @include('home._partials.post') 
+        @endforeach
+    @else 
+    <p class="no-posts">No posts to show</p>   
+    @endif
 </div>
     @include('home.right-sidebar')
     @include('home.profile-hover')
