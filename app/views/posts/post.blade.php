@@ -12,7 +12,7 @@
                         </a>
                     </div>
                     <span><a href="">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a></span>
-                    <span class="data_post">{{ Carbon::now()->diffForHumans() }}</span>
+                    <span class="data_post" data-livestamp="{{ Carbon::now()->timestamp }}"></span>
                 </div>
                 <br>
             <p>{{{ Input::get('post_content') }}}</p>
@@ -24,7 +24,7 @@
                     <button class="sc-bot-share"><img src="img/icons/share.png"><span>0</span></button>
                     <div id="titlelicomresh" style="display: none;"></div>
                     <br>
-                    <textarea name="" class="comment" placeholder="Write something..."></textarea>
+                    <textarea name="" class="comment-input" placeholder="Write something..."></textarea>
 
                 </div>
             </div>

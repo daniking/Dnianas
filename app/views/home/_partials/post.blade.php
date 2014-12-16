@@ -7,11 +7,10 @@
                         <a href="profile.php">
                             <img src="photo/pro.jpg" class="small_profie">
                             <h1 class="users_small">{{ $p->user->first_name }} {{ $p->user->last_name }}</h1>
-
                         </a>
                     </div>
                     <span><a href="">{{ $p->user->first_name }} {{ $p->user->last_name }}</a></span>
-                    <span class="data_post">{{ formatDate($p->posted_date) }}</span>
+                    <span class="data_post" data-livestamp="{{ formatDate($p->posted_date) }}"></span>
 
                 </div>
                 <br>
@@ -25,7 +24,16 @@
                     <button class="sc-bot-share"><img src="img/icons/share.png"><span>0</span></button>
                     <div id="titlelicomresh"></div>
                     <br>
-                    <textarea name="" class="comment" placeholder="Write something..."></textarea>
-
+                    <textarea name="" class="comment-input" placeholder="Write something..."></textarea>
+                    <div class="comments">
+                        @if($p->comments)
+                            @foreach($p->comments as $comment)
+                                <div class="comment">
+                                    <div>{{ $comment->user->first_name . ' ' . $comment->user->last_name }}</div>
+                                    <div>{{ $comment->comment_content }}</div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
             </div>
