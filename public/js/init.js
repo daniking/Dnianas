@@ -25,7 +25,8 @@ $(document).ready(function() {
     // The short polling process
     function getNewPosts() {
         if ($('.poster_memb .tab_post').length) {
-            var ids = $('.poster_memb .tab_post').map(function() {
+            var ids = $('.poster_memb .tab_post').map(function() 
+            {
                 return +$(this).data('id') || 0;
             });
             last_id = Math.max.apply(Math, ids);
