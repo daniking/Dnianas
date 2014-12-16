@@ -25,10 +25,15 @@ $(document).ready(function() {
     // The short polling process
     function getNewPosts() {
         if ($('.poster_memb .tab_post').length) {
-            var ids = $('.poster_memb .tab_post').map(function() 
-            {
+
+            // Map the div to array
+            var ids = $('.poster_memb .tab_post').map(function() {
+
+                // Get the ids and store them in this array
                 return +$(this).data('id') || 0;
             });
+
+            // Find the largest id from the ids array and set it to a variable
             last_id = Math.max.apply(Math, ids);
         } else {
             last_id = 0;
