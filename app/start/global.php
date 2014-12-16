@@ -89,17 +89,3 @@ require app_path().'/filters.php';
  * Require the helper functions 
 */
 require app_path().'/Dnianas/Support/helpers.php';
-
-/**
- * Binding to start them up!
- */
-
-App::bind('Dnianas\Post\PostRepositoryInterface', function()
-{
-   return new Dnianas\Post\PostRepository;
-});
-
-App::bind('Dnianas\User\UserRepositoryInterface', function()
-{
-   return new Dnianas\User\UserRepository;
-});
