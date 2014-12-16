@@ -1,30 +1,18 @@
 <?php 
 namespace Dnianas\User;
 
-use Dnianas\Forms\Registeration as Registeration;
+use Auth;
 
-use Dnianas\Forms\GettingStarted as GettingStarted;
-
+use About;
 
 class UserRegisterService 
 {
-    /**
-     * @var Dnianas\Forms\Registeration
-     */
-    protected $registerationForm; 
 
     /**
-     * @var Dnianas\Forms\GettingStarted
+     * The activation code that sent by an email
+     * @var string
      */
-    protected $GettingStartedForm; 
-
     protected $code;
-
-    public function __construct(Registeration $registeration, GettingStarted $getting_started) 
-    {
-        $this->registerationForm    = $registeration;
-        $this->gettingStartedForm   = $getting_started;
-    }   
 
     public function register(array $input)
     {
@@ -62,8 +50,19 @@ class UserRegisterService
         });
     }
 
-    public function updateUser()
+    public function updateUser(array $input, $user_id)
     {
+        $about = new About;
+        
+        $about->address     = $input['address'];
+        $about->job_title   = $input['job_title'];
+        $about->website     = $input['website'];
+        $about->about       = $input['about'];
+        $about->user_id     = $user_id;
+
+        // Save it to the database
+        $about->save();
+
 
     }
 }
