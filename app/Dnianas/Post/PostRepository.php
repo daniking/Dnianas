@@ -3,7 +3,7 @@ namespace Dnianas\Post;
 
 use \Post;
 
-class PostRepository implements PostRepositoryInterface
+class PostRepository
 {
     /**
      * Find a post by it's id

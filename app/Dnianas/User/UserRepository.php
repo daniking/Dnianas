@@ -3,7 +3,7 @@ namespace Dnianas\User;
 
 use \User;
 
-class UserRepository implements UserRepositoryInterface
+class UserRepository
 {
 
     /**

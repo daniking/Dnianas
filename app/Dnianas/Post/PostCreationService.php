@@ -19,7 +19,5 @@ class PostCreationService
         $post->save();
 
         return $post;
-
-
     }
 }
