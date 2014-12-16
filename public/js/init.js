@@ -14,7 +14,7 @@ $(document).ready(function() {
                 //$('.message').empty().append(data.message).slideDown(250).delay(3000).slideUp(250);
                 $('#postForm')[0].reset();
                 $(data.post_html).insertAfter('#postForm').hide().delay(100).slideDown(400);
-
+                $('.no-posts').hide();
             }
         })
 
@@ -32,15 +32,16 @@ $(document).ready(function() {
         }
         
         $.ajax({
-            url: '/posts/get/' + last_id,
+            url: '/posts/latest/' + last_id,
             type: 'GET',
             dataType: 'JSON',
         })
         .done(function(data) {
             if (data) {
-                if (data.is_new = 'true') {
+                if (data.is_new = 'true' && data.html) {
+                    $('.no-posts').hide();
                     $(data.html).insertAfter('#postForm').hide().slideDown(500);    
-                } 
+                }
                 
             }
 
