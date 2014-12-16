@@ -1,6 +1,6 @@
 <?php
-use Dnianas\Forms\Registeration as Registeration;
-use Dnianas\Forms\Login as Login;
+use Dnianas\Forms\Registeration;
+use Dnianas\Forms\Login;
 use Dnianas\Forms\GettingStarted;
 
 use Dnianas\User\UserRegisterService;
@@ -26,7 +26,7 @@ class AuthController extends BaseController
 
     /**
      * @param Login $login
-     * @param UserRegisterService $registeration
+     * @param UserRegister Service $registeration
      * @param GettingStarted $getting_started
      */
     public function __construct(
@@ -62,7 +62,6 @@ class AuthController extends BaseController
         $this->registeration->sendConfirmationEmail(Input::get('email'), Input::get('username'));
 
         // Log the user in 
-
         $login = Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')], true);
         if ($login) {
             Session::put('after_register', true);
@@ -107,15 +106,17 @@ class AuthController extends BaseController
 
         // Grab the user input to log them in
         $data = [
-        'username' => Input::get('username'),
-        'password' => Input::get('password')
+            'username' => Input::get('username'),
+            'password' => Input::get('password')
         ];
 
+        // Try to log them in
         if (Auth::attempt($data, true)) {
             return Redirect::intended('/');
-        } else {
-            return Redirect::back()->withMessage('You entered wrong email/password combination');
         }
+        // If the username/password was incorrect
+        return Redirect::back()->withMessage('You entered wrong email/password combination');
+        
 
     }
 
@@ -129,9 +130,9 @@ class AuthController extends BaseController
     {
         if (Session::has('after_register')) {
             return View::make('auth.getting_started');
-        } else {
-            return Redirect::to('/');
         }
+
+        return Redirect::to('/');
     }
     /**
      * @return mixed
@@ -140,22 +141,19 @@ class AuthController extends BaseController
     public function postGettingStarted()
     {
         // Validate the user input
-        $validation = $this->getting_started->validate(Input::all());
+        try {
+            $validation = $this->getting_started->validate(Input::all());
+        } catch(FormValidationException $e) {
+            return Redirect::back()->withInput()->withErrors($e->getErrors());
+        }
 
         // Passed, So we insert it into database
-        $about = new About;
+        $this->registeration->updateUser(Input::all(), Auth::user()->id);
         
-        // $this->getting_started->update();
-        $about->address     = Input::get('address');
-        $about->job_title   = Input::get('job_title');
-        $about->website     = Input::get('website');
-        $about->about       = Input::get('about');
-        $about->user_id     = Auth::id();
-        $about->save();
-
         // Kill the session
         Session::pull('after_register');
 
+        // Redirect with success message
         return Redirect::to('/')->withMessage('You account information has been updated.');
     }
 
