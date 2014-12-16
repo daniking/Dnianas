@@ -25,8 +25,10 @@ $(document).ready(function() {
     // The short polling process
     function getNewPosts() {
         if ($('.poster_memb .tab_post').length) {
-            last_id = $('.poster_memb .tab_post').first().data('id');
-            interval = 10000;
+            var ids = $('.poster_memb .tab_post').map(function() {
+                return +$(this).data('id');
+            });
+            last_id = Math.max.apply(Math, ids);
         } else {
             last_id = 0;
         }
