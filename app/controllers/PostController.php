@@ -3,7 +3,7 @@
 use Laracasts\Validation\FormValidationException;
 
 use Dnianas\Post\PostCreationService;
-use Dnianas\Post\PostRepositoryInterface;
+use Dnianas\Post\PostRepository;
 
 use Dnianas\Forms\PostForm;
 
@@ -20,7 +20,7 @@ class PostController extends BaseController
      */
     protected $posts;
 
-    public function __construct(PostForm $postForm, PostCreationService $post, PostRepositoryInterface $postRepo)
+    public function __construct(PostForm $postForm, PostCreationService $post, PostRepository $postRepo)
     {  
         $this->posts = $postRepo;
         $this->postForm = $postForm;
