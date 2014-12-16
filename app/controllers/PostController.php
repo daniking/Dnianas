@@ -43,7 +43,7 @@ class PostController extends BaseController
         } catch(FormValidationException $e) {
             return Response::json([
                 'success' => 'false',
-                'message' => 'You didn\'t entered anything, Post cannot be empty.'
+                'message' => 'You didn\'t enter anything, Post cannot be empty.'
             ]);       
         }
 
