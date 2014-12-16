@@ -2,11 +2,10 @@
 
 use Laracasts\Validation\FormValidationException;
 
-use Dnianas\Services\PostCreationService;
+use Dnianas\Post\PostCreationService;
+use Dnianas\Post\PostRepositoryInterface;
 
 use Dnianas\Forms\PostForm;
-
-use Dnianas\Repositories\Post\PostRepositoryInterface;
 
 class PostController extends BaseController
 {

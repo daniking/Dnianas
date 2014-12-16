@@ -1,8 +1,8 @@
 <?php 
 
-use Dnianas\Repositories\Post\PostRepositoryInterface;
+use Dnianas\Post\PostRepositoryInterface;
 
-use Dnianas\Repositories\User\UserRepositoryInterface;
+use Dnianas\User\UserRepositoryInterface;
 
 class HomeController extends BaseController
 {
@@ -23,6 +23,8 @@ class HomeController extends BaseController
             $posts = $this->post->getLatest();
             $user  = $this->user->getById(Auth::id());
             $about = $this->user->getAbout($user);
+
+
             return View::make("home.index", compact('posts', 'about'));
         }
 

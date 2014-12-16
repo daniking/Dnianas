@@ -3,7 +3,7 @@ use Dnianas\Forms\Registeration as Registeration;
 use Dnianas\Forms\Login as Login;
 use Dnianas\Forms\GettingStarted;
 
-use Dnianas\Services\UserRegisterService;
+use Dnianas\User\UserRegisterService;
 
 use Laracasts\Validation\FormValidationException;
 
