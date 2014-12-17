@@ -10,10 +10,13 @@ use Laracasts\Validation\FormValidationException;
 class AuthController extends BaseController
 {
 
+    /**
+     * @var Dnianas\Forms\Registeration
+     */
     protected $registeration;
 
-    /*
-     * Dnianas\Forms\Login
+    /**
+     * @var Dnianas\Forms\Login
      */
     protected $login;
 
@@ -105,17 +108,17 @@ class AuthController extends BaseController
         }
 
         // Grab the user input to log them in
-        $data = [
-            'username' => Input::get('username'),
-            'password' => Input::get('password')
-        ];
+        $username = Input::get('username');
+        $password = Input::get('password');
 
         // Try to log them in
-        if (Auth::attempt($data, true)) {
+        if (Auth::attempt(['username' => $username, 'password' => $password], true)) {
+            return Redirect::intended('/');
+        } else if (Auth::attempt(['email' => $username, 'password' => $password], true)) {
             return Redirect::intended('/');
         }
         // If the username/password was incorrect
-        return Redirect::back()->withMessage('You entered wrong email/password combination');
+        return Redirect::back()->withErrors('You entered wrong email/password combination');
         
 
     }
@@ -134,6 +137,7 @@ class AuthController extends BaseController
 
         return Redirect::to('/');
     }
+
     /**
      * @return mixed
      * @throws \Laracasts\Validation\FormValidationException
