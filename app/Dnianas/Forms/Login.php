@@ -9,8 +9,8 @@ class Login extends FormValidator
      * @var array
      */
     protected $rules = [
-        'username' => 'required|min:6',
-        'password' => 'required|min:6'
+        'username' => 'required|',
+        'password' => 'required|'
     ];
     
 }
