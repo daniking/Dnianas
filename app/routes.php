@@ -12,6 +12,8 @@ Route::get('/', 'HomeController@index');
 
 /*
  * Require all the files inside of 'routes' directory
+ * Using a foreach loop, that will loop through all the files
+ * inside of that directory.
  */
 foreach (File::allFiles(__DIR__.'/routes') as $partial) 
 {
