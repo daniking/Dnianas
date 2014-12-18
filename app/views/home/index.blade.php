@@ -6,7 +6,7 @@
     <div class="message" style="display:none"></div>
     @include('home.post-add')
     @if($posts->count())
-        @foreach($posts as $p)  
+        @foreach($posts as $post)  
             @include('home._partials.post') 
         @endforeach
     @else 
