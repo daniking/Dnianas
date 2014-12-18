@@ -1,4 +1,4 @@
-{{ Form::open(array('url' => 'post/create', 'id' => 'postForm')) }}
+{{ Form::open(array('url' => 'posts/create', 'id' => 'postForm')) }}
         <div class="users_adds">
             <textarea cols="60"  name="post_content" class="normal" placeholder="What's happening?"></textarea>
         </div>
