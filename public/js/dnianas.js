@@ -3,6 +3,7 @@ $(function(){
 });
 $(document).ready(function(){
 	$("._192prosss").hide();
+	$('.comment-input').autosize();
 });
 $('#clicksows').dblclick(function(){ 
 	$("._192prosss").fadeIn(600, function() {
