@@ -21,7 +21,7 @@ class PostRepository
      */
     public function getLatest()
     {
-        return Post::with('user', 'comments')->latest()->get();
+        return Post::with('comments.user')->latest()->get();
     }
 
     /**
