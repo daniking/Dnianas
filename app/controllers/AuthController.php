@@ -117,18 +117,28 @@ class AuthController extends BaseController
         } else if (Auth::attempt(['email' => $username, 'password' => $password], true)) {
             return Redirect::intended('/');
         }
+
         // If the username/password was incorrect
         return Redirect::back()->withErrors('You entered wrong email/password combination');
         
 
     }
 
+    /**
+     * Logout the current user
+     * 
+     * @return boolean
+     */
     public function logout()
     {
         Auth::logout();
-        return Redirect::to('/')->withMessage('You\'ve been logged out, Good bye!');
+        return Redirect::to('/')->withMessage('You\'ve been logged out.');
     }
 
+    /**
+     * Post the getting_started form
+     * @return [type] [description]
+     */
     public function getGettingStarted()
     {
         if (Session::has('after_register')) {
