@@ -24,5 +24,9 @@ class Post extends Eloquent
         return $this->hasMany('Comment');
     }
 
+    public function likes()
+    {
+        return $this->belongsToMany('User', 'likes');
+    }
 }
 
