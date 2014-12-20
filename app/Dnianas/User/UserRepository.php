@@ -36,9 +36,25 @@ class UserRepository
         return User::where('username', '=', $username)->get()->toArray();
     }
 
+    /**
+     * Get information about the provided user object
+     * @param  \User  $user     The user object 
+     * @return object           Collection containing info about the user
+     */
     public function getAbout(\User $user)
     {
         return $user->about()->first();
+    }
+
+    /**
+     * Follow a user
+     * @param  integer  $userIdToFollow     The user id that you're trying to follow
+     * @param  object   $user               The current logged in user
+     * @return object                 
+     */
+    public function follow($userIdToFollow, $user)
+    {
+        
     }
 
 }
