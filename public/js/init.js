@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // When someone posts
-    $('#postForm').submit(function(event) {     
+    $('body').on('submit', '#postForm', function(event) {     
         $.ajax({
             url: '/posts/create',
             type: 'POST',
@@ -58,3 +58,32 @@ $(document).ready(function() {
         })
 
     };
+
+    // When a user presses 'enter' on the comment field
+    $('body').on('keypress', '.comment-input', function(event) {        
+
+        if (event.which == 13 && !event.shiftKey) {
+
+            // Grab the post id and other inputs
+            $post_id        = $(this).parents().get(3).dataset.id;
+            $comment_input  = $('.comment-input').val();
+            $token          = $('input[name=_token]').val();
+
+            $.ajax({
+                url: '/comment/create',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    text    : $comment_input,
+                    _token  : $token,
+                    post_id : $post_id
+                }
+            })
+            .done(function(data) {
+                $(data.html).insertBefore('.comment-insert');
+            })
+
+            // Reset the input field
+            $(this).val('').blur();
+        }
+    });
