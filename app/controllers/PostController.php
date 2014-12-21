@@ -20,6 +20,11 @@ class PostController extends BaseController
      */
     protected $posts;
 
+    /**
+     * @param PostForm $postForm
+     * @param PostCreationService $post
+     * @param PostRepository $postRepo
+     */
     public function __construct(PostForm $postForm, PostCreationService $post, PostRepository $postRepo)
     {  
         $this->posts = $postRepo;
@@ -32,6 +37,10 @@ class PostController extends BaseController
         $this->beforeFilter('auth');
     }
 
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function create()
     {
         // Get the input
@@ -62,7 +71,12 @@ class PostController extends BaseController
 
     }
 
-    public function latest($last_id) 
+
+    /**
+     * @param $last_id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function latest($last_id)
     {
         $posts = $this->posts->greaterThan($last_id);
 
@@ -79,7 +93,6 @@ class PostController extends BaseController
         return Response::json([
             'is_new' => 'false'
         ]);
-
     }
 
 }
