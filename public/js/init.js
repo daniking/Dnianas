@@ -42,7 +42,7 @@ $(document).ready(function() {
         $.ajax({
             url: '/posts/latest/' + last_id,
             type: 'GET',
-            dataType: 'JSON',
+            dataType: 'JSON'
         })
         .done(function(data) {
             if (data) {
@@ -61,26 +61,23 @@ $(document).ready(function() {
 
     // When a user presses 'enter' on the comment field
     $('body').on('keypress', '.comment-input', function(event) {        
-
         if (event.which == 13 && !event.shiftKey) {
-
             // Grab the post id and other inputs
-            $post_id        = $(this).parents().get(3).dataset.id;
-            $comment_input  = $('.comment-input').val();
-            $token          = $('input[name=_token]').val();
-
+            var $post_id        = $(this).parents().get(3).dataset.id;
+            var $token          = $('input[name=_token]').val();
+            var $comment_input  = $(this);
             $.ajax({
                 url: '/comment/create',
                 type: 'POST',
                 dataType: 'JSON',
                 data: {
-                    text    : $comment_input,
+                    text    : $comment_input.val(),
                     _token  : $token,
                     post_id : $post_id
                 }
             })
             .done(function(data) {
-                $(data.html).insertBefore('.comment-insert');
+                $(data.html).insertBefore($comment_input.parent());
             })
 
             // Reset the input field
