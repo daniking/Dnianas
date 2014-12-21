@@ -82,7 +82,7 @@ class PostController extends BaseController
 
         $html = View::make('home.new_post', ['posts' => $posts])->render();
 
-        // If there is any new posts
+        // If there are any new posts
         if ($posts->count()) {
             return Response::json([
                 'is_new' => 'true',
