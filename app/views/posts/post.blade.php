@@ -23,7 +23,11 @@
         <button class="sc-bot-share"><img src="img/icons/share.png"><span>0</span></button>
         <div id="titlelicomresh" style="display: none;"></div>
         <br>
-        <textarea  class="comment-input" placeholder="Write something..."></textarea>
-
+        <div class="comment-wrapper">
+            <div class="comment-insert">
+                <img src="photo/pro.jpg" alt="Profile Picture" class="profile-picture">
+                <textarea  dir="ltr" class="comment-input" placeholder="Write something..."></textarea>
+            </div>
+        </div>
     </div>
 </div>
