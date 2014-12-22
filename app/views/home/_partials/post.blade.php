@@ -24,3 +24,4 @@
         <br>
         @include('posts._comment')
     </div>
+</div>
