@@ -16,4 +16,3 @@
         <textarea  dir="ltr" class="comment-input" placeholder="Write something..."></textarea>
     </div>
 </div>
-
