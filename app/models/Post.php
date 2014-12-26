@@ -28,5 +28,14 @@ class Post extends Eloquent
     {
         return $this->belongsToMany('User', 'likes');
     }
+
+    public function isLikedBy(User $user, $post_id)
+    {
+        $likes = $this->find($post_id)->likes()->where('user_id', $user->id)->first();
+
+        if ($likes) return true;
+
+        return false;
+    }
 }
 
