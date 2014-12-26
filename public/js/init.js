@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    token = $('input[name=_token]').val();
     // When someone posts
     $('body').on('submit', '#postForm', function(event) {     
         $.ajax({
@@ -20,6 +21,35 @@ $(document).ready(function() {
 
         event.preventDefault();
     });
+
+    $('body').on('click', '#likePost', (function(event) {
+        // The post id
+        var $post_id        = $(this).parents().get(2).dataset.id;
+        $postLike           = $(this);
+        var $postLikeEl     = $postLike.children('#likeCount');
+        var $postLikeCount  = $postLikeEl.text();
+        $.ajax({
+            url: 'posts/like',      
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                post_id: $post_id,
+                like_count: $postLikeCount,
+                _token: token
+            },
+        })
+        .done(function(data) {
+            if (data.like) {
+                $postLike.children('.likeIcon').addClass('liked');
+                $postLikeEl.addClass('liked');
+            } else {
+                $postLike.children('.likeIcon').removeClass('liked');
+                $postLikeEl.removeClass('liked');
+            }
+            $postLikeEl.text(data.like_count);
+        })
+        
+    }));
 });
 
     // The short polling process
@@ -64,7 +94,6 @@ $(document).ready(function() {
         if (event.which == 13 && !event.shiftKey) {
             // Grab the post id and other inputs
             var $post_id        = $(this).parents().get(3).dataset.id;
-            var $token          = $('input[name=_token]').val();
             var $comment_input  = $(this);
             $.ajax({
                 url: '/comment/create',
@@ -72,15 +101,16 @@ $(document).ready(function() {
                 dataType: 'JSON',
                 data: {
                     text    : $comment_input.val(),
-                    _token  : $token,
+                    _token  : token,
                     post_id : $post_id
                 }
             })
             .done(function(data) {
                 $(data.html).insertBefore($comment_input.parent());
+
             })
 
             // Reset the input field
             $(this).val('').blur();
         }
-    });
+});
