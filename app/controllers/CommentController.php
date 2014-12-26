@@ -29,7 +29,8 @@ class CommentController extends BaseController
     }
 
     /**
-     *
+     * Post a comment and add it to the database
+     * @return  Response
      */
     public function create()
     {
@@ -49,9 +50,9 @@ class CommentController extends BaseController
         $this->comment->create(Input::all(), Auth::user()->id);
 
         // Get the html content from the view
-        $html = View::make('comments.comment-insert')->render();
+        $html = View::make('posts.comment-insert')->render();
 
-
+        // Return a feedback
         return Response::json([
             'html'    => $html,
             'message' => 'Your comment has been successfully posted.'
