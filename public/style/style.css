@@ -306,14 +306,13 @@ p {
     left: 10px;
     cursor: pointer;
     font-size: 13px;
-    opacity: 0.6;
-    transition: all 0.4s ease-out;
 }
 
 .sc-bot-like img,.sc-bot-comm  img,.sc-bot-share img,.sc-bot-repo img {
     position: relative;
     right: 2px;
 }
+
 
 .left_abo_colishre {
     width: 250px;
@@ -335,7 +334,6 @@ p {
 
 .place_com_li button:hover {
     opacity: 1;
-    transition: all 0.4s ease-out;
 }
 
 .normal {
@@ -774,4 +772,27 @@ a.comment-name {
     text-decoration: underline;
     margin-left: 45px;
     margin-bottom: 5px;
+}
+.bar {
+    position: relative;
+    top: 20px;
+}
+.likeIcon {
+    background: transparent;
+    opacity: 1;
+    color: #585858;
+    font-size: 17px;
+}
+
+#likePost:hover{
+    color: #FFB801;
+}
+
+
+.commentIcon {
+    font-size: 17px;
+    color: #585858;
+}
+.liked {
+    color: #FFB807;
 }
