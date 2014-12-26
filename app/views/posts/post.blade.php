@@ -17,10 +17,16 @@
     <p>{{{ Input::get('post_content') }}}</p>
     <br>
     <div class="place_com_li">
-        <button class="sc-bot-like _likes"><img src="img/icons/like.png"><span>0</span></button>
-        <button class="sc-bot-comm"><img src="img/icons/comments.png"><span>0</span></button>
-        <button class="sc-bot-repo"><img src="img/icons/repo.png"><span>0</span></button>
-        <button class="sc-bot-share"><img src="img/icons/share.png"><span>0</span></button>
+        <div class="bar">
+            <button class="sc-bot-like _likes" id="likePost">
+                <span class="fa fa-star likeIcon"></span>
+                <span id="likeCount">0</span>
+            </button>
+            <button class="sc-bot-comm">
+                <span class="fa fa-comment commentIcon"></span>
+                <span id="commentCount">0</span>
+            </button>
+        </div>
         <div id="titlelicomresh" style="display: none;"></div>
         <br>
         <div class="comment-wrapper">

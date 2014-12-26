@@ -7,7 +7,7 @@
     @include('home.post-add')
     @if($posts->count())
         @foreach($posts as $post)  
-            @include('home._partials.post') 
+            @include('posts._post') 
         @endforeach
     @else 
     <p class="no-posts">No posts to show</p>   
