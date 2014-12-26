@@ -80,9 +80,9 @@ Route::post('comment/create', 'CommentController@create');
  * Or : /user/AkarM13
  */
 Route::get('user/{username}', function($username) {
-    $user = User::where('username', '=', $username)
+    $user = User::where('username', $username)
         ->with('about', 'posts')
-        ->first();
+        ->firstOrFail();
 
     // $user = $this->getCurrentUserPosts();
 
@@ -93,7 +93,8 @@ Route::get('test', function () {
 
     // $userIds = Auth::user()->following()->lists('followed_id');
     // $userIds[] = Auth::user()->id;
-
-    // return Post::whereIn('user_id', $userIds)->latest()->get();
-    return Post::find(20)->likes;
+    // return Post::whereIn('user_id', $userIds)->latest()->get(); 
+    return Post::find(31)->likes()->where('user_id', 10)->first();
 });
+
+Route::post('posts/like', 'PostController@like');
