@@ -120,7 +120,6 @@ class AuthController extends BaseController
 
         // If the username/password was incorrect
         return Redirect::back()->withErrors('You entered wrong email/password combination');
-        
 
     }
 
