@@ -67,7 +67,7 @@ class PostController extends BaseController
             'success' => 'true',
             'message' => 'Your post has been successfuly posted!',
             'post_html' => $html
-        ]);
+            ]);
 
     }
 
@@ -80,7 +80,7 @@ class PostController extends BaseController
     {
         $posts = $this->posts->greaterThan($last_id);
 
-        $html = View::make('home.new_post', ['posts' => $posts])->render();
+        $html = View::make('posts.newPostArrived', ['posts' => $posts])->render();
 
         // If there are any new posts
         if ($posts->count()) {
@@ -92,6 +92,35 @@ class PostController extends BaseController
 
         return Response::json([
             'is_new' => 'false'
+        ]);
+    }
+
+    /**
+     * Like a specific post using post data
+     */
+    public function like()
+    {
+        // Grab the post id from the input
+        $post_id    = Input::get('post_id');
+        $like_count = Input::get('like_count');
+
+        $user    = Auth::user();
+        if (!$this->posts->isLikedBy($user, $post_id)) {
+
+            // Like the post 
+            $this->posts->like($post_id, Auth::user());
+
+            return Response::json([
+                'like'      => 'true',
+                'like_count' => +$like_count + 1,
+            ]);
+        }
+        
+        // Otherwise, Unlike the post
+        $this->posts->unlike($post_id, Auth::user());
+        return Response::json([
+            'unlike'     => 'true',
+            'like_count' => max(+$like_count - 1, 0),
         ]);
     }
 
