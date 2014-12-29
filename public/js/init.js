@@ -29,7 +29,7 @@ $(document).ready(function() {
         var $postLikeEl     = $postLike.children('#likeCount');
         var $postLikeCount  = $postLikeEl.text();
         $.ajax({
-            url: 'posts/like',      
+            url: '/posts/like',      
             type: 'POST',
             dataType: 'JSON',
             data: {
@@ -113,4 +113,26 @@ $(document).ready(function() {
             // Reset the input field
             $(this).val('').blur();
         }
+});
+
+$('#followBtn').click(function(event) {
+    var $followBtn      = $(this);
+    var profileId       = $followBtn.data('profileid');
+
+    $.ajax({
+        url: '/follow',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {
+            profile_id: profileId,
+            _token: token
+        },
+    })
+    .done(function(data) {
+        if (data.follow) {
+            $followBtn.text('Unfollow');
+        } else {
+            $followBtn.text('Follow');
+        }
+    })
 });
