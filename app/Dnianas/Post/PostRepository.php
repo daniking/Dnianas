@@ -25,21 +25,37 @@ class PostRepository
         return Post::with('comments.user')->latest()->get();
     }
 
+
     /**
      * Get post that's greater than the specified id
      * @param  integer $id 
      * @return mixed    
      */
-    public function greaterThan($id)
+    public function greaterThan($id, User $user)
     {
-        return Post::with('user')->where('id', '>', $id)->get();
+        // return Post::with('user')->where('id', '>', $id)->get();
+        $userIds = $user->following()->lists('followed_id');
+        $userIds[] = $user->id;
+        return \Post::whereIn('user_id', $userIds)->where('id', '>', $id);
     }
 
+    /**
+     * Like post by it's id
+     * @param  integer      $post_id    The post id
+     * @param  object       $user       The user that is trying to like the post
+     * @return void
+     */
     public function like($post_id, User $user)
     {
         return Post::find($post_id)->likes()->attach($user->id);
     }
 
+    /**
+     * Unlike post by it's id
+     * @param  integer  $post_id    The post id
+     * @param  User     $user       The user that is trying to unlike the post
+     * @return void
+     */
     public function unlike($post_id, User $user)
     {
         return Post::find($post_id)->likes()->detach($user->id);
