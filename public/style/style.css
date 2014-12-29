@@ -8,6 +8,11 @@ body {
     font-family: 'Source Sans Pro', Arial;
 }
 
+a {
+    color: #1E7BFF;
+    text-decoration: none;
+}
+
 h1 {
     display: block;
     font-size: 16px;
@@ -238,6 +243,7 @@ h1, h2, h3, h4, h5, h6, p {
     width: 40px;
     height: 40px;
     position: relative;
+    margin-right: 5px;
     left: 5px;
     top: 25px;
     border-radius: 5px;
@@ -795,4 +801,8 @@ a.comment-name {
 }
 .liked {
     color: #FFB807;
+}
+div.post {
+    margin-left: 35px;
+    margin-top: 10px;
 }
