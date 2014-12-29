@@ -7,31 +7,31 @@ use Dnianas\User\UserRepository;
 class HomeController extends BaseController
 {
     /**
-     * The posts repository 
+     * The post repository 
      * @var Dnianas\Post\PostRepositoryInterface
      */
-    protected $posts;
+    protected $post;
 
     /**
      * The users repository
      * @var Dnianas\User\UserRepositoryInterface
      */
-    protected $users;
+    protected $user;
 
 
     public function __construct(UserRepository $userRepo, PostRepository $postRepo)
     {
-        $this->users = $userRepo;
-        $this->posts = $postRepo;
+        $this->user = $userRepo;
+        $this->post = $postRepo;
     }
 
     public function index()
     {
         // If the user is logged in then show the homepage
         if (Auth::check()) {
-            $posts = $this->posts->getLatest();
-            $user  = $this->users->getById(Auth::id());
-            $about = $this->users->getAbout($user);
+            $posts = $this->user->getFeed(Auth::user());
+            $user  = $this->user->getById(Auth::id());
+            $about = $this->user->getAbout($user);
 
             return View::make("home.index", compact('posts', 'about'));
         }
@@ -41,5 +41,42 @@ class HomeController extends BaseController
 
     }
 
+    /** 
+     * When they request user's profile
+     * example.com/@username
+    */
+    public function getProfile($username)
+    {  
+        // Get the information about the user along with their post
+        $user = $this->user->getPosts($username);
+
+        return View::make('profile.index')->withUser($user);
+    }
+
+    /**
+     * Follow a user by their id
+     */
+    public function follow()
+    {
+        // Get the user profile id that you're trying to follow
+        $profile_id = Input::get('profile_id');
+
+        $user = Auth::user();
+
+        if(!$this->user->isFollowedBy($user, $profile_id)) {
+            $this->user->follow($profile_id, $user);
+
+            return Response::json([
+                'follow' => 'true'
+            ]);
+        }
+
+        //Otherwise, Unfollow the user
+        $this->user->unfollow($profile_id, $user);
+
+        return Response::json([
+            'unfollow' => 'true'
+        ]);
+    }
 
 }
