@@ -33,7 +33,7 @@ class UserRepository
      */
     public function getByUsername($username)
     {
-        return User::where('username', '=', $username)->get()->toArray();
+        return User::where('username', '=', $username)->first();
     }
 
     /**
@@ -54,8 +54,48 @@ class UserRepository
      */
     public function follow($userIdToFollow, $user)
     {
-        
+        User::find($userIdToFollow)->followers()->attach($user->id);
+
     }
 
+    public function unfollow($userIdToUnfollow, $user) 
+    {
+        User::find($userIdToUnfollow)->followers()->detach($user->id);
+
+    }
+
+    /**
+     * Get user posts by their username
+     * @param  object   $user
+     * @return object   The posts that was submited by the user
+     */
+    public function getPosts($username) 
+    {
+        $user = User::where('username', $username)->with(['about', 'posts' => function($query) 
+        {
+            $query->latest();
+        }])
+        ->firstOrFail();
+
+        return $user;
+    }
+
+    public function getFeed($user) 
+    {
+        $userIds = $user->following()->lists('followed_id');
+        $userIds[] = $user->id;
+        return \Post::whereIn('user_id', $userIds)->latest()->get(); 
+    }
+
+    public function isFollowedBy(User $user, $user_id) 
+    {
+        $followers = User::find($user_id)->followers()->lists('follower_id');
+
+        if (in_array($user->id, $followers)) {
+            return true;
+        }
+
+        return false;
+    }
 }
 
