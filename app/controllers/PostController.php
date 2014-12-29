@@ -78,7 +78,7 @@ class PostController extends BaseController
      */
     public function latest($last_id)
     {
-        $posts = $this->posts->greaterThan($last_id);
+        $posts = $this->posts->greaterThan($last_id, Auth::user());
 
         $html = View::make('posts.newPostArrived', ['posts' => $posts])->render();
 
