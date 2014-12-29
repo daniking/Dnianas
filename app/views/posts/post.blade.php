@@ -1,11 +1,11 @@
 <div class="tab_post" id="users_shows" data-id="{{ $post_id }}">
     <div id="abo_users_po">
-        <img src="photo/pro.jpg" id="clicksows">
+        <img src="/photo/profile_picture.jpeg" id="clicksows">
         <div class="hover_profile" style="display: none;">
 
-            <img src="photo/dani-cov.jpg" class="small_cover">
-            <a href="profile.php">
-                <img src="photo/pro.jpg" class="small_profie">
+            <img src="/photo/dani-cov.jpg" class="small_cover">
+            <a href="/profile.php">
+                <img src="/photo/pro.jpg" class="small_profie">
                 <h1 class="users_small"></h1>
 
             </a>
@@ -31,7 +31,7 @@
         <br>
         <div class="comment-wrapper">
             <div class="comment-insert">
-                <img src="photo/pro.jpg" alt="Profile Picture" class="profile-picture">
+                <img src="/photo/profile_picture.jpeg" alt="Profile Picture" class="profile-picture">
                 <textarea  dir="ltr" class="comment-input" placeholder="Write something..."></textarea>
             </div>
         </div>
