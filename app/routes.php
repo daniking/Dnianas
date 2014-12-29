@@ -76,25 +76,11 @@ Route::post('comment/create', 'CommentController@create');
 
 /*
  * When they request the user's profile
- * Like: /user/username
- * Or : /user/AkarM13
+ * Like: /@username
+ * Or : /@AkarM13
  */
-Route::get('user/{username}', function($username) {
-    $user = User::where('username', $username)
-        ->with('about', 'posts')
-        ->firstOrFail();
-
-    // $user = $this->getCurrentUserPosts();
-
-    return View::make('profile.user')->withUser($user);
-});
-
-Route::get('test', function () {
-
-    // $userIds = Auth::user()->following()->lists('followed_id');
-    // $userIds[] = Auth::user()->id;
-    // return Post::whereIn('user_id', $userIds)->latest()->get(); 
-    return Post::find(31)->likes()->where('user_id', 10)->first();
-});
-
 Route::post('posts/like', 'PostController@like');
+
+
+Route::get('@{username}', ['as' => 'profile.show', 'uses' => 'HomeController@getProfile']);
+Route::post('follow', ['as' => 'follow_path', 'uses' => 'HomeController@follow']);
