@@ -61,8 +61,10 @@ class HomeController extends BaseController
         // Get the user profile id that you're trying to follow
         $profile_id = Input::get('profile_id');
 
+        // Get the currently authinticated user
         $user = Auth::user();
 
+        // If the user isn't already followed
         if(!$this->user->isFollowedBy($user, $profile_id)) {
             $this->user->follow($profile_id, $user);
 
@@ -71,7 +73,7 @@ class HomeController extends BaseController
             ]);
         }
 
-        //Otherwise, Unfollow the user
+        // Otherwise, Unfollow the user
         $this->user->unfollow($profile_id, $user);
 
         return Response::json([
