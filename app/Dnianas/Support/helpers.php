@@ -1,5 +1,5 @@
 <?php 
 
-function formatDate($date) {
+function format_date($date) {
     return Carbon::parse($date)->timestamp;
 }
