@@ -1,17 +1,17 @@
 @include('template._partials.header')
 @include('home.nav-top')
 <div class="main_con_prof">
-
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="cover11 _bord12" id="coversus">
             <img src="/photo/cover.jpg">
             <div class="ri_messs_fo232">
-
+                
                 <button class="bot_sasda22131" id="openmsg">
                     <span>Messages</span>
                 </button>
                 @if($user->isFollowedBy(Auth::user(), $user->id))
-                    <button class="bot_sasda22131" id="followBtn" data-action="unfollow" data-profileid="{{ $user->id }}">
-                        <span>Unfollow</span>
+                    <button class="bot_sasda22131 following" id="followBtn" data-action="unfollow" data-profileid="{{ $user->id }}">
+                        <span>Following</span>
                     </button>
                 @else 
                 <button class="bot_sasda22131" id="followBtn" data-action="follow" data-profileid="{{ $user->id }}">
@@ -63,12 +63,17 @@
                         @include('home.post-add')
                     </div>
                 @endif
-
-                @foreach($user->posts as $post)
-                    <div class="post">
-                        @include('posts._post')
-                    </div>
-                @endforeach
+    
+    
+                @if($user->posts->count())
+                    @foreach($user->posts as $post)
+                        <div class="post">
+                            @include('posts._post')
+                        </div>
+                    @endforeach
+                @else 
+                    <div class="no-posts">This user has no posts</div>
+                @endif
            </div>
 
        </div>
