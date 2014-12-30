@@ -2,15 +2,14 @@
         <div id="abo_users_po">
             <img src="/photo/profile_picture.jpeg" id="clicksows" >
             <div class="hover_profile">
-
                 <img src="/photo/cover.jpg" class="small_cover">
                 <a href="profile.php">
                     <img src="/photo/profile_picture.jpeg" class="small_profie">
                     <h1 class="users_small">{{ $post->user->first_name }} {{ $post->user->last_name }}</h1>
                 </a>
             </div>
-            <span><a href="" class="first">{{ $post->user->first_name }} {{ $post->user->last_name }}</a></span>
-            <span class="data_post" data-livestamp="{{ formatDate($post->posted_date) }}"></span>
+            <span>{{ link_to_route('profile.show', $post->user->fullName(), $post->user->username) }}</span>
+            <span class="data_post" data-livestamp="{{ format_date($post->posted_date) }}"></span>
         </div>
         <br>
         <p> {{{ $post->post_content }}} </p>
@@ -34,6 +33,5 @@
             <div id="titlelicomresh"></div>
             <br>
             @include('posts._comment')
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
         </div>
     </div>
