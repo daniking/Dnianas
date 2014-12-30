@@ -61,13 +61,20 @@ class PostRepository
         return Post::find($post_id)->likes()->detach($user->id);
     }
 
+    /**
+     * Determine if the post is liked by a user
+     * @param  User     $user       The current authinticated user
+     * @param  integer  $post_id    The post id that you're trying to check against
+     * @return boolean              Return true if found, false if not.
+     */
     public function isLikedBy(User $user, $post_id) 
-    {
+    {   
+        
         $likes = Post::find($post_id)->likes()->where('user_id', $user->id)->first();
 
         // If the user likes that post
         if ($likes) return true;
-
+        
         return false;
     }
 

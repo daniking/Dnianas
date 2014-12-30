@@ -49,7 +49,7 @@ class UserRepository
     /**
      * Follow a user
      * @param  integer  $userIdToFollow     The user id that you're trying to follow
-     * @param  object   $user               The current logged in user
+     * @param  object   $user               The current user who is performing the follow
      * @return object                 
      */
     public function follow($userIdToFollow, $user)
@@ -58,6 +58,12 @@ class UserRepository
 
     }
 
+    /**
+     * Unfollow a user
+     * @param  integer  $userIdToUnfollow   The user id that you're trying to unfollow
+     * @param  Object   $user               The current user who is performing the unfollow
+     * @return void
+     */
     public function unfollow($userIdToUnfollow, $user) 
     {
         User::find($userIdToUnfollow)->followers()->detach($user->id);
@@ -80,21 +86,37 @@ class UserRepository
         return $user;
     }
 
-    public function getFeed($user) 
+    /**
+     * Get feed for the provided user
+     * that means, only show the posts from the users that the current user follows.
+     * 
+     * @param  Object $user The user that you're trying get the feed to
+     * @return Collection   The latest posts
+     */
+    public function getFeed(User $user) 
     {
         $userIds = $user->following()->lists('followed_id');
         $userIds[] = $user->id;
         return \Post::whereIn('user_id', $userIds)->latest()->get(); 
     }
 
+    /**
+     * Determine if the user is followed  by another user
+     * @param  User     $user       The follower
+     * @param  integer  $user_id    The followed user (The second user)
+     * @return boolean              If the user is followed then return true, Otherwise false
+     */
     public function isFollowedBy(User $user, $user_id) 
-    {
+    {   
+        // Grab the id from the followers
         $followers = User::find($user_id)->followers()->lists('follower_id');
 
+        // If it was in the array then that means the user is followed by the provided user
         if (in_array($user->id, $followers)) {
             return true;
         }
 
+        // It's not followed by the user, so return false
         return false;
     }
 }
