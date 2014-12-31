@@ -75,9 +75,9 @@ class UserRepository
      * @param  object   $user
      * @return object   The posts that was submited by the user
      */
-    public function getPosts($username) 
+    public function getPosts($username)
     {
-        $user = User::where('username', $username)->with(['about', 'posts' => function($query) 
+        $user = User::where('username', $username)->with(['about', 'posts' => function($query)
         {
             $query->latest();
         }])
@@ -89,15 +89,15 @@ class UserRepository
     /**
      * Get feed for the provided user
      * that means, only show the posts from the users that the current user follows.
-     * 
-     * @param  Object $user The user that you're trying get the feed to
-     * @return Collection   The latest posts
+     *
+     * @param User $user                            The user that you're trying get the feed to
+     * @return \Illuminate\Database\Query\Builder   The latest posts
      */
     public function getFeed(User $user) 
     {
         $userIds = $user->following()->lists('followed_id');
         $userIds[] = $user->id;
-        return \Post::whereIn('user_id', $userIds)->latest()->get(); 
+        return \Post::whereIn('user_id', $userIds)->latest()->get();
     }
 
     /**
