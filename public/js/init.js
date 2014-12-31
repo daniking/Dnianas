@@ -18,7 +18,7 @@ $body.on('submit', '#postForm', function (event) {
                 $(data.post_html).insertAfter('#postForm').hide().delay(100).slideDown(400);
                 $('.no-posts').hide();
             }
-        })
+        });
 
     event.preventDefault();
 });
@@ -88,8 +88,7 @@ function getNewPosts() {
             setTimeout(getNewPosts, 10000);
         })
 
-};
-
+}
 // When a user presses 'enter' on the comment field
 $body.on('keypress', '.comment-input', function (event) {
     if (event.which == 13 && !event.shiftKey) {
@@ -115,9 +114,9 @@ $body.on('keypress', '.comment-input', function (event) {
     }
 });
 
-$('#followBtn').click(function (event) {
+$body.on('click', '#followBtn', function (event) {
     var $followBtn = $(this);
-    var profileId = $followBtn.data('profileid');
+    var profileId = $followBtn.data('profile-id');
 
     $.ajax({
         url: '/follow',
