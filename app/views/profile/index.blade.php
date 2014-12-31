@@ -14,7 +14,7 @@
                         <span>Following</span>
                     </button>
                 @else 
-                <button class="bot_sasda22131" id="followBtn" data-action="follow" data-profileid="{{ $user->id }}">
+                <button class="bot_sasda22131" id="followBtn" data-action="follow" data-profile_id="{{ $user->id }}">
                     <span>Follow</span>
                 </button>                
                 @endif
