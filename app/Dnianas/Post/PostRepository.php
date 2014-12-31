@@ -1,7 +1,7 @@
 <?php 
 namespace Dnianas\Post;
 
-use \Post;
+use Post;
 use User;
 
 class PostRepository
@@ -28,22 +28,23 @@ class PostRepository
 
     /**
      * Get post that's greater than the specified id
-     * @param  integer $id 
-     * @return mixed    
+     * @param  integer $id
+     * @param User $user
+     * @return mixed
      */
     public function greaterThan($id, User $user)
     {
         // return Post::with('user')->where('id', '>', $id)->get();
         $userIds = $user->following()->lists('followed_id');
         $userIds[] = $user->id;
-        return \Post::whereIn('user_id', $userIds)->where('id', '>', $id);
+        return Post::whereIn('user_id', $userIds)->where('id', '>', $id);
     }
 
     /**
      * Like post by it's id
      * @param  integer      $post_id    The post id
-     * @param  object       $user       The user that is trying to like the post
-     * @return void
+     * @param  User       $user       The user that is trying to like the post
+     * @return int
      */
     public function like($post_id, User $user)
     {
@@ -52,9 +53,9 @@ class PostRepository
 
     /**
      * Unlike post by it's id
-     * @param  integer  $post_id    The post id
-     * @param  User     $user       The user that is trying to unlike the post
-     * @return void
+     * @param  integer $post_id The post id
+     * @param  User $user The user that is trying to unlike the post
+     * @return int
      */
     public function unlike($post_id, User $user)
     {
@@ -63,7 +64,7 @@ class PostRepository
 
     /**
      * Determine if the post is liked by a user
-     * @param  User     $user       The current authinticated user
+     * @param  User     $user       The current authenticated user
      * @param  integer  $post_id    The post id that you're trying to check against
      * @return boolean              Return true if found, false if not.
      */
