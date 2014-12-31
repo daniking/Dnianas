@@ -11,7 +11,7 @@ $body.on('submit', '#postForm', function (event) {
     })
         .done(function (data) {
             if (data.success == 'false') {
-                $('.error').empty().append(data.message).slideDown(200).delay(3000).slideUp(250);
+                $('.error').empty().append(data.message).slideDown(100).delay(3000).slideUp(250);
             } else {
                 //$('.message').empty().append(data.message).slideDown(250).delay(3000).slideUp(250);
                 $('#postForm')[0].reset();
@@ -23,6 +23,7 @@ $body.on('submit', '#postForm', function (event) {
     event.preventDefault();
 });
 
+// When a user likes a post
 $body.on('click', '#likePost', (function (event) {
     // The post id
     var $post_id = $(this).parents().get(2).dataset.id;
@@ -129,9 +130,33 @@ $body.on('click', '#followBtn', function (event) {
     })
         .done(function (data) {
             if (data.follow) {
+                $followBtn.addClass('following');
                 $followBtn.text('Unfollow');
+                $followBtn.data('action', 'unfollow')
             } else {
+                $followBtn.removeClass('following');
                 $followBtn.text('Follow');
+                $followBtn.data('action', 'follow')
             }
         })
+});
+
+$('#followBtn').hover(function() {
+    $followBtn = $(this);
+
+    // If it is a follow button
+    if($followBtn.data('action') == 'follow') {
+        $followBtn.css('background', '#497AC9');
+    } else {
+        $followBtn.text('Unfollow');
+        $followBtn.css('background', '#FC6262');
+    }
+}, function() {
+    if ($followBtn.data('action') == 'follow') {
+        $followBtn.text('Follow');
+        $followBtn.css('background', '');
+    } else if ($followBtn.data('action') == 'unfollow') {
+        $followBtn.text('Following');
+        $followBtn.css('background', '');
+    }
 });
