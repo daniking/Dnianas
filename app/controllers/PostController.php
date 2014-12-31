@@ -65,9 +65,9 @@ class PostController extends BaseController
         // Return a message along with the html content form the
         return Response::json([
             'success' => 'true',
-            'message' => 'Your post has been successfuly posted!',
+            'message' => 'Your post has been successfully posted!',
             'post_html' => $html
-            ]);
+        ]);
 
     }
 
@@ -105,8 +105,8 @@ class PostController extends BaseController
         $like_count = Input::get('like_count');
 
         $user    = Auth::user();
-        if (!$this->posts->isLikedBy($user, $post_id)) {
 
+        if (!$this->posts->isLikedBy($user, $post_id)) {
             // Like the post 
             $this->posts->like($post_id, Auth::user());
 
