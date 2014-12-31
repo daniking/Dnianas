@@ -16,8 +16,6 @@
         <h2>Following<span>1m</span></h2>
         @if($about->count())
             <h2>Live in<span>{{$about->address}}</span></h2>
-        @else
-            <h2>Live in<span></span></h2>
         @endif
         <a href="">Find Books</a>
         <a href="">Find Friends</a>
