@@ -1,5 +1,5 @@
 <?php
-use Dnianas\Forms\Registeration;
+use Dnianas\Forms\Registration;
 use Dnianas\Forms\Login;
 use Dnianas\Forms\GettingStarted;
 
@@ -11,7 +11,7 @@ class AuthController extends BaseController
 {
 
     /**
-     * @var Dnianas\Forms\Registeration
+     * @var Dnianas\Forms\Registration
      */
     protected $registeration;
 
@@ -25,20 +25,21 @@ class AuthController extends BaseController
      */
     protected $getting_started;
 
-    protected $registerationForm;
+    protected $registrationForm;
 
     /**
      * @param Login $login
-     * @param UserRegister Service $registeration
+     * @param UserRegisterService $registration
+     * @param Registration $registrationForm
      * @param GettingStarted $getting_started
      */
     public function __construct(
-            Login $login, UserRegisterService $registeration, 
-            Registeration $registerationForm, GettingStarted $getting_started
+            Login $login, UserRegisterService $registration,
+            Registration $registrationForm, GettingStarted $getting_started
         )
     {
-        $this->registerationForm    = $registerationForm;
-        $this->registeration        = $registeration;
+        $this->registrationForm     = $registrationForm;
+        $this->registeration        = $registration;
         $this->login                = $login;
         $this->getting_started      = $getting_started;
     }
@@ -53,25 +54,26 @@ class AuthController extends BaseController
 
         // Validate the user's input
         try {
-            $this->registerationForm->validate(Input::all());   
+            $this->registrationForm->validate(Input::all());
         } catch (FormValidationException $e) {
             return Redirect::back()->withInput()->withErrors($e->getErrors());
         }
 
         // Register the user
-        $register = $this->registeration->register($input);
+        $this->registeration->register($input);
 
         // Send a confirmation email
         $this->registeration->sendConfirmationEmail(Input::get('email'), Input::get('username'));
 
         // Log the user in 
         $login = Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')], true);
+
         if ($login) {
             Session::put('after_register', true);
-            return Redirect::to('getting_started')->withMessage('An activation link has been sent to your email, Activate your account now.');
+            return Redirect::to('getting_started')->with('message', 'An activation link has been sent to your email, Activate your account now.');
         }
 
-        return Redirect::to('/')->withMessage('An error occured while sending your activation link');
+        return Redirect::to('/')->with('message','An error occured while sending your activation link');
         
     }
 
@@ -87,7 +89,7 @@ class AuthController extends BaseController
             $user->active = 1;
             $user->code   = '';
             $user->save();
-            return Redirect::to('/')->withMessage('Your account has been activated succesfully!');
+            return Redirect::to('/')->with('message', 'Your account has been activated succesfully!');
         }
 
         return Redirect::to('/');
@@ -131,12 +133,12 @@ class AuthController extends BaseController
     public function logout()
     {
         Auth::logout();
-        return Redirect::to('/')->withMessage('You\'ve been logged out.');
+        return Redirect::to('/')->with('message', 'You\'ve been logged out.');
     }
 
     /**
      * Post the getting_started form
-     * @return [type] [description]
+     * @return Redirect
      */
     public function getGettingStarted()
     {
@@ -155,7 +157,7 @@ class AuthController extends BaseController
     {
         // Validate the user input
         try {
-            $validation = $this->getting_started->validate(Input::all());
+            $this->getting_started->validate(Input::all());
         } catch(FormValidationException $e) {
             return Redirect::back()->withInput()->withErrors($e->getErrors());
         }
@@ -167,7 +169,7 @@ class AuthController extends BaseController
         Session::pull('after_register');
 
         // Redirect with success message
-        return Redirect::to('/')->withMessage('You account information has been updated.');
+        return Redirect::to('/')->with('message', 'You account information has been updated.');
     }
 
 }
