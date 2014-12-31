@@ -395,5 +395,9 @@ padding:0px 10px;
     background:#ddd;
 }
 .following {
+    color: white;
     background: #649FC4;
+}
+.unfollow {
+    background: #FF4747;
 }
