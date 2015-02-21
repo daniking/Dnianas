@@ -10,7 +10,7 @@ class GettingStarted extends FormValidator
      */
     protected $rules = [
         'address'   => 'required|min:4',
-        'job_title' => 'required|min:5|alpha_num',
+        'job_title' => 'required|min:5',
         'website'   => 'required|url',
         'about'     => 'required|min:10|max:140'
     ];

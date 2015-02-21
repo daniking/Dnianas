@@ -56,6 +56,18 @@ App::error(function(Illuminate\Database\Eloquent\ModelNotFoundException $excepti
     return Redirect::to('/');
 });
 
+/**
+ * Custom rule for validating real image by getting their dimensions.
+ */
+Validator::extend('real_image', function($attribute, $value, $parameters) {
+    if($value instanceof Symfony\Component\HttpFoundation\File\UploadedFile) {
+        if($value->getSize() > 0 && getimagesize($value->getRealPath())) {
+            return true;
+        }
+    }
+    return false;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

@@ -7,7 +7,7 @@
 <link href="{{ asset('style/style.css') }}" rel="stylesheet">
 <link href="{{ asset('style/jqstdniapara.css') }}" rel="stylesheet"> 
 <link href="{{ asset('style/header.css') }}" rel="stylesheet" >
-<link href="{{ asset('style/profile.css') }} "rel="stylesheet">
+<link href="{{ asset('style/profile.css') }}"rel="stylesheet">
 <link href="{{ asset('style/mini/media.css') }}" rel="stylesheet">
 <link href="{{ asset('style/jquery.cssemoticons.css') }}" media="screen" rel="stylesheet" type="text/css" />
 <title>Dnianas</title>

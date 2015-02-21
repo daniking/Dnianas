@@ -14,7 +14,7 @@
         <h1>Account</h1>
         <h2 class="lin">Followers<span>10m</span></h2>
         <h2>Following<span>1m</span></h2>
-        @if($about->count())
+        @if($about && $about->count())
             <h2>Live in<span>{{$about->address}}</span></h2>
         @endif
         <a href="">Find Books</a>

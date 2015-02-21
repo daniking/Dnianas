@@ -1,5 +1,4 @@
 <?php
-
 use Laracasts\Validation\FormValidationException;
 
 use Dnianas\Post\PostCreationService;
@@ -62,7 +61,7 @@ class PostController extends BaseController
         // Get the html content from the view
         $html = View::make('posts.post', ['post_id' => $post->id])->render();
 
-        // Return a message along with the html content form the
+        // Return a message along with the html content form the view
         return Response::json([
             'success' => 'true',
             'message' => 'Your post has been successfully posted!',
@@ -104,6 +103,7 @@ class PostController extends BaseController
         $post_id    = Input::get('post_id');
         $like_count = Input::get('like_count');
 
+        // Get the currently authinticated user
         $user    = Auth::user();
 
         if (!$this->posts->isLikedBy($user, $post_id)) {

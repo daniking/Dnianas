@@ -143,7 +143,7 @@ class AuthController extends BaseController
     public function getGettingStarted()
     {
         if (Session::has('after_register')) {
-            return View::make('auth.getting_started');
+            return View::make('auth.step_one');
         }
 
         return Redirect::to('/');
@@ -167,9 +167,11 @@ class AuthController extends BaseController
         
         // Kill the session
         Session::pull('after_register');
+        
+        Session::put('step_two', true);
 
         // Redirect with success message
-        return Redirect::to('/')->with('message', 'You account information has been updated.');
+        return Redirect::to('/getting_started/step_two')->with('message', 'Setup your profile picture and cover photo');
     }
 
 }

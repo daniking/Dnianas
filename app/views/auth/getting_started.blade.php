@@ -1,4 +1,3 @@
-@include('template._partials.header')
     <div class="blur"><img src="img/bod.jpg" width="500" height="1000" ></div>
     
     @include('template._partials.error')
