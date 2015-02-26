@@ -86,4 +86,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		return false;
 	}
+
+	public function photos()
+	{
+		return $this->morphMany('Photo', 'photoable');
+	}
+	
+	/*
+	 * Get the user profile picture path
+     * @return object The path to the user profile picture
+     */
+    public function profilePicture()
+    {
+        return ($this->profile_picture == true) ? ($this->path) : '';
+    }
 }
