@@ -1,51 +1,4 @@
 <?php
-
-
-// Route::get('test', function() {
-//     $image = Image::make(file_get_contents('http://www.lapatilla.com/site/wp-content/uploads/2014/11/Eminem2.jpg'));
-
-//     // resize the image to a width of 300 and constrain aspect ratio (auto height)
-//     $image->resize(160, null, function ($constraint) {
-//         $constraint->aspectRatio();
-//     });
-
-//     return $image->response('jpg');
-// });
-
-Route::get('test', function() {
-    return View::make('test.upload');
-});
-
-Route::post('test/upload', function() {
-    $input = Input::all();
-
-    $rules = ['profile_picture' => 'required|min:10|image|real_image|'];
-
-    $validator = Validator::make([
-        'profile_picture' =>  $input['profile_picture']
-    ]
-    , $rules);
-
-    if ($validator->fails()) {
-        return 'It\'s not an image!';
-    } 
-
-    $extension = $input['profile_picture']->getClientOriginalExtension();
-    $file_name = $input['profile_picture']->getClientOriginalName();
-
-    $image = Image::make($input['profile_picture']);
-    $name = sha1(time() . $file_name);
-
-    // Sample: domain.com/photos/4952058f4d990c21019c7bc6a319bddcba6cbfa9.png
-    $destination = photos_path() . '/' . $name . '.' . $extension;
-    
-    $image->fit(300, 300);
-
-    $image->save($destination);
-
-    return Redirect::back()->with('message', 'Your profile picture has been successfully set!');
-});
-
 /**
  * Apply a CSRF (Cross-site Request Frogery) filter to every post requests
  */
@@ -81,7 +34,7 @@ Route::get('logout', [
     ]);
 
 /*
- * Gettin gStarted route [GET]
+ * Getting started route [GET]
  */
 Route::get('getting_started', [
     'as'        => 'getting_started_route',
@@ -102,6 +55,10 @@ Route::post('getting_started', [
     ]);
 
 
+Route::post('getting_started/step_two', [
+    'uses' => 'AuthController@postStepTwo', 
+    'before' => 'auth'
+    ]);
 /*
  * When they request this link, Their account should be activated
  */
