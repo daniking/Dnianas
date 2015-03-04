@@ -34,14 +34,17 @@ class AuthController extends BaseController
      * @param GettingStarted $getting_started
      */
     public function __construct(
-            Login $login, UserRegisterService $registration,
-            Registration $registrationForm, GettingStarted $getting_started
+        Login $login, UserRegisterService $registration,
+        Registration $registrationForm, GettingStarted $getting_started
         )
     {
         $this->registrationForm     = $registrationForm;
         $this->registeration        = $registration;
         $this->login                = $login;
         $this->getting_started      = $getting_started;
+
+        $profile_picture = Auth::user()->photos()->where('profile_picture', true);
+        View::share('profilePicture', $profile_picture);
     }
 
     /**
@@ -172,6 +175,44 @@ class AuthController extends BaseController
 
         // Redirect with success message
         return Redirect::to('/getting_started/step_two')->with('message', 'Setup your profile picture and cover photo');
+    }
+
+    /**
+     * TODO: Make this code better.
+     */
+    public function setProfilePicture()
+    {
+        $profile_picture = Input::file('profile_picture');
+
+        $rules = ['profile_picture' => 'required|min:10|image|real_image|'];
+
+        $validator = Validator::make(['profile_picture' => $profile_picture], $rules);
+
+        if ($validator->fails()) {
+            return Response::json([
+                'success' => 'false',
+                'message' => 'The selected file is not an image.'
+                ]);
+        }
+
+        $extension = $profile_picture->getClientOriginalExtension();
+        $file_name = $profile_picture->getClientOriginalName();
+
+        $image = Image::make($profile_picture);
+
+        $name = sha1(time() . $file_name);
+        // Sample: domain.com/photos/4952058f4d990c21019c7bc6a319bddcba6cbfa9.png
+        $destination = photos_path() . '/' . $name . '.' . $extension;
+
+        $image->fit(300, 300);
+        $image->save($destination);
+
+        $image = Auth::user()->photos()->create([
+            'profile_picture' => true, 
+            'path' => $name . '.' .$extension
+        ]);
+
+        return Response::json(['success' => 'true', 'image_path' => '/photos/' . $image->path]);
     }
 
 }
