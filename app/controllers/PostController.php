@@ -29,6 +29,8 @@ class PostController extends BaseController
         $this->posts = $postRepo;
         $this->postForm = $postForm;
         $this->post = $post;
+        $profile_picture = Auth::user()->photos()->where('profile_picture', true)->first();
+        View::share('profilePicture', $profile_picture);
     }
 
     public function index()

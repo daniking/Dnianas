@@ -26,6 +26,8 @@ class CommentController extends BaseController
     {
         $this->commentForm = $commentForm;
         $this->comment = $comment;
+        $profile_picture = Auth::user()->photos()->where('profile_picture', true)->first();
+        View::share('profilePicture', $profile_picture);
     }
 
     /**

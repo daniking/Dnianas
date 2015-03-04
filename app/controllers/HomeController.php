@@ -23,6 +23,8 @@ class HomeController extends BaseController
     {
         $this->user = $userRepo;
         $this->post = $postRepo;
+        $profile_picture = Auth::user()->photos()->where('profile_picture', true)->first();
+        View::share('profilePicture', $profile_picture);
     }
 
     public function index()
@@ -32,7 +34,6 @@ class HomeController extends BaseController
             $posts = $this->user->getFeed(Auth::user());
             $user  = $this->user->getById(Auth::id());
             $about = $this->user->getAbout($user);
-
             return View::make("home.index", compact('posts', 'about'));
         }
 
