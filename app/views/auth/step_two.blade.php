@@ -12,17 +12,17 @@
             <span id="sone">Step Two</span>
             <span class="nfoone">Now, Let's Setup Your Profile</span>
         </div>
-        <h2 class="profilepicset">Set your profile picture</h2>
+        <h2 class="profilepicset">Set your profile picture</h2>     
         <div class="tabprofilepic">
             <div id="bottlefbox">
                 <div class="fileUpload btn btn-primary">
                     <span class="stotext">Upload a photo</span>
                     <br>
                     <span class="tisppic">From your computer</span>
-                    <input type="file" class="upload" />
+                    <input type="file" accept="image/*" id="profilePicture" class="upload" name="profile_picture" />
                 </div>
             </div>
-            <div id="pictrigbox"></div>
+            <div id="pictrigbox"  class="profilePictureBorder"></div>
         </div>
 
         <div class="tabcoverpic">
@@ -32,14 +32,14 @@
                     <span class="stotext">Upload a photo</span>
                     <br>
                     <span class="tisppic">From your computer</span>
-                    <input type="file" class="upload" />
+                    <input type="file" accept="image/*" id="coverPhoto" class="upload" name="cover_photo"/>
+                    <input type="hidden" value="{{ csrf_token() }}" name="_token">
                 </div>
             </div>
             <div id="pictrigbox"></div>
 
         </div>
         <hr class="underline">
-        <input type="submit" value="Save & Continue" name="" class="sa_co">
         <a href class="skipss">Skip This Step</a>
         <br><br>
     </div>
@@ -59,5 +59,8 @@
     <span>-</span>
     <a href="">advertising</a>
 </div>
+
+{{ HTML::script('js/jquery.min.js') }}
+{{ HTML::script('js/imageUpload.js') }}
 </body>
 </html>
