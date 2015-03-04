@@ -6,5 +6,10 @@ function format_date($date) {
 
 function photos_path()
 {
-    return public_path('photo');
+    return public_path('photos');
+}
+
+function profile_picture($imageName) 
+{
+    return url('/' . 'photos/' . $imageName);
 }
