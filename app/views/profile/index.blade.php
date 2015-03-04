@@ -23,7 +23,7 @@
         </div>
         <div class="prof-membpic">
             <br>
-            <img src="/photo/profile_picture.jpeg" class="profilpicusers">
+            <img src="{{ profile_picture($profilePicture->path) }}" class="profilpicusers">
             <br>
             <h1>{{ $user->fullName() }}</h1>
             <h2>Following<span>{{ $user->following()->count() }}</span></h2>
@@ -94,10 +94,10 @@
         <div class="body-messg">
             <div id="send-mesg-user" class="scrols">
                 <div id="img-cove-msg">
-                <img src="/photo/cover.jpg" >
+                <img src="/photos/cover.jpg" >
                 </div>
                 <div id="img-pro-msg">
-                    <img src="/photo/profile_picture.jpeg" >
+                    <img src="{{ profile_picture($profilePicture->path) }}" >
                 </div>
                 <h1 class="username-msg">Daniel Join</h1>
                 <h1 class="send-msg-user">New Message</h1>

@@ -3,9 +3,9 @@
         <img src="{{ profile_picture($profilePicture->path) }}" id="clicksows">
         <div class="hover_profile" style="display: none;">
 
-            <img src="/photo/dani-cov.jpg" class="small_cover">
+            <img src="/photos/dani-cov.jpg" class="small_cover">
             <a href="/profile.php">
-                <img src="/photo/pro.jpg" class="small_profie">
+                <img src="/photos/pro.jpg" class="small_profie">
                 <h1 class="users_small"></h1>
 
             </a>
@@ -31,7 +31,7 @@
         <br>
         <div class="comment-wrapper">
             <div class="comment-insert">
-                <img src="/photo/profile_picture.jpeg" alt="Profile Picture" class="profile-picture">
+                <img src="profile_picture($profilePicture->path) }}" alt="Profile Picture" class="profile-picture">
                 <textarea  dir="ltr" class="comment-input" placeholder="Write something..."></textarea>
             </div>
         </div>

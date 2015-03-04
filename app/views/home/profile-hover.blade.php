@@ -2,8 +2,8 @@
     <div class="profile_show_imagesclick">
         <div class="slide_profilesue">
             <div class="coverboardshows">
-                <img src="photo/dani-cov.jpg" id="show_coversprofileclick">
-                <img src="photo/pro.jpg" id="show_picsprofileclick">
+                <img src="photos/dani-cov.jpg" id="show_coversprofileclick">
+                <img src="photos/pro.jpg" id="show_picsprofileclick">
                 <input type="submit" class="shows_mes_hide" value="Messages" >
                 <input type="submit" class="shows_mes_hide2" value="Follow" >
             </div>
