@@ -119,5 +119,14 @@ class UserRepository
         // It's not followed by the user, so return false
         return false;
     }
+
+    /**
+     * Return the user profile picture path from the server.
+     * @return Collection The user profile picture object
+     */
+    public function profilePicture(User $user)
+    {
+        return $user->photos()->where('profile_picture', true)->latest()->first();
+    }
 }
 
