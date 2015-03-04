@@ -23,8 +23,8 @@ class HomeController extends BaseController
     {
         $this->user = $userRepo;
         $this->post = $postRepo;
-        $profile_picture = Auth::user()->photos()->where('profile_picture', true)->first();
-        View::share('profilePicture', $profile_picture);
+        $profilePicture = $this->user->profilePicture(Auth::user());
+        View::share('profilePicture', $profilePicture);
     }
 
     public function index()

@@ -194,7 +194,7 @@ class AuthController extends BaseController
                 'message' => 'The selected file is not an image.'
                 ]);
         }
-
+        
         $extension = $profile_picture->getClientOriginalExtension();
         $file_name = $profile_picture->getClientOriginalName();
 
