@@ -64,6 +64,7 @@ Route::post('getting_started/step_two/cover_photo', [
     'uses' => 'AuthController@setCoverPhoto', 
     'before' => 'auth'
 ]);
+
 /*
  * When they request this link, Their account should be activated
  */
