@@ -9,7 +9,9 @@
 
         </div>
         <div id="rig-ico-texts">
-            <a href="{{ route('profile.show', Auth::user()->username) }}" class="text-top" id="hov_pic_shows"><img src="/photo/profile_picture.jpeg" id="picprosmall" />{{ Auth::user()->first_name }}</a>
+            <a href="{{ route('profile.show', Auth::user()->username) }}" class="text-top" id="hov_pic_shows">
+                <img src="{{ profile_picture($profilePicture->path) }}" id="picprosmall" /> {{ Auth::user()->first_name }}
+            </a>
             <a href="" class="text-top">Notifications</a>
             <a href="" class="text-top">Messages</a>
             <a href=""><img src="/img/icons/sett.png" class="icos"></a>

@@ -1,6 +1,6 @@
 <div class="tab_post" id="users_shows" data-id="{{ $post_id }}">
     <div id="abo_users_po">
-        <img src="/photo/profile_picture.jpeg" id="clicksows">
+        <img src="{{ profile_picture($profilePicture->path) }}" id="clicksows">
         <div class="hover_profile" style="display: none;">
 
             <img src="/photo/dani-cov.jpg" class="small_cover">

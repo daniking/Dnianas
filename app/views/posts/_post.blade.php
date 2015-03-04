@@ -1,10 +1,10 @@
     <div class="tab_post" id="users_shows" data-id="{{ $post->id }}">
         <div id="abo_users_po">
-            <img src="/photo/profile_picture.jpeg" id="clicksows" >
+            <img src="{{ profile_picture($profilePicture->path) }}" id="clicksows" >
             <div class="hover_profile">
                 <img src="/photo/cover.jpg" class="small_cover">
                 <a href="profile.php">
-                    <img src="/photo/profile_picture.jpeg" class="small_profie">
+                    <img src="{{ profile_picture($profilePicture->path) }}" class="small_profie">
                     <h1 class="users_small">{{ $post->user->first_name }} {{ $post->user->last_name }}</h1>
                 </a>
             </div>

@@ -1,9 +1,9 @@
 <div class="left11 _user11">
     <div class="cover_ho">
-        <img src="photo/dani-cov.jpg" >
+        <img src="photos/dani-cov.jpg" >
     </div>
     <div class="profile_ho">
-        <img src="photo/pro.jpg">
+        <img src='{{ profile_picture($profilePicture->path )}}'>
     </div>
     <div class="nam_ho">
         <h1>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h1>
