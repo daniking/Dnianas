@@ -26,9 +26,9 @@ input , a{
 
 }
 .main_con_hea{
-  width:1000px;
-  height:50px;
-  margin:0px auto;
+	width:1000px;
+	height:50px;
+	margin:0px auto;
 }
 .logo{
 	background:rgba(0,0,0,0.2);
@@ -50,7 +50,7 @@ input , a{
 .logo:hover{
 
 	background-image:url(../img/dnia.png);
-    background-color: rgba(0, 0, 0, .3);
+	background-color: rgba(0, 0, 0, .3);
 	transition: all 0.4s ease-out;
 	border:1px solid rgba(0, 0, 0, .1);
 }	
@@ -110,9 +110,9 @@ input , a{
 	padding:5px 1px;
 	position:relative;
 	left:20px;
-	}
+}
 .nfoone{
-   
+	
 	color:#fff;
 	font-size:13px;
 	color:#444;
@@ -125,7 +125,7 @@ input , a{
 	margin:10px 20px;
 }
 .httext{
-   
+	
 	color:#fff;
 	font-size:14px;
 	color:#069;
@@ -166,7 +166,7 @@ input , a{
 	height:1px;
 	background: rgba(0,0,0,.2);
 }
-	
+
 .sa_co{
 	color:#fff;
 	border:#03537B 1px solid;
@@ -298,4 +298,16 @@ input , a{
 	color:#777;
 	transition: all 0.4s ease-out;
 	-webkit-transition: all 0.4s ease-out;
-	}
+}
+
+#profilePicturePreview {
+	width: 150px;
+	height: 150px;
+}	
+#pictrigbox.profilePictureBorder {
+	position: relative;
+	top: -35px;
+	right: 35px;
+	width: 150px;
+	height: 150px;
+}
