@@ -55,10 +55,15 @@ Route::post('getting_started', [
     ]);
 
 
-Route::post('getting_started/step_two', [
-    'uses' => 'AuthController@postStepTwo', 
+Route::post('getting_started/step_two/profile_picture', [
+    'uses' => 'AuthController@setProfilePicture', 
     'before' => 'auth'
-    ]);
+]);
+
+Route::post('getting_started/step_two/cover_photo', [
+    'uses' => 'AuthController@setCoverPhoto', 
+    'before' => 'auth'
+]);
 /*
  * When they request this link, Their account should be activated
  */
