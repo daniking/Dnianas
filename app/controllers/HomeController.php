@@ -18,13 +18,12 @@ class HomeController extends BaseController
      */
     protected $user;
 
+    protected $profilePicture;
 
     public function __construct(UserRepository $userRepo, PostRepository $postRepo)
     {
         $this->user = $userRepo;
         $this->post = $postRepo;
-        $profilePicture = $this->user->profilePicture(Auth::user());
-        View::share('profilePicture', $profilePicture);
     }
 
     public function index()
@@ -34,7 +33,8 @@ class HomeController extends BaseController
             $posts = $this->user->getFeed(Auth::user());
             $user  = $this->user->getById(Auth::id());
             $about = $this->user->getAbout($user);
-            return View::make("home.index", compact('posts', 'about'));
+            $profilePicture = $this->user->profilePicture(Auth::user());
+            return View::make("home.index", compact('posts', 'about', 'profilePicture'));
         }
 
         // Otherwise, show the login/registeration page
@@ -50,8 +50,11 @@ class HomeController extends BaseController
     {  
         // Get the information about the user along with their post
         $user = $this->user->getPosts($username);
-
-        return View::make('profile.index')->withUser($user);
+        return View::make('profile.index')->with([
+            'user' => $user,
+            'profilePicture' => $this->user->profilePicture(Auth::user()),
+            'userProfilepPicture' => $this->user->profilePicture($user)
+        ]);
     }
 
     /**
