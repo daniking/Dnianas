@@ -1,5 +1,5 @@
 <?php
-
+use Dnianas\User\UserRepository;
 use Dnianas\Comment\CommentCreationService;
 use Dnianas\Forms\CommentForm;
 use Laracasts\Validation\FormValidationException;
@@ -17,17 +17,21 @@ class CommentController extends BaseController
      */
     protected $comment;
 
+    protected $user;
 
     /**
      * @param CommentForm $commentForm
      * @param CommentCreationService $comment
+     * @param UserRepository $user
      */
-    public function __construct(CommentForm $commentForm, CommentCreationService $comment)
+    public function __construct(UserRepository $user, CommentForm $commentForm, CommentCreationService $comment)
     {
         $this->commentForm = $commentForm;
+        $this->user = $user;
         $this->comment = $comment;
-        $profile_picture = Auth::user()->photos()->where('profile_picture', true)->first();
-        View::share('profilePicture', $profile_picture);
+
+        $profilePicture = $this->user->profilePicture(Auth::user());
+        View::share('profilePicture', $profilePicture);
     }
 
     /**
