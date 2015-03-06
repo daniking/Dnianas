@@ -28,6 +28,10 @@ class UserRegisterService
         $user->active       = 0;
         $user->code         = $this->code;
         $user->birthday     =\Carbon::createFromDate($input['birth_year'], $input['birth_month'], $input['birth_day']);
+        $user->photos()->path = 'profile_picture.jpg';
+        $user->photos()->photoable_id = $user->id;
+        $user->photos()->photoable_type = $user;
+        $user->photos()->profile_picture = true;
         $user->save();       
     }
 
