@@ -2,6 +2,7 @@
 /_ide_helper.php
 app/storage/views
 app/storage/sessions
+/public/photos
 /bootstrap/compiled.php
 /vendor
 composer.phar
