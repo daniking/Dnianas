@@ -42,9 +42,6 @@ class AuthController extends BaseController
         $this->registeration        = $registration;
         $this->login                = $login;
         $this->getting_started      = $getting_started;
-
-        $profile_picture = Auth::user()->photos()->where('profile_picture', true);
-        View::share('profilePicture', $profile_picture);
     }
 
     /**
