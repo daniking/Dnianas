@@ -1,6 +1,6 @@
 <?php
 use Laracasts\Validation\FormValidationException;
-
+use Dnianas\User\UserRepository;
 use Dnianas\Post\PostCreationService;
 use Dnianas\Post\PostRepository;
 
@@ -19,18 +19,21 @@ class PostController extends BaseController
      */
     protected $posts;
 
+    protected $user;
+
     /**
      * @param PostForm $postForm
      * @param PostCreationService $post
      * @param PostRepository $postRepo
      */
-    public function __construct(PostForm $postForm, PostCreationService $post, PostRepository $postRepo)
+    public function __construct(UserRepository $user, PostForm $postForm, PostCreationService $post, PostRepository $postRepo)
     {
         $this->posts = $postRepo;
         $this->postForm = $postForm;
         $this->post = $post;
-        $profile_picture = Auth::user()->photos()->where('profile_picture', true)->first();
-        View::share('profilePicture', $profile_picture);
+        $this->user = $user;
+        $profilePicture = $this->user->profilePicture(Auth::user());
+        View::share('profilePicture', $profilePicture);
     }
 
     public function index()
