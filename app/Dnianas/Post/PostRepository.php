@@ -37,7 +37,7 @@ class PostRepository
         // return Post::with('user')->where('id', '>', $id)->get();
         $userIds = $user->following()->lists('followed_id');
         $userIds[] = $user->id;
-        return Post::whereIn('user_id', $userIds)->where('id', '>', $id);
+        return Post::whereIn('user_id', $userIds)->where('id', '>', $id)->get();
     }
 
     /**
