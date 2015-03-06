@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/style/update.css">
-    <title>Welcome to dnianas / Step one Complete your registeration!</title>
+    <title>Step Two - Dnianas</title>
 </head>
 
 <body>
