@@ -128,5 +128,14 @@ class UserRepository
     {
         return $user->photos()->where('profile_picture', true)->latest()->first();
     }
+
+    /**
+     * Return the user cover phoyo path from the server.
+     * @return Collection The cover photo picture object
+     */
+    public function coverPhoto(User $user)
+    {
+        return $user->photos()->where('cover_photo', true)->latest()->first();
+    }
 }
 
