@@ -13,3 +13,7 @@ function profile_picture($imageName)
 {
     return url('/' . 'photos/' . $imageName);
 }
+function cover_photo($imageName)
+{
+    return url('/' . 'photos/' . 'cover-' . $imageName);
+}
