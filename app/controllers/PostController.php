@@ -22,6 +22,7 @@ class PostController extends BaseController
     protected $user;
 
     /**
+     * @param UserRepository $user
      * @param PostForm $postForm
      * @param PostCreationService $post
      * @param PostRepository $postRepo
