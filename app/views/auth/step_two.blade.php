@@ -36,11 +36,12 @@
                     <input type="hidden" value="{{ csrf_token() }}" name="_token">
                 </div>
             </div>
-            <div id="pictrigbox"></div>
+            <div id="pictrigbox" class="coverPhotoBorder"></div>
 
         </div>
         <hr class="underline">
-        <a href class="skipss">Skip This Step</a>
+        <input type="submit" id="submit" name="submit">
+        <a href="/" class="skipss">Skip This Step</a>
         <br><br>
     </div>
 </div>
