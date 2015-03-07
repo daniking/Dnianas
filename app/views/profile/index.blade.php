@@ -3,7 +3,7 @@
 <div class="main_con_prof">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="cover11 _bord12" id="coversus">
-            <img src="/photo/cover.jpg">
+            <img src="{{ cover_photo($coverPhoto->path) }}">
             <div class="ri_messs_fo232">
                 
                 <button class="bot_sasda22131" id="openmsg">
@@ -23,7 +23,7 @@
         </div>
         <div class="prof-membpic">
             <br>
-            <img src="{{ profile_picture($profilePicture->path) }}" class="profilpicusers">
+            <img src="{{ profile_picture($userProfilepPicture->path) }}" class="profilpicusers">
             <br>
             <h1>{{ $user->fullName() }}</h1>
             <h2>Following<span>{{ $user->following()->count() }}</span></h2>
@@ -97,7 +97,7 @@
                 <img src="/photos/cover.jpg" >
                 </div>
                 <div id="img-pro-msg">
-                    <img src="{{ profile_picture($profilePicture->path) }}" >
+                    <img src="{{ profile_picture($userProfilepPicture->path) }}" >
                 </div>
                 <h1 class="username-msg">Daniel Join</h1>
                 <h1 class="send-msg-user">New Message</h1>
