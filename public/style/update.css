@@ -226,15 +226,14 @@ input , a{
 	float:left;
 	
 }
-#pictrigbox{
-	position:relative;
-	right:100px;
-	width:200px;
-	height:120px;
-	float:right;
-	border:1px dashed rgba(0,0,0,.2);
-	top:-5px;
-	
+#pictrigbox {
+	position: relative;
+	right: 36px;
+	width: 250px;
+	height: 150px;
+	float: right;
+	border: 1px dashed rgba(0,0,0,.2);
+	top: -25px;
 }
 .fileUpload {
 	position: relative;
@@ -309,5 +308,19 @@ input , a{
 	top: -35px;
 	right: 35px;
 	width: 150px;
+	height: 150px;
+}
+
+#coverPhotoPreview {
+	width: 300px;
+	height: 150px;
+	position: relative;
+	right: 0px;
+}
+#pictrigbox.coverPhotoBorder {
+	position: relative;
+	top: -35px;
+	right: 40px;
+	width: 300px;
 	height: 150px;
 }
