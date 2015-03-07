@@ -12,4 +12,5 @@ class StepTwoForm extends FormValidator
        'profile_picture'    => 'required|min:10|image|real_image|',
        'cover_photo'        => 'required|min:10|image|real_image'
     ];
+}
     
