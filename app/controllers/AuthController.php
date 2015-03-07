@@ -212,4 +212,38 @@ class AuthController extends BaseController
         return Response::json(['success' => 'true', 'image_path' => '/photos/' . $image->path]);
     }
 
+     public function setCoverPhoto()
+    {
+        $cover_photo = Input::file('cover_photo');
+
+        $rules = ['cover_photo' => 'required|min:10|image|real_image|'];
+
+        $validator = Validator::make(['cover_photo' => $cover_photo], $rules);
+
+        if ($validator->fails()) {
+            return Response::json([
+                'success' => 'false',
+                'message' => 'The selected file is not an image.'
+            ]);
+        }
+        
+        $extension = $cover_photo->getClientOriginalExtension();
+        $file_name = $cover_photo->getClientOriginalName();
+
+        $image = Image::make($cover_photo);
+
+        $name = sha1(time() . $file_name);
+        // Sample: domain.com/photos/4952058f4d990c21019c7bc6a319bddcba6cbfa9.png
+        $destination = photos_path() . '/' . 'cover-'. $name . '.' . $extension;
+
+        $image->fit(900, 350);
+        $image->save($destination);
+
+        $image = Auth::user()->photos()->create([
+            'cover_photo' => true, 
+            'path' => $name . '.' .$extension
+        ]);
+
+        return Response::json(['success' => 'true', 'image_path' => '/photos/cover-' . $image->path]);
+    }
 }
