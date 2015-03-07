@@ -53,6 +53,7 @@ class HomeController extends BaseController
         return View::make('profile.index')->with([
             'user' => $user,
             'profilePicture' => $this->user->profilePicture(Auth::user()),
+            'coverPhoto' => $this->user->coverPhoto($user),
             'userProfilepPicture' => $this->user->profilePicture($user)
         ]);
     }
