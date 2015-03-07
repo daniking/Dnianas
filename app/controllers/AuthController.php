@@ -212,6 +212,10 @@ class AuthController extends BaseController
         return Response::json(['success' => 'true', 'image_path' => '/photos/' . $image->path]);
     }
 
+    /**
+     * TODO: Make this code better.
+     * This is not the controller's resposibilty.
+     */
      public function setCoverPhoto()
     {
         $cover_photo = Input::file('cover_photo');
