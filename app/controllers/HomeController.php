@@ -34,7 +34,8 @@ class HomeController extends BaseController
             $user  = $this->user->getById(Auth::id());
             $about = $this->user->getAbout($user);
             $profilePicture = $this->user->profilePicture(Auth::user());
-            return View::make("home.index", compact('posts', 'about', 'profilePicture'));
+            $coverPhoto = $this->user->coverPhoto(Auth::user());
+            return View::make("home.index", compact('posts', 'about', 'profilePicture', 'coverPhoto'));
         }
 
         // Otherwise, show the login/registeration page
@@ -54,7 +55,7 @@ class HomeController extends BaseController
             'user' => $user,
             'profilePicture' => $this->user->profilePicture(Auth::user()),
             'coverPhoto' => $this->user->coverPhoto($user),
-            'userProfilepPicture' => $this->user->profilePicture($user)
+            'userProfilePicture' => $this->user->profilePicture($user)
         ]);
     }
 
