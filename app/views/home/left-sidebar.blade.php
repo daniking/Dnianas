@@ -1,6 +1,6 @@
 <div class="left11 _user11">
     <div class="cover_ho">
-        <img src="photos/dani-cov.jpg" >
+        <img src="{{ cover_photo($coverPhoto->path) }}">
     </div>
     <div class="profile_ho">
         <img src='{{ profile_picture($profilePicture->path )}}'>
