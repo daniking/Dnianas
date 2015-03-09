@@ -1,7 +1,6 @@
 <?php
-use Dnianas\Forms\Registration;
-use Dnianas\Forms\Login;
-use Dnianas\Forms\GettingStarted;
+use Dnianas\Forms\RegistrationForm;
+use Dnianas\Forms\LoginForm;
 
 use Dnianas\User\UserRegisterService;
 
@@ -11,7 +10,7 @@ class AuthController extends BaseController
 {
 
     /**
-     * @var Dnianas\Forms\Registration
+     * @var Dnianas\Forms\RegistrationForm
      */
     protected $registeration;
 
@@ -20,28 +19,25 @@ class AuthController extends BaseController
      */
     protected $login;
 
-    /** 
-     * @var Dnianas\Forms\GettingStarted
+    /**
+     * @var Dnianas/Forms/Registration
      */
-    protected $getting_started;
-
     protected $registrationForm;
 
     /**
-     * @param Login $login
+     * @param LoginForm $login
      * @param UserRegisterService $registration
-     * @param Registration $registrationForm
-     * @param GettingStarted $getting_started
+     * @param RegistrationForm $registrationForm
      */
     public function __construct(
-        Login $login, UserRegisterService $registration,
-        Registration $registrationForm, GettingStarted $getting_started
+            LoginForm $login, 
+            UserRegisterService $registration,
+            RegistrationForm $registrationForm 
         )
     {
         $this->registrationForm     = $registrationForm;
         $this->registeration        = $registration;
         $this->login                = $login;
-        $this->getting_started      = $getting_started;
     }
 
     /**
@@ -134,120 +130,5 @@ class AuthController extends BaseController
     {
         Auth::logout();
         return Redirect::to('/')->with('message', 'You\'ve been logged out.');
-    }
-
-    /**
-     * Post the getting_started form
-     * @return Redirect
-     */
-    public function getGettingStarted()
-    {
-        if (Session::has('after_register')) {
-            return View::make('auth.step_one');
-        }
-
-        return Redirect::to('/');
-    }
-
-    /**
-     * @return mixed
-     * @throws \Laracasts\Validation\FormValidationException
-     */
-    public function postGettingStarted()
-    {
-        // Validate the user input
-        try {
-            $this->getting_started->validate(Input::all());
-        } catch(FormValidationException $e) {
-            return Redirect::back()->withInput()->withErrors($e->getErrors());
-        }
-
-        // Passed, So we insert it into database
-        $this->registeration->updateUser(Input::all(), Auth::user()->id);
-        
-        // Kill the session
-        Session::pull('after_register');
-        
-        Session::put('step_two', true);
-
-        // Redirect with success message
-        return Redirect::to('/getting_started/step_two')->with('message', 'Setup your profile picture and cover photo');
-    }
-
-    /**
-     * TODO: Make this code better.
-     */
-    public function setProfilePicture()
-    {
-        $profile_picture = Input::file('profile_picture');
-
-        $rules = ['profile_picture' => 'required|min:10|image|real_image|'];
-
-        $validator = Validator::make(['profile_picture' => $profile_picture], $rules);
-
-        if ($validator->fails()) {
-            return Response::json([
-                'success' => 'false',
-                'message' => 'The selected file is not an image.'
-                ]);
-        }
-        
-        $extension = $profile_picture->getClientOriginalExtension();
-        $file_name = $profile_picture->getClientOriginalName();
-
-        $image = Image::make($profile_picture);
-
-        $name = sha1(time() . $file_name);
-        // Sample: domain.com/photos/4952058f4d990c21019c7bc6a319bddcba6cbfa9.png
-        $destination = photos_path() . '/' . $name . '.' . $extension;
-
-        $image->fit(300, 300);
-        $image->save($destination);
-
-        $image = Auth::user()->photos()->create([
-            'profile_picture' => true, 
-            'path' => $name . '.' .$extension
-        ]);
-
-        return Response::json(['success' => 'true', 'image_path' => '/photos/' . $image->path]);
-    }
-
-    /**
-     * TODO: Make this code better.
-     * This is not the controller's resposibilty.
-     */
-     public function setCoverPhoto()
-    {
-        $cover_photo = Input::file('cover_photo');
-
-        $rules = ['cover_photo' => 'required|min:10|image|real_image|'];
-
-        $validator = Validator::make(['cover_photo' => $cover_photo], $rules);
-
-        if ($validator->fails()) {
-            return Response::json([
-                'success' => 'false',
-                'message' => 'The selected file is not an image.'
-            ]);
-        }
-        
-        $extension = $cover_photo->getClientOriginalExtension();
-        $file_name = $cover_photo->getClientOriginalName();
-
-        $image = Image::make($cover_photo);
-
-        $name = sha1(time() . $file_name);
-        // Sample: domain.com/photos/4952058f4d990c21019c7bc6a319bddcba6cbfa9.png
-        $destination = photos_path() . '/' . 'cover-'. $name . '.' . $extension;
-
-        $image->fit(900, 350);
-        $image->save($destination);
-
-        $image = Auth::user()->photos()->create([
-            'cover_photo' => true, 
-            'path' => $name . '.' .$extension
-        ]);
-
-        return Response::json(['success' => 'true', 'image_path' => '/photos/cover-' . $image->path]);
     }
 }
