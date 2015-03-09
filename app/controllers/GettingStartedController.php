@@ -6,6 +6,8 @@ use Dnianas\Forms\GettingStarted;
 
 use Laracasts\Validation\FormValidationException;
 
+use Dnianas\Uploads\Photo;
+
 class GettingStartedController extends BaseController
 {
 
@@ -16,12 +18,18 @@ class GettingStartedController extends BaseController
     protected $user;
 
     /**
+     * The photo helper
+     * @var object
+     */
+    protected $photo;
+    /**
      * Inject the depenencies to the controller
      * @param Object $user The user repository
      */
-    public function __construct(UserRepository $user)
+    public function __construct(UserRepository $user, Photo $photo)
     {
-        $this->user = $user;
+        $this->user     = $user;
+        $this->photo    = $photo;
     }
 
     /**
@@ -68,7 +76,7 @@ class GettingStartedController extends BaseController
     public function setProfilePicture()
     {
         // Get the input
-        $profile_picture = Input::file('profile_picture');
+        $input = Input::file('profile_picture');
 
         // Get the validation form
         $profilePictureForm = App::make('Dnianas\Forms\ProfilePictureForm');
@@ -80,27 +88,16 @@ class GettingStartedController extends BaseController
             return Response::json([
                 'success' => 'false',
                 'message' => 'The selected file is not an image.'
-                ]);
+            ]);
         }
-        
-        $extension = $profile_picture->getClientOriginalExtension();
-        $file_name = $profile_picture->getClientOriginalName();
 
-        $image = Image::make($profile_picture);
-
-        $name = sha1(time() . $file_name);
-        // Sample: domain.com/photos/4952058f4d990c21019c7bc6a319bddcba6cbfa9.png
-        $destination = photos_path() . '/' . $name . '.' . $extension;
-
-        $image->fit(300, 300);
-        $image->save($destination);
-
-        //$this->image->makeThumbnail($imageFile, $destination);
+        // Resize the profile picture and save
+        $profilePicture = $this->photo->makeProfilePicture($input);
 
         $image = Auth::user()->photos()->create([
             'profile_picture' => true, 
-            'path' => $name . '.' .$extension
-            ]);
+            'path' => $profilePicture->path
+        ]);
 
         return Response::json(['success' => 'true', 'image_path' => '/photos/' . $image->path]);
     }
@@ -111,8 +108,8 @@ class GettingStartedController extends BaseController
      */
     public function setCoverPhoto()
     {
-        $cover_photo = Input::file('cover_photo');
 
+        // Get the cover form
         $coverPhotoForm = App::make('Dnianas\Forms\CoverPhotoForm');
 
         try {
@@ -124,22 +121,12 @@ class GettingStartedController extends BaseController
             ]);
         }
         
-        $extension = $cover_photo->getClientOriginalExtension();
-        $file_name = $cover_photo->getClientOriginalName();
-
-        $image = Image::make($cover_photo);
-
-        $name = sha1(time() . $file_name);
-        // Sample: domain.com/photos/4952058f4d990c21019c7bc6a319bddcba6cbfa9.png
-        $destination = photos_path() . '/' . 'cover-'. $name . '.' . $extension;
-
-        $image->fit(900, 350);
-        $image->save($destination);
+        $cover = $this->photo->makeCoverPhoto(Input::file('cover_photo'));
 
         $image = Auth::user()->photos()->create([
             'cover_photo' => true, 
-            'path' => $name . '.' .$extension
-            ]);
+            'path' => $cover->path
+        ]);
 
         return Response::json(['success' => 'true', 'image_path' => '/photos/cover-' . $image->path]);
     }
