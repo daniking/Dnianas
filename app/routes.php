@@ -56,12 +56,12 @@ Route::post('getting_started', [
 
 
 Route::post('getting_started/step_two/profile_picture', [
-    'uses' => 'AuthController@setProfilePicture', 
+    'uses' => 'GettingStartedController@setProfilePicture', 
     'before' => 'auth'
 ]);
 
 Route::post('getting_started/step_two/cover_photo', [
-    'uses' => 'AuthController@setCoverPhoto', 
+    'uses' => 'GettingStartedController@setCoverPhoto', 
     'before' => 'auth'
 ]);
 
