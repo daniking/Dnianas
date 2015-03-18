@@ -2,7 +2,7 @@
         <div id="abo_users_po">
             <img src="{{ profile_picture($post->user) }}" id="clicksows" >
             <div class="hover_profile">
-                <img src="/photo/cover.jpg" class="small_cover">
+                <img src="{{ cover_photo($post->user) }}" class="small_cover">
                 <a href="profile.php">
                     <img src="{{ profile_picture($post->user) }}" class="small_profie">
                     <h1 class="users_small">{{ $post->user->first_name }} {{ $post->user->last_name }}</h1>
