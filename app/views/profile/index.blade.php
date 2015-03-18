@@ -3,27 +3,32 @@
 <div class="main_con_prof">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="cover11 _bord12" id="coversus">
-            <img src="{{ cover_photo($coverPhoto->path) }}">
+            <img src="{{ cover_photo($user) }}">
             <div class="ri_messs_fo232">
                 
                 <button class="bot_sasda22131" id="openmsg">
                     <span>Messages</span>
                 </button>
-                @if($user->isFollowedBy(Auth::user(), $user->id))
-                    <button class="bot_sasda22131 following" id="followBtn" data-action="unfollow" data-profile-id="{{ $user->id }}">
-                        <span>Following</span>
-                    </button>
-                @else 
-                <button class="bot_sasda22131" id="followBtn" data-action="follow" data-profile-id="{{ $user->id }}">
-                    <span>Follow</span>
-                </button>                
+
+                @if(!Auth::user() === $user)
+                    @if($user->isFollowedBy(Auth::user(), $user->id))
+                        <button class="bot_sasda22131 following" id="followBtn" data-action="unfollow" data-profile-id="{{ $user->id }}">
+                            <span>Following</span>
+                        </button>
+                    @else 
+                    <button class="bot_sasda22131" id="followBtn" data-action="follow" data-profile-id="{{ $user->id }}">
+                        <span>Follow</span>
+                    </button>                
+                    @endif
+                @else
+
                 @endif
             </div>
 
         </div>
         <div class="prof-membpic">
             <br>
-            <img src="{{ profile_picture($userProfilepPicture->path) }}" class="profilpicusers">
+            <img src="{{ profile_picture($user) }}" class="profilpicusers">
             <br>
             <h1>{{ $user->fullName() }}</h1>
             <h2>Following<span>{{ $user->following()->count() }}</span></h2>
@@ -97,7 +102,7 @@
                 <img src="/photos/cover.jpg" >
                 </div>
                 <div id="img-pro-msg">
-                    <img src="{{ profile_picture($userProfilepPicture->path) }}" >
+                    <img src="{{ profile_picture($user) }}" >
                 </div>
                 <h1 class="username-msg">Daniel Join</h1>
                 <h1 class="send-msg-user">New Message</h1>
