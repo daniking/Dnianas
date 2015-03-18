@@ -11,11 +11,8 @@ $('#clicksows').dblclick(function(){
 		$(".hover_profile").hide();
 	});
 });
-$('#clicksows').dblclick(function(){ 
-	$("body").css("position","fixed");
-	$("body").css("left","0");
-	$("body").css("right","0");
-	$("body").css("top","0");
+$('#clicksows').hover(function(){ 
+
 });
 
 
@@ -41,15 +38,14 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$(".hover_profile").hide();
 });
-$('#clicksows').click(function(){ 
-	$('.hover_profile').slideDown(400);
-	$(".hover_profile").show();
-});
-$(".hover_profile").mouseup(function()
 
-{
-	return false
+// Gordra ha.
+$('#clicksows').click(function(){ 
+	showProfile = $(this);
+	showProfile.siblings().slideDown(400);
+	showProfile.siblings().show();
 });
+
 $(document).mouseup(function()
 {
 	$(".hover_profile").hide();
