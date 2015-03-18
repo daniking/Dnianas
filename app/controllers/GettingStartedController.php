@@ -92,12 +92,12 @@ class GettingStartedController extends BaseController
         // Resize the profile picture and save
         $profilePicture = $this->photo->makeProfilePicture($input);
 
-        $image = Auth::user()->photos()->create([
-            'profile_picture' => true, 
-            'path' => $profilePicture->path
-        ]);
+        $user = Auth::user();
 
-        return Response::json(['success' => 'true', 'image_path' => '/photos/' . $image->path]);
+        $user->profile_picture = $profilePicture->path;
+        $user->save();
+
+        return Response::json(['success' => 'true', 'image_path' => '/photos/' . $user->profile_picture]);
     }
 
 
@@ -107,6 +107,7 @@ class GettingStartedController extends BaseController
         // Get the cover form
         $coverPhotoForm = App::make('Dnianas\Forms\CoverPhotoForm');
 
+        // Validate the input
         try {
             $coverPhotoForm->validate(Input::all());
         } catch (FormValidationException $e) {
@@ -116,14 +117,15 @@ class GettingStartedController extends BaseController
             ]);
         }
         
+        // Resize the cover photo and store it.
         $cover = $this->photo->makeCoverPhoto(Input::file('cover_photo'));
 
-        $image = Auth::user()->photos()->create([
-            'cover_photo' => true, 
-            'path' => $cover->path
-        ]);
+        $user = Auth::user();
 
-        return Response::json(['success' => 'true', 'image_path' => '/photos/cover-' . $image->path]);
+        $user->cover_photo = $cover->path;
+        $user->save();
+
+        return Response::json(['success' => 'true', 'image_path' => '/photos/cover-' . $user->cover_photo]);
     }
 
 }
