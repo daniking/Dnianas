@@ -31,11 +31,9 @@ class HomeController extends BaseController
         // If the user is logged in then show the homepage
         if (Auth::check()) {
             $posts = $this->user->getFeed(Auth::user());
-            $user  = $this->user->getById(Auth::id());
-            $about = $this->user->getAbout($user);
-            $profilePicture = $this->user->profilePicture(Auth::user());
-            $coverPhoto = $this->user->coverPhoto(Auth::user());
-            return View::make("home.index", compact('posts', 'about', 'profilePicture', 'coverPhoto'));
+            $about = $this->user->getAbout(Auth::user());
+        
+            return View::make("home.index", compact('posts', 'about'));
         }
 
         // Otherwise, show the login/registeration page
