@@ -9,11 +9,19 @@ function photos_path()
     return public_path('photos');
 }
 
-function profile_picture($imageName) 
+function profile_picture($user) 
 {
-    return url('/' . 'photos/' . $imageName);
+    if($user && !is_null($user->profile_picture)) {
+        return url('/' . 'photos/' . $user->profile_picture);
+    }
+    
+    return url('/photos/profile_picture.jpg');
+
 }
-function cover_photo($imageName)
+function cover_photo($user)
 {
-    return url('/' . 'photos/' . 'cover-' . $imageName);
+    if(!is_null($user->cover_photo)) {
+        return url('/' . 'photos/cover-' . $user->cover_photo);
+    }
+
 }
