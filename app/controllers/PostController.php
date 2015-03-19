@@ -33,8 +33,6 @@ class PostController extends BaseController
         $this->postForm = $postForm;
         $this->post = $post;
         $this->user = $user;
-        $profilePicture = $this->user->profilePicture(Auth::user());
-        View::share('profilePicture', $profilePicture);
     }
 
     public function index()

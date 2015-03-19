@@ -29,9 +29,6 @@ class CommentController extends BaseController
         $this->commentForm = $commentForm;
         $this->user = $user;
         $this->comment = $comment;
-
-        $profilePicture = $this->user->profilePicture(Auth::user());
-        View::share('profilePicture', $profilePicture);
     }
 
     /**
