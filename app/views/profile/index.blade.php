@@ -24,17 +24,8 @@
             </div>
         </div>
 
+        @include('profile._top-bar')
 
-        <div class="ab_prof_mem">
-            <div id="user_lin_192">
-                <a href="" id="lf_lin_us" class="selc"><span>{{ $user->fullName()}}</span></a>
-                <a href="" id="lf_lin_us" ><span>Photos</span></a>
-                <a href="" id="lf_lin_us"><span>Books</span></a>
-                <a href="" id="lf_lin_us"><span>About</span></a>
-                <a href="" id="lf_lin_us"><span>Followers</span></a>
-                <a href="" id="lf_lin_us"><span>Following</span></a>
-            </div>
-        </div>
         @include('profile._left-sidebar')
            <div  id="user_hoprofily">
                 @if( $user->id == Auth::user()->id )
@@ -54,9 +45,7 @@
                     <div class="no-posts">This user has no posts</div>
                 @endif
            </div>
-
        </div>
-
    </div>
 
 
