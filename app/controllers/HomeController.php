@@ -49,12 +49,7 @@ class HomeController extends BaseController
     {  
         // Get the information about the user along with their post
         $user = $this->user->getPosts($username);
-        return View::make('profile.index')->with([
-            'user' => $user,
-            'profilePicture' => $this->user->profilePicture(Auth::user()),
-            'coverPhoto' => $this->user->coverPhoto($user),
-            'userProfilePicture' => $this->user->profilePicture($user)
-        ]);
+        return View::make('profile.index')->with(compact('user'));
     }
 
     /**
