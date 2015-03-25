@@ -5,21 +5,7 @@
         <div class="cover11 _bord12" id="coversus">
             <img src="{{ cover_photo($user) }}">
             <div class="ri_messs_fo232">
-                
-                @if(Auth::user()->id !== $user->id)
-                <button class="bot_sasda22131" id="openmsg">
-                    <span>Messages</span>
-                </button>
-                    @if($user->isFollowedBy(Auth::user(), $user->id))
-                        <button class="bot_sasda22131 following" id="followBtn" data-action="unfollow" data-profile-id="{{ $user->id }}">
-                            <span>Following</span>
-                        </button>
-                    @else 
-                    <button class="bot_sasda22131" id="followBtn" data-action="follow" data-profile-id="{{ $user->id }}">
-                        <span>Follow</span>
-                    </button>
-                    @endif
-                @endif
+                @include('profile._follow-message')
             </div>
 
         </div>
@@ -81,24 +67,6 @@
         </div>
     </div>
 
+@include('profile.message-box')
 
-
-    <div id="message-box-hide">
-        <div class="body-messg">
-            <div id="send-mesg-user" class="scrols">
-                <div id="img-cove-msg">
-                <img src="/photos/cover.jpg" >
-                </div>
-                <div id="img-pro-msg">
-                    <img src="{{ profile_picture($user) }}" >
-                </div>
-                <h1 class="username-msg">Daniel Join</h1>
-                <h1 class="send-msg-user">New Message</h1>
-                <textarea class="msg-send"placeholder="Write a message..." ></textarea>
-                <input type="submit" class="send" value="Send">
-                <input type="submit" class="cancel" value="Cancel" id="clsoems">
-
-            </div>
-        </div>
-    </div>
 @include('template._partials.footer')
