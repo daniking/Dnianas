@@ -49,22 +49,7 @@
                 <a href="" id="lf_lin_us"><span>Following</span></a>
             </div>
         </div>
-        <div class="leftabot" id="memb_sos">
-            <h1>About</h1>
-            @if($user->about && $user->about->count()) 
-            <h2>Live in <span>{{ $user->about->address }}</span></h2>
-            <h2>Job Title<span>{{ $user->about->job_title }}</span></h2>
-            <h2>Website <span>{{ $user->about->website }}</span></h2>
-
-            <p class="text-about">About</p>
-            <p class="about-you" dir="ltr">
-                {{ $user->about->about }}
-           </div>
-
-           @else
-            <p class="about-you" dir="ltr"></p>
-           </div>           
-           @endif
+        @include('profile._left-sidebar')
            <div  id="user_hoprofily">
                 @if( $user->id == Auth::user()->id )
                     <div class="post-add" style="margin-left: 35px">
