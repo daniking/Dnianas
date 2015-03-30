@@ -23,6 +23,6 @@ function cover_photo($user)
         return url('/' . 'photos/cover-' . $user->cover_photo);
     }
 
-    return url('/' . 'photos/cover-675f995bcba572f1a5a6b47002a33cba2cef0d8c.jpg');
+    return url('/' . 'photos/cover_photo.jpg');
 
 }
