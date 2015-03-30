@@ -19,7 +19,6 @@
             <img src="/img/icons/sett.png" class="repotblock" id="opentargmore">
             <div class="moresectionuser">
                 <b class="blo52re_12">Block</b>
-
                 <b class="blo52re_12 lins_xl">Repo</b>
             </div>
         </div>
@@ -27,27 +26,25 @@
         @include('profile._top-bar')
 
         @include('profile._left-sidebar')
-           <div  id="user_hoprofily">
-                @if( $user->id == Auth::user()->id )
-                    <div class="post-add" style="margin-left: 35px">
-                        @include('home.post-add')
-                    </div>
-                @endif
-    
-    
-                @if($user->posts->count())
-                    @foreach($user->posts as $post)
-                        <div class="post">
-                            @include('posts._post')
-                        </div>
-                    @endforeach
-                @else 
-                    <div class="no-posts">This user has no posts</div>
-                @endif
-           </div>
-       </div>
    </div>
 
+    <div  id="user_hoprofily">
+        @if( $user->id == Auth::user()->id )
+            <div class="post-add" style="margin-left: 35px">
+                @include('home.post-add')
+            </div>
+        @endif
+        
+        @if($user->posts->count())
+            @foreach($user->posts as $post)
+                <div class="post">
+                    @include('posts._post')
+                </div>
+            @endforeach
+        @else 
+            <div class="no-posts">This user has no posts</div>
+        @endif
+    </div>
 
 @include('profile.message-box')
 
