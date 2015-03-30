@@ -19,19 +19,16 @@ class UserRegisterService
         // Validation is OK, So we insert it into database
         $user = new \User;
         $this->code = str_random(80);
-        $user->first_name   = $input['first_name'];
-        $user->last_name    = $input['last_name'];
-        $user->username     = $input['username'];
-        $user->email        = $input['email'];
-        $user->password     = \Hash::make($input['password']);
-        $user->gender       = $input['gender'];
-        $user->active       = 0;
-        $user->code         = $this->code;
-        $user->birthday     =\Carbon::createFromDate($input['birth_year'], $input['birth_month'], $input['birth_day']);
-        $user->photos()->path = 'profile_picture.jpg';
-        $user->photos()->photoable_id = $user->id;
-        $user->photos()->photoable_type = $user;
-        $user->photos()->profile_picture = true;
+        $user->first_name       = $input['first_name'];
+        $user->last_name        = $input['last_name'];
+        $user->username         = $input['username'];
+        $user->email            = $input['email'];
+        $user->password         = \Hash::make($input['password']);
+        $user->gender           = $input['gender'];
+        $user->active           = 0;
+        $user->code             = $this->code;
+        $user->birthday         =\Carbon::createFromDate($input['birth_year'], $input['birth_month'], $input['birth_day']);
+        $user->profile_picture  = 'profile_picture.jpg';
         $user->save();       
     }
 
