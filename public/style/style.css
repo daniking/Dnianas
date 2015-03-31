@@ -311,7 +311,9 @@ p {
     position: relative;
     left: 10px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 14px;
+    font-family: 'Nova', Arial, sans-serif;
+    color: #232323;
 }
 
 .sc-bot-like img,.sc-bot-comm  img,.sc-bot-share img,.sc-bot-repo img {
