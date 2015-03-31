@@ -11,7 +11,7 @@
 <link href="{{ asset('style/mini/media.css') }}" rel="stylesheet">
 <link href="{{ asset('style/jquery.cssemoticons.css') }}" media="screen" rel="stylesheet" type="text/css" />
 <title>Dnianas</title>
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,200' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 </head>
 <body dir="ltr">
 
