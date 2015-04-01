@@ -1,3 +1,4 @@
+var $loading = $('#ajax-loader').hide();
 var token = $('input[name=_token]').val();
 var $body = $('body');
 
@@ -7,12 +8,18 @@ $body.on('submit', '#postForm', function (event) {
         url: '/posts/create',
         type: 'POST',
         dataType: 'JSON',
-        data: $(this).serialize()
+        data: $(this).serialize(),
+        beforeSend: function() {
+            $loading.show();
+        },
+        complete: function() {
+            $loading.hide();
+        }
     })
-        .done(function (data) {
-            if (data.success == 'false') {
-                $('.error').empty().append(data.message).slideDown(100).delay(3000).slideUp(250);
-            } else {
+    .done(function (data) {
+        if (data.success == 'false') {
+            $('.error').empty().append(data.message).slideDown(100).delay(3000).slideUp(250);
+        } else {
                 //$('.message').empty().append(data.message).slideDown(250).delay(3000).slideUp(250);
                 $('#postForm')[0].reset();
                 $(data.post_html).insertAfter('#postForm').hide().delay(100).slideDown(400);
@@ -40,16 +47,16 @@ $body.on('click', '#likePost', (function (event) {
             _token: token
         }
     })
-        .done(function (data) {
-            if (data.like) {
-                $postLike.children('.likeIcon').addClass('liked');
-                $postLikeEl.addClass('liked');
-            } else {
-                $postLike.children('.likeIcon').removeClass('liked');
-                $postLikeEl.removeClass('liked');
-            }
-            $postLikeEl.text(data.like_count);
-        })
+    .done(function (data) {
+        if (data.like) {
+            $postLike.children('.likeIcon').addClass('liked');
+            $postLikeEl.addClass('liked');
+        } else {
+            $postLike.children('.likeIcon').removeClass('liked');
+            $postLikeEl.removeClass('liked');
+        }
+        $postLikeEl.text(data.like_count);
+    })
 
 }));
 
@@ -76,14 +83,14 @@ function getNewPosts() {
         type: 'GET',
         dataType: 'JSON'
     })
-        .done(function (data) {
-            if (data) {
-                if (data.is_new = 'true' && data.html) {
-                    $('.no-posts').hide();
-                    $(data.html).insertAfter('#postForm').hide().slideDown(500);
-                }
-
+    .done(function (data) {
+        if (data) {
+            if (data.is_new = 'true' && data.html) {
+                $('.no-posts').hide();
+                $(data.html).insertAfter('#postForm').hide().slideDown(500);
             }
+
+        }
 
             // Run the function every 10 seconds
             setTimeout(getNewPosts, 10000);
@@ -106,9 +113,9 @@ $body.on('keypress', '.comment-input', function (event) {
                 post_id: $post_id
             }
         })
-            .done(function (data) {
-                $(data.html).insertBefore($comment_input.parent());
-            });
+        .done(function (data) {
+            $(data.html).insertBefore($comment_input.parent());
+        });
 
         // Reset the input field
         $(this).val('').blur();
@@ -128,17 +135,17 @@ $body.on('click', '#followBtn', function (event) {
             _token: token
         }
     })
-        .done(function (data) {
-            if (data.follow) {
-                $followBtn.addClass('following');
-                $followBtn.text('Unfollow');
-                $followBtn.data('action', 'unfollow')
-            } else {
-                $followBtn.removeClass('following');
-                $followBtn.text('Follow');
-                $followBtn.data('action', 'follow')
-            }
-        })
+    .done(function (data) {
+        if (data.follow) {
+            $followBtn.addClass('following');
+            $followBtn.text('Unfollow');
+            $followBtn.data('action', 'unfollow')
+        } else {
+            $followBtn.removeClass('following');
+            $followBtn.text('Follow');
+            $followBtn.data('action', 'follow')
+        }
+    })
 });
 
 $('#followBtn').hover(function() {
