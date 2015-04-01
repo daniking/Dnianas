@@ -808,3 +808,9 @@ div.post {
     margin-left: 35px;
     margin-top: 10px;
 }
+
+#ajax-loader {
+    position: relative;
+    right: -60px;
+    top: 8px;
+}
