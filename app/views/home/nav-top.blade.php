@@ -4,7 +4,6 @@
         <div class="search">
             <input type="text" class="search-peple" placeholder="Search People" >
             <input type="submit" class="search_submit" value="Search tags">
-
         </div>
         <div id="rig-ico-texts">
             <a href="{{ route('profile.show', Auth::user()->username) }}" class="text-top" id="hov_pic_shows">
