@@ -1,8 +1,6 @@
 <div class="header _top11 _fixs">
     <div class="main_con_hea">
-        <div class="logo" href="/">
-            <p>dnianas</p>
-        </div>
+        <a class="logo" href="/"></a>
         <div class="search">
             <input type="text" class="search-peple" placeholder="Search People" >
             <input type="submit" class="search_submit" value="Search tags">
