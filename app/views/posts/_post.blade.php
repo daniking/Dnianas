@@ -8,7 +8,7 @@
                     <h1 class="users_small">{{ $post->user->first_name }} {{ $post->user->last_name }}</h1>
                 </a>
             </div>
-            <span>{{ link_to_route('profile.show', $post->user->fullName(), $post->user->username) }}</span>
+            <span style="padding:5px">{{ link_to_route('profile.show', $post->user->fullName(), $post->user->username) }}</span>
             <span class="data_post" data-livestamp="{{ format_date($post->posted_date) }}"></span>
         </div>
         <br>
