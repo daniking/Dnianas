@@ -2,11 +2,11 @@
 
 use Dnianas\User\UserRepository;
 
-use Dnianas\Forms\GettingStarted;
-
 use Laracasts\Validation\FormValidationException;
 
 use Dnianas\Uploads\Photo;
+
+use Dnianas\User\UserRegisterService;
 
 class GettingStartedController extends BaseController
 {
@@ -22,14 +22,17 @@ class GettingStartedController extends BaseController
      * @var object
      */
     protected $photo;
+
+    protected $registeration;
     /**
      * Inject the depenencies to the controller
      * @param Object $user The user repository
      */
-    public function __construct(UserRepository $user, Photo $photo)
+    public function __construct(UserRepository $user, Photo $photo, UserRegisterService $registeration)
     {
         $this->user     = $user;
         $this->photo    = $photo;
+        $this->registeration = $registeration;
     }
 
     /**
@@ -51,9 +54,10 @@ class GettingStartedController extends BaseController
      */
     public function postGettingStarted()
     {
+        $gettingStarted= App::make('Dnianas\Forms\GettingStartedForm');
         // Validate the user input
         try {
-            $this->gettingStarted->validate(Input::all());
+            $gettingStarted->validate(Input::all());
         } catch(FormValidationException $e) {
             return Redirect::back()->withInput()->withErrors($e->getErrors());
         }
