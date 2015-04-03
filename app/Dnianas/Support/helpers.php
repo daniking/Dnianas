@@ -13,9 +13,9 @@ function profile_picture($user)
 {
     if($user && $user->profile_picture) {
         return url('/' . 'photos/' . $user->profile_picture);
-    } else {
-        return url('/photos/profile_picture.jpg');
     }
+    
+    return url('/photos/profile_picture.jpg');
 }
 function cover_photo($user)
 {
