@@ -38,7 +38,7 @@ Route::get('logout', [
  */
 Route::get('getting_started', [
     'as'        => 'getting_started_route',
-    'uses'      => 'AuthController@getGettingStarted',
+    'uses'      => 'GettingStartedController@getGettingStarted',
     'before'    => 'auth'
     ]);
 
@@ -50,7 +50,7 @@ Route::get('getting_started/step_two', function () {
  * Getting Started route [POST]
  */
 Route::post('getting_started', [
-    'uses'      => 'AuthController@postGettingStarted',
+    'uses'      => 'GettingStartedController@postGettingStarted',
     'before'    => 'auth'
     ]);
 
