@@ -5,7 +5,7 @@
                 <div class="comment">
                     <img src="{{ profile_picture($comment->user) }}" class="profile-picture">
                     {{ link_to_route('profile.show', $comment->user->fullName(), $comment->user->username, ['class' => 'comment-name']) }}
-                    <div class="comment-text">{{ $comment->text }}</div>
+                    <div class="comment-text">{{{ $comment->text }}}</div>
                     <div class="posted-date" data-livestamp="{{ format_date($comment->posted_date) }}"></div>
                 </div>
             @endforeach
