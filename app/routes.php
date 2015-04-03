@@ -93,12 +93,15 @@ Route::post('comment/create', 'CommentController@create');
  * Like: /@username
  * Or : /@AkarM13
  */
-Route::get('@{username}', ['as' => 'profile.show', 'uses' => 'HomeController@getProfile']);
+Route::get('@{username}', [
+    'as' => 'profile.show', 
+    'uses' => 'HomeController@getProfile',
+    'before' => 'auth']);
 
 /**
  * When a user tries to like a post
  */
-Route::post('posts/like', 'PostController@like');
+Route::post('posts/like', 'PostController@like')->before('auth');
 
 /** 
  * When a user tries to follow another user
