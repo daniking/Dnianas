@@ -5,6 +5,8 @@ app/storage/sessions
 /public/photos
 /bootstrap/compiled.php
 /vendor
+/.tags
+/.tags_sorted_by_file
 composer.phar
 composer.lock
 .env.*.php
