@@ -92,4 +92,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->morphMany('Photo', 'photoable');
 	}
 	
+	public function notifications()
+	{
+		return $this->hasMany('Notification');
+	}
 }
