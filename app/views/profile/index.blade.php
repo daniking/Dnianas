@@ -30,7 +30,7 @@
 
     <div  id="user_hoprofily">
         @if( $user->id == Auth::user()->id )
-            <div class="post-add" style="margin-left: 35px; margin-top: 60px;">
+            <div class="post-add" style="margin-left: 35px;">
                 @include('home.post-add')
             </div>
         @endif
