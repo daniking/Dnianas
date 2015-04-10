@@ -52,6 +52,14 @@ class CommentController extends BaseController
         // Validation passed, So we insert it to database
         $this->comment->create(Input::all(), Auth::user()->id);
 
+        // Inform the user about the action.
+            Notification::firstOrCreate([
+                'sender_id' => Auth::user()->id,
+                'object_id' => Input::get('post_id'),
+                'object_type' => 'Post',
+                'notification_type' => 'Comment',
+                'seen' => 0,
+            ]);
         // Get the html content from the view
         $html = View::make('posts.comment-insert')->render();
 

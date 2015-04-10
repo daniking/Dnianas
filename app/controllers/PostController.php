@@ -116,7 +116,6 @@ class PostController extends BaseController
 
             Notification::firstOrCreate([
                 'sender_id' => $user->id,
-                'recipient_id' => $profile_id,
                 'object_id' => $post_id,
                 'object_type' => 'Post',
                 'notification_type' => 'Like',
@@ -131,6 +130,13 @@ class PostController extends BaseController
         
         // Otherwise, Unlike the post
         $this->posts->unlike($post_id, Auth::user());
+        Notification::remove([
+            'sender_id' => $user->id,
+            'object_id' => $post_id,
+            'object_type' => 'Post',
+            'notification_type' => 'Like',
+            'seen' => 0,
+        ]);
         return Response::json([
             'unlike'     => 'true',
             'like_count' => max(+$like_count - 1, 0),
