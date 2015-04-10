@@ -84,6 +84,15 @@ class HomeController extends BaseController
         // Otherwise, Unfollow the user
         $this->user->unfollow($profile_id, $user);
 
+        // Delete the notification
+        Notification::where([
+            'sender_id' => $user->id,
+            'object_id' => $profile_id,
+            'object_type' => 'User',
+            'notification_type' => 'Follow',
+            'seen' => 0,
+        ])->delete();
+
         return Response::json([
             'unfollow' => 'true'
         ]);
