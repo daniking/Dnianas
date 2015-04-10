@@ -55,56 +55,52 @@
 	text-indent:-9999999px;
 }
 .search{
-	position:relative;
-	top:-22px;
-	width:550px;
-	float:right;
-	right:320px;
-	
+    position:relative;
+    top:-22px;
+    width:550px;
+    float:right;
+    right:320px;
+    
 }
-.search-peple{
-	height:32px;
-	width:450px;
-	outline:none;
-	background: #033E5C;
-	font-weight: 300;
-	color: rgba(255,255,255,.69);
-	border:0px;
-	padding:5px;
-	position:relative;
-	border:1px solid rgba(0, 0, 0, .1);
-
-
+.search-peple {
+    height: 25px;
+    width: 450px;
+    font-size: 1rem;
+    outline: none;
+    background: #033E5C;
+    color: rgba(255,255,255,.75);
+    border: 0px;
+    -webkit-border-radius: 5px;
+    padding: 4px;
+    position: relative;
 }
 .search_submit{
-	background-image:url(../img/search-hover.png);
-	background-position:center;
-	background-repeat:no-repeat;
-	background-color: #033E5C;
-	position:relative;
-	text-indent: -999em;
-	overflow: hidden;
+    background-image:url(../img/search-hover.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color: #033E5C;
+    position:relative;
+    text-indent: -999em;
+    overflow: hidden;
     cursor: pointer;
     border: none;
     height: 30px;
     width: 30px;
     z-index: 2;
-    left: -38px;
-	-webkit-border-radius: 1px 1px;
-	border-radius: 1px 1px;
-	outline:none;
-	transition: all 0.4s ease-out;
+    left: -35px;
+    -webkit-border-radius: 1px 1px;
+    outline:none;
+    transition: all 0.2s ease-in;
 
 }
 .search_submit:hover{
-	background-image:url(../img/search.png);
-	background-position:center;
-	background-repeat:no-repeat;
-	background-color: #033E5C;
-	transition: all 0.4s ease-out;
+    background-image:url(../img/search.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color: #033E5C;
+    transition: all 0.2s ease-in;
 
 }
-
 #rig-ico-texts{
 	float:right;
 	position:relative;
@@ -128,12 +124,13 @@
 .text-top{
 	color:#ccc;
 	text-decoration:none;
-	font-size:12px;
+	font-size:15px;
+	font-weight: 600;
 	padding:6px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	position:relative;
-	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-family: 'Lato', Arial;
 	transition: all 0.4s ease-out;
 }
 .text-top:hover{
@@ -147,9 +144,9 @@
 	height:auto;
 	background:#043853;
 	color:#fff;
-	font-size:10px;
-	font-weight:600;
-	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-size:11px;
+	font-weight:200;
+	font-family: 'Lato', Arial;
 	padding:0px 3px;
 	margin: 0 1px;
 	line-height: 16px;
@@ -217,7 +214,7 @@
 #headernotifitop h2{
 	margin:2px 5px;
 	color:#444;
-	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-family: 'Lato', Arial;
 	font-size:13px;
 	float:left;
 	position:relative;
@@ -311,7 +308,7 @@
 }
 ._inbox,._other,._newmss{
 	color:#55acee;
-	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-family: 'Lato', Arial;
 	font-size:14px;
 	padding:3px 5px;
 	font-weight:600;
@@ -341,7 +338,7 @@
 	right:10px;
 	font-size:14px;
 	transition: all 0.4s ease-out;
-	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-family: 'Lato', Arial;
 }
 ._inbox:hover,._other:hover,._newmss:hover{
 	color:#0F6DA2;
@@ -374,7 +371,7 @@
 }
 #fottermessages a{
 	color: #66757f;
-	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-family: 'Lato', Arial;
 	font-size:14px;
 	padding:3px 5px;
 	font-weight:600;
