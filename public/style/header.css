@@ -140,13 +140,14 @@
 	
 }
 .not_nu1{
+	position: relative;
+  	top: -1px;
 	width:auto;
 	height:auto;
 	background:#043853;
 	color:#fff;
 	font-size:11px;
-	font-weight:200;
-	font-family: 'Lato', Arial;
+	font-family: Arial;
 	padding:0px 3px;
 	margin: 0 1px;
 	line-height: 16px;
