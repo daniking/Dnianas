@@ -114,6 +114,15 @@ class PostController extends BaseController
             // Like the post 
             $this->posts->like($post_id, Auth::user());
 
+            Notification::firstOrCreate([
+                'sender_id' => $user->id,
+                'recipient_id' => $profile_id,
+                'object_id' => $post_id,
+                'object_type' => 'Post',
+                'notification_type' => 'Like',
+                'seen' => 0,
+            ]);
+
             return Response::json([
                 'like'      => 'true',
                 'like_count' => +$like_count + 1,
