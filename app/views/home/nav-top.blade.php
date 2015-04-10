@@ -9,7 +9,7 @@
             <a href="{{ route('profile.show', Auth::user()->username) }}" class="text-top" id="hov_pic_shows">
                 <img src="{{ profile_picture(Auth::user()) }}" id="picprosmall" /> {{ Auth::user()->first_name }}
             </a>
-            <span class="text-top" id="opennotifii">Notifications</span>
+            <span class="text-top" id="opennotifii">Notifications
             <span class="not_nu1">250</span></span>
             <div id="_whnb12">
                 <div class="boxnotifi _12nca">
@@ -32,7 +32,7 @@
                     <div id="footernotifitop"></div>
                 </div>
             </div>
-            
+
             <a href="" class="text-top">Messages</a>
             <a href=""><img src="/img/icons/sett.png" class="icos"></a>
             <a href=""><img src="/img/icons/help.png" class="icos"></a>
