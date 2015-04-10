@@ -67,6 +67,16 @@ class HomeController extends BaseController
         if(!$this->user->isFollowedBy($user, $profile_id)) {
             $this->user->follow($profile_id, $user);
 
+            // Inform the user about the action.
+            Notification::firstOrCreate([
+                'sender_id' => $user->id,
+                'recipient_id' => $profile_id,
+                'object_id' => $profile_id,
+                'object_type' => 'User',
+                'notification_type' => 'Follow',
+                'seen' => 0,
+            ]);
+
             return Response::json([
                 'follow' => 'true'
             ]);
