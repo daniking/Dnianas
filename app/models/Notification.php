@@ -11,8 +11,8 @@ class Notification extends Eloquent
         'link', 
         'seen'
     ];
-    public $timestamps = true;
 
+    public $timestamps = true;
     // The user that does the activity
     public function sender()
     {
