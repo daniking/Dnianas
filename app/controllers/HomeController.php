@@ -4,7 +4,7 @@ use Dnianas\Post\PostRepository;
 
 use Dnianas\User\UserRepository;
 
-Use Dnainas\Notification\NotificationRepository;
+Use Dnianas\Notification\NotificationRepository;
 
 class HomeController extends BaseController
 {
@@ -29,7 +29,7 @@ class HomeController extends BaseController
     protected $profilePicture;
 
     public function __construct(UserRepository $userRepo, PostRepository $postRepo, 
-        NotificationsRepository $notificationRepository)
+        NotificationRepository $notificationRepository)
     {
         $this->user = $userRepo;
         $this->post = $postRepo;
@@ -41,7 +41,7 @@ class HomeController extends BaseController
         if (Auth::check()) {
             $posts = $this->user->getFeed(Auth::user());
             $about = $this->user->getAbout(Auth::user());
-            $notifications = $this->notifications->latest();
+            //$notifications = $this->notifications->latest();
             return View::make("home.index", compact('posts', 'about', 'notifications'));
         }
 
