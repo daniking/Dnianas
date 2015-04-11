@@ -29,10 +29,11 @@ class HomeController extends BaseController
     protected $profilePicture;
 
     public function __construct(UserRepository $userRepo, PostRepository $postRepo, 
-        NotificationRepository $notificationRepository)
+        NotificationRepository $notificationRepo)
     {
         $this->user = $userRepo;
         $this->post = $postRepo;
+        $this->notifications = $notificationRepo;
     }
 
     public function index()
@@ -41,7 +42,7 @@ class HomeController extends BaseController
         if (Auth::check()) {
             $posts = $this->user->getFeed(Auth::user());
             $about = $this->user->getAbout(Auth::user());
-            //$notifications = $this->notifications->latest();
+            $notifications = $this->notifications->latest(Auth::user());
             return View::make("home.index", compact('posts', 'about', 'notifications'));
         }
 
