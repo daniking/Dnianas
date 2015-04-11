@@ -1,4 +1,4 @@
-    <div class="tab_post" id="users_shows" data-id="{{ $post->id }}">
+    <div class="tab_post" id="users_shows" data-id="{{ $post->id }}" data-userid="{{ $post->user->id}}">
         <div id="abo_users_po">
             <img src="{{ profile_picture($post->user) }}" id="clicksows" >
             <div class="hover_profile">
