@@ -34,6 +34,7 @@ $body.on('submit', '#postForm', function (event) {
 $body.on('click', '#likePost', (function (event) {
     // The post id
     var $post_id = $(this).parents().get(2).dataset.id;
+    var user_id  = $(this).parents().get(2).dataset.userid;
     var $postLike = $(this);
     var $postLikeEl = $postLike.children('#likeCount');
     var $postLikeCount = $postLikeEl.text();
@@ -43,6 +44,7 @@ $body.on('click', '#likePost', (function (event) {
         dataType: 'JSON',
         data: {
             post_id: $post_id,
+            user_id: user_id,
             like_count: $postLikeCount,
             _token: token
         }
@@ -102,6 +104,7 @@ $body.on('keypress', '.comment-input', function (event) {
     if (event.which == 13 && !event.shiftKey) {
         // Grab the post id and other inputs
         var $post_id = $(this).parents().get(3).dataset.id;
+        var user_id  = $(this).parents().get(3).dataset.userid;
         var $comment_input = $(this);
         $.ajax({
             url: '/comment/create',
@@ -110,7 +113,8 @@ $body.on('keypress', '.comment-input', function (event) {
             data: {
                 text: $comment_input.val(),
                 _token: token,
-                post_id: $post_id
+                post_id: $post_id,
+                user_id: user_id,
             }
         })
         .done(function (data) {
