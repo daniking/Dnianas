@@ -4,6 +4,8 @@ use Dnianas\Post\PostRepository;
 
 use Dnianas\User\UserRepository;
 
+Use Dnainas\Notification\notificationRepository;
+
 class HomeController extends BaseController
 {
     /**
@@ -18,9 +20,16 @@ class HomeController extends BaseController
      */
     protected $user;
 
+    /**
+     * The notifications repository
+     *  @var Dnianas\Notification\NotificationRepository
+     */
+    protected $notifications;
+
     protected $profilePicture;
 
-    public function __construct(UserRepository $userRepo, PostRepository $postRepo)
+    public function __construct(UserRepository $userRepo, PostRepository $postRepo, 
+        NotificationsRepository $notificationRepository)
     {
         $this->user = $userRepo;
         $this->post = $postRepo;
@@ -32,8 +41,8 @@ class HomeController extends BaseController
         if (Auth::check()) {
             $posts = $this->user->getFeed(Auth::user());
             $about = $this->user->getAbout(Auth::user());
-        
-            return View::make("home.index", compact('posts', 'about'));
+            $notifications = $this->notifications->latest();
+            return View::make("home.index", compact('posts', 'about', 'notifications'));
         }
 
         // Otherwise, show the login/registeration page
