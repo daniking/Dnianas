@@ -55,6 +55,7 @@ class CommentController extends BaseController
         // Inform the user about the action.
             Notification::firstOrCreate([
                 'sender_id' => Auth::user()->id,
+                'recipient_id' => Input::get('user_id'),
                 'object_id' => Input::get('post_id'),
                 'object_type' => 'Post',
                 'notification_type' => 'Comment',
