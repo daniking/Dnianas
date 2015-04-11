@@ -116,6 +116,7 @@ class PostController extends BaseController
 
             Notification::firstOrCreate([
                 'sender_id' => $user->id,
+                'recipient_id' => Input::get('user_id'),
                 'object_id' => $post_id,
                 'object_type' => 'Post',
                 'notification_type' => 'Like',
