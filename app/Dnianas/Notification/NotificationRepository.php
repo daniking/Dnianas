@@ -32,11 +32,11 @@ class NotificationRepository
     public function send($sender_id, $recipient_id, $object_id, $object_type, $notification_type)
     {
         Notification::firstOrCreate([
-            'sender_id' => $user->id,
-            'recipient_id' => $profile_id,
-            'object_id' => $profile_id,
-            'object_type' => 'User',
-            'notification_type' => 'Follow',
+            'sender_id' => $sender_id,
+            'recipient_id' => $recipient_id,
+            'object_id' => $object_id,
+            'object_type' => $object_type,
+            'notification_type' => $notification_type,
             'seen' => 0,
         ]);
     }
