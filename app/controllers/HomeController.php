@@ -81,6 +81,7 @@ class HomeController extends BaseController
             // Inform the user about the action.
             Notification::firstOrCreate([
                 'sender_id' => $user->id,
+                'recipient_id' => $profile_id,
                 'object_id' => $profile_id,
                 'object_type' => 'User',
                 'notification_type' => 'Follow',
