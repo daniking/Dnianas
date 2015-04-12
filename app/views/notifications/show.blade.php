@@ -11,16 +11,20 @@
             <h2>Notifications</h2>
         </div>
         <div class="boxnotificationsusers">
-            <div id="boxsendnotifi">
-                <img src="photo/dani-pro.jpg" id="picnotifishow">
-                <span id="namenotifishow">Nali W.Mahmood <span id="textnotifishow">Like This Photo</span></span>
-                <img src="photo/aren.jpg" class="innotifi" >
-            </div>
-            <div id="boxsendnotifi">
-                <img src="photo/dani-pro.jpg" id="picnotifishow">
-                <span id="namenotifishow">Akar Muhamad<span id="textnotifishow">Like This Photo</span></span>
-                <img src="photo/aren.jpg" class="innotifi" >
-            </div>
+            @foreach($notifications as $notification)
+                <div id="boxsendnotifi">
+                    <img src="{{ profile_picture($notification->sender) }}" id="picnotifishow">
+                    <span id="namenotifishow">{{ $notification->sender->first_name }}
+                        @if($notification->notification_type == 'Like')
+                            <span id="textnotifishow">likes your status.</span>
+                        @elseif($notification->notification_type == 'Follow')
+                            <span id="textnotifishow">followed you.</span>
+                        @elseif($notification->notification_type == 'Comment')
+                            <span id="textnotifishow">commented on your post.</span>
+                        @endif
+                    </span>
+                </div>
+            @endforeach
         </div>
         <div id="footernotifitop"></div>
     </div>
