@@ -59,7 +59,8 @@ class HomeController extends BaseController
     {  
         // Get the information about the user along with their post
         $user = $this->user->getPosts($username);
-        return View::make('profile.index')->with(compact('user'));
+        $notifications = $this->notifications->latest(Auth::user());
+        return View::make('profile.index')->with(compact('user', 'notifications'));
     }
 
     /**
