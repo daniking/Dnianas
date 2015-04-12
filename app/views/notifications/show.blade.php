@@ -1,6 +1,8 @@
 <span class="text-top" id="opennotifii">
     Notifications
-    <span class="not_nu1">2</span>
+    @if($notifications && $notifications->count() )
+        <span class="not_nu1">{{ $notifications->count() }}</span>
+    @endif
 </span>
 <div id="_whnb12">
     <div class="boxnotifi _12nca">
