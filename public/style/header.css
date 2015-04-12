@@ -250,7 +250,7 @@
 	font-weight:bold;
 	position:relative;
 	display:block;
-	width:80%;
+	width:60%;
 	top:10px;
 	left:10px;
 	line-height:16px;
@@ -442,4 +442,11 @@
 
 .search-peple:-ms-input-placeholder {
     color: #8EACBB;
+}
+.notification-time
+{
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
+    color: #999;
 }
