@@ -12,7 +12,7 @@
         </div>
         <div class="boxnotificationsusers">
             @foreach($notifications as $notification)
-                <div id="boxsendnotifi">
+                <a href="/"><div id="boxsendnotifi">
                     <img src="{{ profile_picture($notification->sender) }}" id="picnotifishow">
                     <span id="namenotifishow">{{ $notification->sender->first_name }}
                         @if($notification->notification_type == 'Like')
@@ -24,7 +24,7 @@
                         @endif
                         <div class="notification-time" data-livestamp="{{ format_date($notification->created_at) }}"></div>
                     </span>
-                </div>
+                </div></a>
             @endforeach
         </div>
         <div id="footernotifitop"></div>
