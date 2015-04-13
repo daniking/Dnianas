@@ -40,4 +40,16 @@ class NotificationRepository
             'seen' => 0,
         ]);
     }
+
+    public function delete($sender_id, $recipient_id, $object_id, $object_type, $notification_type)
+    {
+        Notification::where([
+            'sender_id' => $sender_id,
+            'recipient_id' => $recipient_id,
+            'object_id' => $object_id,
+            'object_type' => $object_type,
+            'notification_type' =>  $notification_type,
+            'seen' => 0,
+        ])->delete();
+    }
 }
