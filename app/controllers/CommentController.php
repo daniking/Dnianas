@@ -4,6 +4,8 @@ use Dnianas\Comment\CommentCreationService;
 use Dnianas\Forms\CommentForm;
 use Laracasts\Validation\FormValidationException;
 
+use Dnianas\Notification\NotificationRepository;
+
 class CommentController extends BaseController
 {
 
@@ -19,16 +21,20 @@ class CommentController extends BaseController
 
     protected $user;
 
+    protected $notification;
+
     /**
      * @param CommentForm $commentForm
      * @param CommentCreationService $comment
      * @param UserRepository $user
      */
-    public function __construct(UserRepository $user, CommentForm $commentForm, CommentCreationService $comment)
+    public function __construct(UserRepository $user, CommentForm $commentForm, CommentCreationService $comment,
+            NotificationRepository $notificationRepository)
     {
         $this->commentForm = $commentForm;
         $this->user = $user;
         $this->comment = $comment;
+        $this->notification = $notificationRepository;
     }
 
     /**
@@ -53,14 +59,8 @@ class CommentController extends BaseController
         $this->comment->create(Input::all(), Auth::user()->id);
 
         // Inform the user about the action.
-            Notification::firstOrCreate([
-                'sender_id' => Auth::user()->id,
-                'recipient_id' => Input::get('user_id'),
-                'object_id' => Input::get('post_id'),
-                'object_type' => 'Post',
-                'notification_type' => 'Comment',
-                'seen' => 0,
-            ]);
+        $this->notification->send(Auth::user()->id, Input::get('user_id'), Input::get('post_id'), 'Post', 'Comment');
+
         // Get the html content from the view
         $html = View::make('posts.comment-insert')->render();
 
