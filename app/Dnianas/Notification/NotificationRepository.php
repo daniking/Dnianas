@@ -42,11 +42,11 @@ class NotificationRepository
         ]);
 
         // Update the updated_at field to inform the user about the new notifications.
-        if ($notification && $notification->count()) {
-            return $notification->touch(); 
+        if (!$notification && $notification->count()) {
+            $notification->save();
         }
-
-        return $notification;
+        
+        return $notification->touch(); 
     }
 
     public function delete($sender_id, $recipient_id, $object_id, $object_type, $notification_type)
