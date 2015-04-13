@@ -3,7 +3,7 @@ use Laracasts\Validation\FormValidationException;
 use Dnianas\User\UserRepository;
 use Dnianas\Post\PostCreationService;
 use Dnianas\Post\PostRepository;
-
+use Dnianas\Notification\NotificationRepository;
 use Dnianas\Forms\PostForm;
 
 class PostController extends BaseController
@@ -21,18 +21,22 @@ class PostController extends BaseController
 
     protected $user;
 
+    protected $notification;
+
     /**
      * @param UserRepository $user
      * @param PostForm $postForm
      * @param PostCreationService $post
      * @param PostRepository $postRepo
      */
-    public function __construct(UserRepository $user, PostForm $postForm, PostCreationService $post, PostRepository $postRepo)
+    public function __construct(UserRepository $user, PostForm $postForm, PostCreationService $post, PostRepository $postRepo,
+            NotificationRepository $notificationRepo)
     {
         $this->posts = $postRepo;
         $this->postForm = $postForm;
         $this->post = $post;
         $this->user = $user;
+        $this->notification = $notificationRepo;
     }
 
     public function index()
@@ -114,14 +118,8 @@ class PostController extends BaseController
             // Like the post 
             $this->posts->like($post_id, Auth::user());
 
-            Notification::firstOrCreate([
-                'sender_id' => $user->id,
-                'recipient_id' => Input::get('user_id'),
-                'object_id' => $post_id,
-                'object_type' => 'Post',
-                'notification_type' => 'Like',
-                'seen' => 0,
-            ]);
+            // Send the notification
+            $this->notification->send($user->id, Input::get('user_id'), $post_id, 'Post', 'Like');
 
             return Response::json([
                 'like'      => 'true',
@@ -133,13 +131,7 @@ class PostController extends BaseController
         $this->posts->unlike($post_id, Auth::user());
 
         // Delete the notification
-        Notification::where([
-            'sender_id' => $user->id,
-            'object_id' => $post_id,
-            'object_type' => 'Post',
-            'notification_type' => 'Like',
-            'seen' => 0,
-        ])->delete();
+        $this->notification->delete($user->id, Input::get('user_id'), $post_id, 'Post', 'Like');
 
         return Response::json([
             'unlike'     => 'true',
