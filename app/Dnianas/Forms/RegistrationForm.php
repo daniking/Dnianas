@@ -9,8 +9,8 @@ class RegistrationForm extends FormValidator
      * @var array
      */
     protected $rules = [
-        'first_name'       => 'required|min:2|max:16|alpha',
-        'last_name'        => 'required|min:2|max:16|alpha',
+        'first_name'       => 'required|min:2|max:10|alpha',
+        'last_name'        => 'required|min:2|max:10|alpha',
         'username'         => 'required|min:3|max:32|alpha_num|unique:users',
         'email'            => 'required|email|unique:users',
         'password'         => 'required|min:6|max:32',
