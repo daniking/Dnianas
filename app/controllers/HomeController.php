@@ -24,7 +24,7 @@ class HomeController extends BaseController
      * The notifications repository
      *  @var Dnianas\Notification\NotificationRepository
      */
-    protected $notifications;
+    protected $notification;
 
     protected $profilePicture;
 
@@ -33,7 +33,7 @@ class HomeController extends BaseController
     {
         $this->user = $userRepo;
         $this->post = $postRepo;
-        $this->notifications = $notificationRepo;
+        $this->notification = $notificationRepo;
     }
 
     public function index()
@@ -42,7 +42,7 @@ class HomeController extends BaseController
         if (Auth::check()) {
             $posts = $this->user->getFeed(Auth::user());
             $about = $this->user->getAbout(Auth::user());
-            $notifications = $this->notifications->latest(Auth::user());
+            $notifications = $this->notification->latest(Auth::user());
             return View::make("home.index", compact('posts', 'about', 'notifications'));
         }
 
@@ -59,7 +59,7 @@ class HomeController extends BaseController
     {  
         // Get the information about the user along with their post
         $user = $this->user->getPosts($username);
-        $notifications = $this->notifications->latest(Auth::user());
+        $notifications = $this->notification->latest(Auth::user());
         return View::make('profile.index')->with(compact('user', 'notifications'));
     }
 
@@ -79,14 +79,7 @@ class HomeController extends BaseController
             $this->user->follow($profile_id, $user);
 
             // Inform the user about the action.
-            Notification::firstOrCreate([
-                'sender_id' => $user->id,
-                'recipient_id' => $profile_id,
-                'object_id' => $profile_id,
-                'object_type' => 'User',
-                'notification_type' => 'Follow',
-                'seen' => 0,
-            ]);
+            $this->notification->send($user->id, $profile_id, $profile_id, 'User', 'Follow');
 
             return Response::json([
                 'follow' => 'true'
@@ -97,13 +90,7 @@ class HomeController extends BaseController
         $this->user->unfollow($profile_id, $user);
 
         // Delete the notification
-        Notification::where([
-            'sender_id' => $user->id,
-            'object_id' => $profile_id,
-            'object_type' => 'User',
-            'notification_type' => 'Follow',
-            'seen' => 0,
-        ])->delete();
+         $this->notification->delete($user->id, $profile_id, $profile_id, 'User', 'Follow');
 
         return Response::json([
             'unfollow' => 'true'
