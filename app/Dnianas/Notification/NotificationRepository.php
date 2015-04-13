@@ -31,7 +31,7 @@ class NotificationRepository
      */
     public function send($sender_id, $recipient_id, $object_id, $object_type, $notification_type)
     {
-        Notification::firstOrCreate([
+        $notification  = Notification::firstOrNew([
             'sender_id' => $sender_id,
             'recipient_id' => $recipient_id,
             'object_id' => $object_id,
@@ -39,6 +39,13 @@ class NotificationRepository
             'notification_type' => $notification_type,
             'seen' => 0,
         ]);
+
+        // Update the updated_at field to inform the user about the new notifications.
+        if ($notification && $notification->count()) {
+            return $notification->touch(); 
+        }
+
+        return $notification;
     }
 
     public function delete($sender_id, $recipient_id, $object_id, $object_type, $notification_type)
