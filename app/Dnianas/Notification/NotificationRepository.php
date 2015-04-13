@@ -41,11 +41,12 @@ class NotificationRepository
             'seen' => 0,
         ]);
 
-        // Update the updated_at field to inform the user about the new notifications.
+        // If there wasn't any notification with those attributes
         if (!$notification && $notification->count()) {
             $notification->save();
         }
-        
+
+        // Otherwise, Just change the updated_at timestamp.
         return $notification->touch(); 
     }
 
