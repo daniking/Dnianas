@@ -228,10 +228,14 @@
 }
 #boxsendnotifi{
     padding: 5px;
-	width:100%;
+	width:97%;
 	height:55px;
 	border-bottom:1px solid #ccc;
 
+}
+
+#boxsendnotifi:hover {
+    background: #F2F2F2;
 }
 #picnotifishow{
 	width:45px;
