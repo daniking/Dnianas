@@ -12,7 +12,7 @@
         </div>
         <div class="boxnotificationsusers">
             @foreach($notifications as $notification)
-                <a href="/"><div id="boxsendnotifi">
+                <a href="/"><div id="boxsendnotifi" data-id="{{ $notification->id }}">
                     <img src="{{ profile_picture($notification->sender) }}" id="picnotifishow">
                     <span id="namenotifishow">{{ $notification->sender->first_name }}
                         @if($notification->notification_type == 'Like')
