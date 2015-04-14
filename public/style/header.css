@@ -231,7 +231,6 @@
 	width:97%;
 	height:55px;
 	border-bottom:1px solid #ccc;
-
 }
 
 #boxsendnotifi:hover {
@@ -453,4 +452,11 @@
     font-weight: 400;
     margin-top: 5px;
     color: #999;
+}
+
+.unread {
+    background: #F1F1F1;
+}
+#boxsendnotifi.unread:hover {
+    background: #FFF;
 }
