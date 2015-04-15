@@ -4,7 +4,7 @@ use Dnianas\Post\PostRepository;
 
 use Dnianas\User\UserRepository;
 
-Use Dnianas\Notification\NotificationRepository;
+use Dnianas\Notification\NotificationRepository;
 
 class HomeController extends BaseController
 {
