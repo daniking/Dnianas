@@ -1,6 +1,6 @@
 <span class="text-top" id="opennotifii">
     Notifications
-    @if($notifications && $notifications->count())
+    @if($notificationCount && $notificationCount->count())
         <span class="not_nu1">{{ $notificationCount->count() }}</span>
     @endif
 </span>
