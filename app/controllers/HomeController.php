@@ -43,7 +43,12 @@ class HomeController extends BaseController
             $posts = $this->user->getFeed(Auth::user());
             $about = $this->user->getAbout(Auth::user());
             $notifications = $this->notification->latest(Auth::user());
-            return View::make("home.index", compact('posts', 'about', 'notifications'));
+            $notificationCount = $notifications->filter(function($notification) {
+                if($notification->seen == 0) {
+                    return true;
+                }
+            });
+            return View::make("home.index", compact('posts', 'about', 'notifications', 'notificationCount'));
         }
 
         // Otherwise, show the login/registeration page
