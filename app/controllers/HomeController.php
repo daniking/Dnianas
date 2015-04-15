@@ -69,7 +69,15 @@ class HomeController extends BaseController
         // Get the information about the user along with their post
         $user = $this->user->getPosts($username);
         $notifications = $this->notification->latest(Auth::user());
-        return View::make('profile.index')->with(compact('user', 'notifications'));
+
+        // Get only the notification count for those are new.
+        $notificationCount = $notifications->filter(function($notification) 
+        {
+            if($notification->seen == 0) {
+                return true;
+            }
+        });
+        return View::make('profile.index')->with(compact('user', 'notifications', 'notificationCount'));
     }
 
     /**
