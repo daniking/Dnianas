@@ -14,7 +14,7 @@
             @foreach($notifications as $notification)
                 <a href="/">
                     @if($notification->seen == 0)
-                        <div id="boxsendnotifi" class="unread" data-id="{{ $notification->id }}">
+                        <div id="boxsendnotifi" class="unread" data-id="{{ $notification->id }}" data-read="0">
                     @else
                         <div id="boxsendnotifi" data-id="{{ $notification->id }}">
                     @endif
