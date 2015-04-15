@@ -108,3 +108,5 @@ Route::post('posts/like', 'PostController@like')->before('auth');
  */
 Route::post('follow', ['as' => 'follow_path', 'uses' => 'HomeController@follow']);
 
+
+Route::post('/notifications/read', 'NotificationController@read');
