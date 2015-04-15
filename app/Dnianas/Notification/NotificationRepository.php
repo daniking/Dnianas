@@ -14,7 +14,6 @@ class NotificationRepository
         $notifications = Notification::with('sender')
         ->where('recipient_id', $user->id)
         ->where('sender_id', '!=', $user->id)
-        ->where('seen', 0)
         ->latest()
         ->get();
 
