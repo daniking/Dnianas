@@ -171,3 +171,36 @@ $('#followBtn').hover(function() {
         $followBtn.css('background', '');
     }
 });
+
+
+$body.on('click', '#opennotifii', function() {
+    $notification = $(this);
+    $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
+    ids = [];
+
+    $notifications.each(function(index, value) {
+        if($(this).data('read') == 0) {
+            ids.push($(this).data('id'));
+        }
+    });
+
+    
+    if(ids.length > 0)  {
+        $.ajax({
+            url: '/notifications/read',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                notifications: ids,
+                _token: token,
+            }
+        }) 
+        .done(function(data) {
+            if(data.seen) {
+                $notification.find('.not_nu1').fadeOut(200);
+                $notifications.removeClass('unread');
+            }
+        });        
+   }
+
+});
