@@ -1,6 +1,8 @@
 <?php 
 namespace Dnianas\Uploads;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 class Photo 
 {    
 
@@ -28,15 +30,25 @@ class Photo
      */
     public $path;
 
-    public function makeProfilePicture($input)
+    /**
+     * The input from the user, Usually it's the file.
+     * @var object
+     */
+    public $input;
+
+    public function __construct(UploadedFile $input)
     {
-        $this->fileName     = $input->getClientOriginalName();
-        $this->extension    = $input->getClientOriginalExtension();
+        $this->input        = $input;
+        $this->fileName     = $this->input->getClientOriginalName();
+        $this->extension    = $this->input->getClientOriginalExtension();
         $this->hashedName   = sha1(time() . $this->fileName);
         $this->path         = $this->hashedName . '.' .$this->extension;
+    }
 
+    public function makeProfilePicture()
+    {
         // Resize the image
-        $image = \Image::make($input);
+        $image = \Image::make($this->input);
         $image->fit(300, 300);
 
         // Set the destination
@@ -49,15 +61,10 @@ class Photo
         return $this;
     }
 
-    public function makeCoverPhoto($input)
+    public function makeCoverPhoto()
     {
-        $this->fileName     = $input->getClientOriginalName();
-        $this->extension    = $input->getClientOriginalExtension();
-        $this->hashedName   = sha1(time() . $this->fileName);
-        $this->path         = $this->hashedName . '.' .$this->extension;
-
         // Resize the image
-        $image = \Image::make($input);
+        $image = \Image::make($this->input);
         $image->fit(900, 350);
 
         // Set the destination
