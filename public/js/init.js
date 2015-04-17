@@ -37,7 +37,7 @@ $body.on('click', '#likePost', (function (event) {
     var user_id  = $(this).parents().get(2).dataset.userid;
     var $postLike = $(this);
     var $postLikeEl = $postLike.children('#likeCount');
-    var $postLikeCount = $postLikeEl.text();
+    var $postLikeCount = $postLikeEl.data('count');
     $.ajax({
         url: '/posts/like',
         type: 'POST',
