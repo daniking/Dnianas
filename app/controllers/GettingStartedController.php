@@ -93,7 +93,6 @@ class GettingStartedController extends BaseController
         }
 
         // Resize the profile picture and save
-        // 
         $profilePicture = (new Photo($input))->makeProfilePicture();
 
         $user = Auth::user();
