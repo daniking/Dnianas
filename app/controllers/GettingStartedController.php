@@ -28,10 +28,9 @@ class GettingStartedController extends BaseController
      * Inject the depenencies to the controller
      * @param Object $user The user repository
      */
-    public function __construct(UserRepository $user, Photo $photo, UserRegisterService $registeration)
+    public function __construct(UserRepository $user, UserRegisterService $registeration)
     {
         $this->user     = $user;
-        $this->photo    = $photo;
         $this->registeration = $registeration;
     }
 
@@ -94,7 +93,8 @@ class GettingStartedController extends BaseController
         }
 
         // Resize the profile picture and save
-        $profilePicture = $this->photo->makeProfilePicture($input);
+        // 
+        $profilePicture = (new Photo($input))->makeProfilePicture();
 
         $user = Auth::user();
 
@@ -122,7 +122,8 @@ class GettingStartedController extends BaseController
         }
         
         // Resize the cover photo and store it.
-        $cover = $this->photo->makeCoverPhoto(Input::file('cover_photo'));
+        $input = Input::file('cover_photo');
+        $cover = (new Photo($input))->makeCoverPhoto();
 
         $user = Auth::user();
 
