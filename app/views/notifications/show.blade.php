@@ -27,7 +27,7 @@
                             @elseif($notification->notification_type == 'Comment')
                                 <span id="textnotifishow">commented on your post.</span>
                             @endif
-                            <div class="notification-time" data-livestamp="{{ format_date($notification->created_at) }}"></div>
+                            <div class="notification-time" data-livestamp="{{ format_date($notification->updated_at) }}"></div>
                         </span>
                     </div>
                 </a>
