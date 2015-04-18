@@ -38,16 +38,17 @@ class NotificationRepository
             'object_id' => $object_id,
             'object_type' => $object_type,
             'notification_type' => $notification_type,
-            'seen' => 0,
         ]);
 
         // If there wasn't any notification with those attributes
         if (!$notification && $notification->count()) {
+            $notification->seen = 0;
             $notification->save();
         }
 
-        // Otherwise, Just change the updated_at timestamp.
-        return $notification->touch(); 
+        // Otherwise, Change the seen status and the updated_at timestamp.
+        $notification->seen = 0;
+        $notification->touch();
     }
 
     public function delete($sender_id, $recipient_id, $object_id, $object_type, $notification_type)
