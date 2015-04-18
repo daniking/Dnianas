@@ -15,7 +15,7 @@ class NotificationRepository
         ->where('recipient_id', $user->id)
         ->where('sender_id', '!=', $user->id)
         ->take(5)
-        ->latest()
+        ->orderBy('updated_at', 'desc')
         ->get();
 
         return $notifications;
