@@ -198,7 +198,6 @@ $body.on('click', '#opennotifii', function() {
         .done(function(data) {
             if(data.seen) {
                 $notification.find('.not_nu1').fadeOut(200);
-                $notifications.removeClass('unread');
             }
         });        
    }
