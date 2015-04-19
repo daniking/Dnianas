@@ -10,7 +10,6 @@
 <link href="{{ asset('style/profile.css') }}"rel="stylesheet">
 <link href="{{ asset('style/mini/media.css') }}" rel="stylesheet">
 <link rel="shortcut icon" href="http://faviconist.com/icons/a80270e82deef64f904f2b589880a4f3/favicon.ico" />
-<link href="{{ asset('style/jquery.cssemoticons.css') }}" media="screen" rel="stylesheet" type="text/css" />
 <title>Dnianas</title>
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 </head>
