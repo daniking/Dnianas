@@ -1,8 +1,8 @@
 var Dnianas = Dnianas || {};
 
 var $loading    = $('#ajax-loader'),
-    token       = $('input[name=_token]').val(),
-    $body       = $('body');
+token       = $('input[name=_token]').val(),
+$body       = $('body');
 
 // The default AJAX config.
 $.ajaxSetup({
@@ -20,22 +20,21 @@ Dnianas.Post = {
 
     cache: function() {
         this.postForm = $('#postForm');
+        this.likeButton = $('#likePost');
     },
 
     bindEvents: function() {
-        $body.on('submit', this.postForm, this.createPost);
+        this.postForm.on('submit' , this.createPost);
+        this.likeButton.on('click', this.likePost);
     },
 
     createPost: function(event) {
         var self = Dnianas.Post;
-        var data = {
-            post_content: $(this).find('textarea').val(),
-            _token: token
-        };
+        
         var request = $.ajax(
         {
             url: '/posts/create',
-            data: data,
+            data: $(this).serialize(),
             beforeSend: function() {
                 $loading.show();
             },
@@ -59,7 +58,18 @@ Dnianas.Post = {
             $(data.post_html).insertAfter(this.postForm).hide().delay(100).slideDown(400);
             $('.no-posts').hide();
         }
+    },
+
+    likePost: function() {
+        var post_id = $(this).parents().get(2).dataset.id;
+        var user_id  = $(this).parents().get(2).dataset.userid;
+        var $postLike = $(this);
+        var $postLikeEl = $postLike.children('#likeCount');
+        var postLikeCount = $postLikeEl.data('count');
+
+        console.log(postLikeCount);
     }
+
 };
 
 Dnianas.Post.init();
