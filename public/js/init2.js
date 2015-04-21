@@ -1,8 +1,8 @@
 var Dnianas = Dnianas || {};
 
-var $loading    = $('#ajax-loader'),
-token       = $('input[name=_token]').val(),
-$body       = $('body');
+var $loading = $('#ajax-loader'),
+    token = $('input[name=_token]').val(),
+    $body = $('body');
 
 // The default AJAX config.
 $.ajaxSetup({
@@ -12,8 +12,6 @@ $.ajaxSetup({
 
 // The Post object for posting related stuff.
 Dnianas.Post = {
-
-
 
     init: function() {
         this.cache();
@@ -33,8 +31,7 @@ Dnianas.Post = {
     createPost: function(event) {
         self = Dnianas.Post;
 
-        var request = $.ajax(
-        {
+        var request = $.ajax({
             url: '/posts/create',
             data: $(this).serialize(),
             beforeSend: function() {
@@ -66,7 +63,7 @@ Dnianas.Post = {
         self = Dnianas.Post;
         $this = $(this);
         post_id = $(this).parents().get(2).dataset.id;
-        user_id  = $(this).parents().get(2).dataset.userid;
+        user_id = $(this).parents().get(2).dataset.userid;
         $postLikeEl = $this.children('#likeCount');
         postLikeCount = $postLikeEl.data('count');
 
@@ -96,8 +93,43 @@ Dnianas.Post = {
             $postLikeEl.removeClass('liked');
         }
         $postLikeEl.text(data.like_count);
-    }
+    },
 
+    getNewPosts: function() {
+        var $postEl = $('.poster_memb .tab_post');
+        var self    = Dnianas.Post;
+        if ($postEl.length) {
+            var ids = $postEl.map(function() {
+                return +$(this).data('id') || 0;
+            });
+
+            var last_id = Math.max.apply(Math, ids);
+        } else {
+            last_id = 0;
+        }
+
+        var request = $.ajax({
+            url: '/posts/latest/' + last_id,
+            type: 'GET',
+            dataType: 'JSON'
+        });
+        
+        request.done(function(data) {
+            self.renderLatestPost(data);
+        });
+    },
+
+    renderLatestPost: function(data) {
+        if (data) {
+            if (data.is_new = 'true' && data.html) {
+                $('.no-posts').hide();
+                $(data.html).insertAfter('#postForm').hide().slideDown(500);
+            }
+        }
+        // Run the function every 10 seconds.
+        setTimeout(this.getNewPosts, 10000);
+    }
 };
+
 
 Dnianas.Post.init();
