@@ -123,7 +123,7 @@ class PostController extends BaseController
 
             return Response::json([
                 'like'      => 'true',
-                'like_count' => $like_count++,
+                'like_count' => $like_count == 0 ? $like_count += 1 : $like_count++,
             ]);
         }
         
