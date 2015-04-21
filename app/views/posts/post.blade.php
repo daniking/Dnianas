@@ -3,7 +3,7 @@
         <img src="{{ profile_picture(Auth::user()) }}" id="clicksows">
         <div class="hover_profile" style="display: none;">
 
-            <img src="/photos/cover.jpg" class="small_cover">
+            <img src="cover_photo(Auth::user())" class="small_cover">
             <a href="/profile.php">
                 <img src="{{ profile_picture(Auth::user()) }}" class="small_profie">
                 <h1 class="users_small"></h1>
