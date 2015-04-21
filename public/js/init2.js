@@ -66,8 +66,8 @@ Dnianas.Post = {
         postLikeCount = postLikeCountEl.data('count');
 
         var data = {
-            post_id: likePostEl.parents().get(2).data('id'),
-            user_id: likePostEl.parents().get(2).data('userid'),
+            post_id: likePostEl.parents().get(2).dataset.id,
+            user_id: likePostEl.parents().get(2).dataset.userid,
             like_count: postLikeCount,
             _token: token
         };
