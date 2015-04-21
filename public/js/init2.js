@@ -61,15 +61,13 @@ Dnianas.Post = {
 
     likePost: function() {
         self = Dnianas.Post;
-        likePostElement = $(this);
-        post_id = likePostElement.parents().get(2).dataset.id;
-        user_id = likePostElement.parents().get(2).dataset.userid;
-        postLikeCountElement = likePostElement.children('#likeCount');
-        postLikeCount = postLikeCountElement.data('count');
+        likePostEl = $(this);
+        postLikeCountEl = likePostEl.children('#likeCount');
+        postLikeCount = postLikeCountEl.data('count');
 
         var data = {
-            post_id: post_id,
-            user_id: user_id,
+            post_id: likePostEl.parents().get(2).data('id'),
+            user_id: likePostEl.parents().get(2).data('userid'),
             like_count: postLikeCount,
             _token: token
         };
@@ -86,13 +84,13 @@ Dnianas.Post = {
 
     renderPostLike: function(data) {
         if (data.like) {
-            likePostElement.children('.likeIcon').addClass('liked');
-            postLikeCountElement.addClass('liked');
+            likePostEl.children('.likeIcon').addClass('liked');
+            postLikeCountEl.addClass('liked');
         } else {
-            likePostElement.children('.likeIcon').removeClass('liked');
-            postLikeCountElement.removeClass('liked');
+            likePostEl.children('.likeIcon').removeClass('liked');
+            postLikeCountEl.removeClass('liked');
         }
-        postLikeCountElement.text(data.like_count);
+        postLikeCountEl.text(data.like_count);
     },
 
     getNewPosts: function() {
