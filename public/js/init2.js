@@ -13,6 +13,8 @@ $.ajaxSetup({
 // The Post object for posting related stuff.
 Dnianas.Post = {
 
+
+
     init: function() {
         this.cache();
         this.bindEvents();
@@ -24,13 +26,13 @@ Dnianas.Post = {
     },
 
     bindEvents: function() {
-        this.postForm.on('submit' , this.createPost);
-        this.likeButton.on('click', this.likePost);
+        $(document).on('submit', '#postForm', this.createPost);
+        $(document).on('click', '#likePost', this.likePost);
     },
 
     createPost: function(event) {
-        var self = Dnianas.Post;
-        
+        self = Dnianas.Post;
+
         var request = $.ajax(
         {
             url: '/posts/create',
@@ -61,13 +63,39 @@ Dnianas.Post = {
     },
 
     likePost: function() {
-        var post_id = $(this).parents().get(2).dataset.id;
-        var user_id  = $(this).parents().get(2).dataset.userid;
-        var $postLike = $(this);
-        var $postLikeEl = $postLike.children('#likeCount');
-        var postLikeCount = $postLikeEl.data('count');
+        self = Dnianas.Post;
+        $this = $(this);
+        post_id = $(this).parents().get(2).dataset.id;
+        user_id  = $(this).parents().get(2).dataset.userid;
+        $postLikeEl = $this.children('#likeCount');
+        postLikeCount = $postLikeEl.data('count');
 
-        console.log(postLikeCount);
+        var data = {
+            post_id: post_id,
+            user_id: user_id,
+            like_count: postLikeCount,
+            _token: token
+        };
+
+        var request = $.ajax({
+            url: '/posts/like',
+            data: data
+        });
+
+        request.done(function(data) {
+            self.renderPostLike(data);
+        });
+    },
+
+    renderPostLike: function(data) {
+        if (data.like) {
+            $this.children('.likeIcon').addClass('liked');
+            $postLikeEl.addClass('liked');
+        } else {
+            $this.children('.likeIcon').removeClass('liked');
+            $postLikeEl.removeClass('liked');
+        }
+        $postLikeEl.text(data.like_count);
     }
 
 };
