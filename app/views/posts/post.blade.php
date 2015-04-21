@@ -1,15 +1,6 @@
 <div class="tab_post" id="users_shows" data-id="{{ $post_id }}">
     <div id="abo_users_po">
         <img src="{{ profile_picture(Auth::user()) }}" id="clicksows">
-        <div class="hover_profile" style="display: none;">
-
-            <img src="cover_photo(Auth::user())" class="small_cover">
-            <a href="/profile.php">
-                <img src="{{ profile_picture(Auth::user()) }}" class="small_profie">
-                <h1 class="users_small"></h1>
-
-            </a>
-        </div>
         <span><a href="">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a></span>
         <span class="data_post" data-livestamp="{{ Carbon::now()->timestamp }}"></span>
     </div>
