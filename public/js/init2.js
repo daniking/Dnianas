@@ -62,8 +62,8 @@ Dnianas.Post = {
     likePost: function() {
         self = Dnianas.Post;
         likePostElement = $(this);
-        post_id = $(this).parents().get(2).dataset.id;
-        user_id = $(this).parents().get(2).dataset.userid;
+        post_id = likePostElement.parents().get(2).dataset.id;
+        user_id = likePostElement.parents().get(2).dataset.userid;
         postLikeCountElement = likePostElement.children('#likeCount');
         postLikeCount = postLikeCountElement.data('count');
 
