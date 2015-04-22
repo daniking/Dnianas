@@ -21,6 +21,7 @@ Dnianas.Post = {
     cache: function() {
         this.postForm = $('#postForm');
         this.likeButton = $('#likePost');
+        $postEl = $('.poster_memb .tab_post');
     },
 
     bindEvents: function() {
@@ -93,20 +94,28 @@ Dnianas.Post = {
         $postLikeCountEl.text(data.like_count);
     },
 
-    getNewPosts: function() {
-        var $postEl = $('.poster_memb .tab_post');
-        var self    = Dnianas.Post;
+    getLastId: function() {
+
+        var ids = [];
+        last_id = 0;
+
         if ($postEl.length) {
-            var ids = $postEl.map(function() 
+            ids = $postEl.map(function() 
             {
                 return +$(this).data('id') || 0;
             });
 
-            var last_id = Math.max.apply(Math, ids);
+            last_id = Math.max.apply(Math, ids);
         } else {
             last_id = 0;
         }
 
+        return last_id;
+    },
+
+    getNewPosts: function() {
+        var self    = Dnianas.Post;
+        last_id     = this.getLastId();
         var request = $.ajax({
             url: '/posts/latest/' + last_id,
             type: 'GET',
@@ -169,8 +178,8 @@ Dnianas.Comment = {
     },
 
     renderCreatedComment: function(data) {
-     $(data.html).insertBefore($comment_input.parent());
-    }
+       $(data.html).insertBefore($comment_input.parent());
+   }
 
 };
 
@@ -187,46 +196,46 @@ Dnianas.Notification = {
 
     cache: function() {
       $notification = $('#opennotifii');
-    },
+  },
 
-    countNotifications: function() {
-        var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
-        ids = [];
+  countNotifications: function() {
+    var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
+    ids = [];
 
-        $notifications.each(function(index, value) {
-            if($(this).data('read') == 0) {
-                ids.push($(this).data('id'));
+    $notifications.each(function(index, value) {
+        if($(this).data('read') == 0) {
+            ids.push($(this).data('id'));
+        }
+    });
+
+    return ids;
+},
+
+markAsRead: function() {
+    self = Dnianas.Notification;
+    ids = self.countNotifications();
+
+    if(ids.length > 0)  {
+        $.ajax({
+            url: '/notifications/read',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                notifications: ids,
+                _token: token,
             }
-        });
-
-        return ids;
-    },
-
-    markAsRead: function() {
-        self = Dnianas.Notification;
-        ids = self.countNotifications();
-
-        if(ids.length > 0)  {
-            $.ajax({
-                url: '/notifications/read',
-                type: 'POST',
-                dataType: 'JSON',
-                data: {
-                    notifications: ids,
-                    _token: token,
-                }
-            }) 
-            .done(function(data) {
-                self.renderNotificationCount(data);
-            });        
-        }
-    },
-
-    renderNotificationCount: function(data) {
-        if(data.seen) {
-            $notification.find('.not_nu1').fadeOut(200);
-        }
+        }) 
+        .done(function(data) {
+            self.renderNotificationCount(data);
+        });        
     }
+},
+
+renderNotificationCount: function(data) {
+    if(data.seen) {
+        $notification.find('.not_nu1').fadeOut(200);
+    }
+}
 };
 
 Dnianas.Post.init();
