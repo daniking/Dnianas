@@ -21,7 +21,6 @@ Dnianas.Post = {
     cache: function() {
         this.postForm = $('#postForm');
         this.likeButton = $('#likePost');
-        $postEl = $('.poster_memb .tab_post');
     },
 
     bindEvents: function() {
@@ -95,8 +94,12 @@ Dnianas.Post = {
     },
 
     getLastId: function() {
+    },
 
+    getNewPosts: function() {
+        var self = Dnianas.Post;
         var ids = [];
+        var $postEl = $('.poster_memb .tab_post');
         last_id = 0;
 
         if ($postEl.length) {
@@ -108,14 +111,6 @@ Dnianas.Post = {
         } else {
             last_id = 0;
         }
-
-        return last_id;
-    },
-
-    getNewPosts: function() {
-        var self = Dnianas.Post;
-        last_id = this.getLastId();
-
 
         var request = $.ajax({
             url: '/posts/latest/' + last_id,
