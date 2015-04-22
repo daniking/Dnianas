@@ -1,8 +1,8 @@
 var Dnianas = Dnianas || {};
 
 var $loading = $('#ajax-loader'),
-token = $('input[name=_token]').val(),
-$body = $('body');
+    token = $('input[name=_token]').val(),
+    $body = $('body');
 
 // The default AJAX config.
 $.ajaxSetup({
@@ -100,8 +100,7 @@ Dnianas.Post = {
         last_id = 0;
 
         if ($postEl.length) {
-            ids = $postEl.map(function() 
-            {
+            ids = $postEl.map(function() {
                 return +$(this).data('id') || 0;
             });
 
@@ -114,14 +113,16 @@ Dnianas.Post = {
     },
 
     getNewPosts: function() {
-        var self    = Dnianas.Post;
-        last_id     = this.getLastId();
+        var self = Dnianas.Post;
+        last_id = this.getLastId();
+
+
         var request = $.ajax({
             url: '/posts/latest/' + last_id,
             type: 'GET',
             dataType: 'JSON'
         });
-        
+
         request.done(function(data) {
             self.renderLatestPost(data);
         });
@@ -134,6 +135,7 @@ Dnianas.Post = {
                 $(data.html).insertAfter('#postForm').hide().slideDown(500);
             }
         }
+
         // Run the function every 10 seconds.
         setTimeout(this.getNewPosts, 10000);
     }
@@ -155,7 +157,7 @@ Dnianas.Comment = {
         if (event.which == 13 && !event.shiftKey) {
 
             post_id = $(this).parents().get(3).dataset.id;
-            user_id  = $(this).parents().get(3).dataset.userid;
+            user_id = $(this).parents().get(3).dataset.userid;
             $comment_input = $(this);
 
             var request = $.ajax({
@@ -178,8 +180,8 @@ Dnianas.Comment = {
     },
 
     renderCreatedComment: function(data) {
-       $(data.html).insertBefore($comment_input.parent());
-   }
+        $(data.html).insertBefore($comment_input.parent());
+    }
 
 };
 
@@ -195,47 +197,49 @@ Dnianas.Notification = {
     },
 
     cache: function() {
-      $notification = $('#opennotifii');
-  },
+        $notification = $('#opennotifii');
+    },
 
-  countNotifications: function() {
-    var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
-    ids = [];
+    countNotifications: function() {
+        var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
+        ids = [];
 
-    $notifications.each(function(index, value) {
-        if($(this).data('read') == 0) {
-            ids.push($(this).data('id'));
-        }
-    });
-
-    return ids;
-},
-
-markAsRead: function() {
-    self = Dnianas.Notification;
-    ids = self.countNotifications();
-
-    if(ids.length > 0)  {
-        $.ajax({
-            url: '/notifications/read',
-            type: 'POST',
-            dataType: 'JSON',
-            data: {
-                notifications: ids,
-                _token: token,
+        $notifications.each(function(index, value) {
+            if ($(this).data('read') == 0) {
+                ids.push($(this).data('id'));
             }
-        }) 
-        .done(function(data) {
-            self.renderNotificationCount(data);
-        });        
-    }
-},
+        });
 
-renderNotificationCount: function(data) {
-    if(data.seen) {
-        $notification.find('.not_nu1').fadeOut(200);
+        return ids;
+    },
+
+    markAsRead: function() {
+        self = Dnianas.Notification;
+        ids = self.countNotifications();
+
+        if (ids.length > 0) {
+            var request = $.ajax(
+            {
+                url: '/notifications/read',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    notifications: ids,
+                    _token: token,
+                }
+            });
+            
+            request.done(function(data) {
+                self.renderNotificationCount(data);
+            });
+        }
+    },
+
+    renderNotificationCount: function(data) {
+        if (data.seen) {
+            $notification.find('.not_nu1').fadeOut(200);
+        }
     }
-}
 };
 
 Dnianas.Post.init();
