@@ -739,14 +739,15 @@ a:hover {
 }
 
 .comment-input {
-    font-family: Arial;
+    border: none;
     outline: none;
+    border: 1px solid #ccc;
     font-size: 13px;
     height: auto;
-    width: 89%;
-    border-color: #CCC;
-    margin: 8px auto 7px;
+    width:89%;
+    margin: 4px auto 7px;
     padding: 1px;
+    resize: none;
 }
 
 .comment-wrapper {
