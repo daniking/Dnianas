@@ -1,8 +1,8 @@
 var Dnianas = Dnianas || {};
 
 var $loading = $('#ajax-loader'),
-    token = $('input[name=_token]').val(),
-    $body = $('body');
+token = $('input[name=_token]').val(),
+$body = $('body');
 
 // The default AJAX config.
 $.ajaxSetup({
@@ -97,7 +97,8 @@ Dnianas.Post = {
         var $postEl = $('.poster_memb .tab_post');
         var self    = Dnianas.Post;
         if ($postEl.length) {
-            var ids = $postEl.map(function() {
+            var ids = $postEl.map(function() 
+            {
                 return +$(this).data('id') || 0;
             });
 
@@ -168,9 +169,66 @@ Dnianas.Comment = {
     },
 
     renderCreatedComment: function(data) {
-         $(data.html).insertBefore($comment_input.parent());
+     $(data.html).insertBefore($comment_input.parent());
+    }
+
+};
+
+
+Dnianas.Notification = {
+    init: function() {
+        this.bindEvents();
+        this.cache();
+    },
+
+    bindEvents: function() {
+        $(document).on('click', '#opennotifii', this.markAsRead);
+    },
+
+    cache: function() {
+      $notification = $('#opennotifii');
+    },
+
+    countNotifications: function() {
+        var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
+        ids = [];
+
+        $notifications.each(function(index, value) {
+            if($(this).data('read') == 0) {
+                ids.push($(this).data('id'));
+            }
+        });
+
+        return ids;
+    },
+
+    markAsRead: function() {
+        self = Dnianas.Notification;
+        ids = self.countNotifications();
+
+        if(ids.length > 0)  {
+            $.ajax({
+                url: '/notifications/read',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    notifications: ids,
+                    _token: token,
+                }
+            }) 
+            .done(function(data) {
+                self.renderNotificationCount(data);
+            });        
+        }
+    },
+
+    renderNotificationCount: function(data) {
+        if(data.seen) {
+            $notification.find('.not_nu1').fadeOut(200);
+        }
     }
 };
 
 Dnianas.Post.init();
 Dnianas.Comment.init();
+Dnianas.Notification.init();
