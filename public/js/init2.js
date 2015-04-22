@@ -93,9 +93,6 @@ Dnianas.Post = {
         $postLikeCountEl.text(data.like_count);
     },
 
-    getLastId: function() {
-    },
-
     getNewPosts: function() {
         var self = Dnianas.Post;
         var ids = [];
