@@ -5,7 +5,7 @@
         <span class="data_post" data-livestamp="{{ Carbon::now()->timestamp }}"></span>
     </div>
     <br>
-    <p> {{  nl2br(e(Input::get('post_content')) }} </p>
+    <p> {{  nl2br(e(Input::get('post_content'))) }} </p>
     <br>
     <div class="place_com_li">
         <div class="bar">
