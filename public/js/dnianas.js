@@ -1,5 +1,6 @@
 $(function(){
 $('.normal').autosize();
+$('.comment-input').autosize();
 });
 $(document).ready(function(){
 	$("._192prosss").hide();
