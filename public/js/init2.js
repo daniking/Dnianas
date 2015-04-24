@@ -2,7 +2,7 @@ var Dnianas = Dnianas || {};
 
 var $loading = $('#ajax-loader'),
     token = $('input[name=_token]').val(),
-    $body = $('body');
+    $body = $('body')
 
 // The default AJAX config.
 $.ajaxSetup({
@@ -24,12 +24,12 @@ Dnianas.Post = {
     },
 
     bindEvents: function() {
-        $(document).on('submit', '#postForm', this.createPost);
-        $(document).on('click', '#likePost', this.likePost);
+        $document.on('submit', '#postForm', this.createPost);
+        $document.on('click', '#likePost', this.likePost);
     },
 
     createPost: function(event) {
-        self = Dnianas.Post;
+        var self = Dnianas.Post;
 
         var request = $.ajax({
             url: '/posts/create',
@@ -196,7 +196,7 @@ Dnianas.Notification = {
         var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
         ids = [];
 
-        $notifications.each(function(index, value) {
+        $notifications.each(function() {
             if ($(this).data('read') == 0) {
                 ids.push($(this).data('id'));
             }
