@@ -3,6 +3,6 @@
 <script src="/js/vendor/livestamp.min.js"></script>
 <script src='/js/vendor/jquery.autosize.js'></script>
 <script src='/js/dnianas.js'></script>
-<script src="/js/init.js"></script>
+<script src="/js/init2.js"></script>
 </body>
 </html>
