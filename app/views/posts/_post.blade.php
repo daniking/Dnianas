@@ -12,7 +12,7 @@
             <span class="data_post" data-livestamp="{{ format_date($post->posted_date) }}"></span>
         </div>
         <br>
-        <p> {{  nl2br(e($post->post_content)) }} </p>
+        <div class="post-content">{{  nl2br(e($post->post_content)) }}</div>
         <br>
         <div class="place_com_li">
             <div class="bar">
