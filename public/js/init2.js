@@ -13,43 +13,43 @@ $.ajaxSetup({
 // The Post object for posting related stuff.
 Dnianas.Post = {
 
-    init: function() {
+    init: function () {
         this.cache();
         this.bindEvents();
     },
 
-    cache: function() {
+    cache: function () {
         this.postForm = $('#postForm');
         this.likeButton = $('#likePost');
     },
 
-    bindEvents: function() {
-        $document.on('submit', '#postForm', this.createPost);
-        $document.on('click', '#likePost', this.likePost);
+    bindEvents: function () {
+        $(document).on('submit', '#postForm', this.createPost);
+        $(document).on('click', '#likePost', this.likePost);
     },
 
-    createPost: function(event) {
+    createPost: function (event) {
         var self = Dnianas.Post;
 
         var request = $.ajax({
             url: '/posts/create',
             data: $(this).serialize(),
-            beforeSend: function() {
+            beforeSend: function () {
                 $loading.show();
             },
-            complete: function() {
+            complete: function () {
                 $loading.hide();
             }
         });
 
-        request.done(function(data) {
+        request.done(function (data) {
             self.renderCreatedPost(data);
         });
 
         event.preventDefault();
     },
 
-    renderCreatedPost: function(data) {
+    renderCreatedPost: function (data) {
         if (data.success == 'false') {
             $('.error').empty().append(data.message).slideDown(100).delay(3000).slideUp(250);
         } else {
@@ -59,7 +59,7 @@ Dnianas.Post = {
         }
     },
 
-    likePost: function() {
+    likePost: function () {
         self = Dnianas.Post;
         $likePostEl = $(this);
         $postLikeCountEl = $likePostEl.children('#likeCount');
@@ -77,12 +77,12 @@ Dnianas.Post = {
             data: data
         });
 
-        request.done(function(data) {
+        request.done(function (data) {
             self.renderPostLike(data);
         });
     },
 
-    renderPostLike: function(data) {
+    renderPostLike: function (data) {
         if (data.like) {
             $likePostEl.children('.likeIcon').addClass('liked');
             $postLikeCountEl.addClass('liked');
@@ -93,14 +93,14 @@ Dnianas.Post = {
         $postLikeCountEl.text(data.like_count);
     },
 
-    getNewPosts: function() {
+    getNewPosts: function () {
         var self = Dnianas.Post;
         var ids = [];
         var $postEl = $('.poster_memb .tab_post');
         last_id = 0;
 
         if ($postEl.length) {
-            ids = $postEl.map(function() {
+            ids = $postEl.map(function () {
                 return +$(this).data('id') || 0;
             });
 
@@ -115,12 +115,12 @@ Dnianas.Post = {
             dataType: 'JSON'
         });
 
-        request.done(function(data) {
+        request.done(function (data) {
             self.renderLatestPost(data);
         });
     },
 
-    renderLatestPost: function(data) {
+    renderLatestPost: function (data) {
         if (data) {
             if (data.is_new = 'true' && data.html) {
                 $('.no-posts').hide();
@@ -135,15 +135,15 @@ Dnianas.Post = {
 
 
 Dnianas.Comment = {
-    init: function() {
+    init: function () {
         this.bindEvents();
     },
 
-    bindEvents: function() {
+    bindEvents: function () {
         $(document).on('keypress', '.comment-input', this.comment);
     },
 
-    comment: function() {
+    comment: function () {
         self = Dnianas.Comment;
 
         if (event.which == 13 && !event.shiftKey) {
@@ -162,7 +162,7 @@ Dnianas.Comment = {
                 }
             });
 
-            request.done(function(data) {
+            request.done(function (data) {
                 self.renderCreatedComment(data);
             });
 
@@ -171,7 +171,7 @@ Dnianas.Comment = {
 
     },
 
-    renderCreatedComment: function(data) {
+    renderCreatedComment: function (data) {
         $(data.html).insertBefore($comment_input.parent());
     }
 
@@ -179,25 +179,25 @@ Dnianas.Comment = {
 
 
 Dnianas.Notification = {
-    init: function() {
+    init: function () {
         this.bindEvents();
         this.cache();
     },
 
-    bindEvents: function() {
+    bindEvents: function () {
         $(document).on('click', '#opennotifii', this.markAsRead);
     },
 
-    cache: function() {
+    cache: function () {
         $notification = $('#opennotifii');
     },
 
-    countNotifications: function() {
+    countNotifications: function () {
         var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
         ids = [];
 
-        $notifications.each(function() {
-            if ($(this).data('read') == 0) {
+        $notifications.each(function () {
+            if ($(this).data('read') === 0) {
                 ids.push($(this).data('id'));
             }
         });
@@ -205,13 +205,12 @@ Dnianas.Notification = {
         return ids;
     },
 
-    markAsRead: function() {
+    markAsRead: function () {
         self = Dnianas.Notification;
         ids = self.countNotifications();
 
         if (ids.length > 0) {
-            var request = $.ajax(
-            {
+            var request = $.ajax({
                 url: '/notifications/read',
                 type: 'POST',
                 dataType: 'JSON',
@@ -220,19 +219,61 @@ Dnianas.Notification = {
                     _token: token,
                 }
             });
-            
-            request.done(function(data) {
+
+            request.done(function (data) {
                 self.renderNotificationCount(data);
             });
         }
     },
 
-    renderNotificationCount: function(data) {
+    renderNotificationCount: function (data) {
         if (data.seen) {
             $notification.find('.not_nu1').fadeOut(200);
         }
     }
 };
+
+Dnianas.User = {
+    init: function () {
+        this.bindEvents();
+    },
+
+    bindEvents: function () {
+        $(document).on('click', '#followBtn', this.follow);
+    },
+
+    follow: function () {
+        $followBtn = $(this);
+        profileId = $followBtn.data('profile-id');
+        var self = this;
+
+        var request = $.ajax({
+            url: '/follow',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                profile_id: profileId,
+                _token: token
+            }
+        });
+
+        request.done(function(data) {
+            self.renderFollow();
+        });
+    },
+
+    renderFollow: function(data) {
+        if (data.follow) {
+            $followBtn.addClass('following');
+            $followBtn.text('Unfollow');
+            $followBtn.data('action', 'unfollow')
+        } else {
+            $followBtn.removeClass('following');
+            $followBtn.text('Follow');
+            $followBtn.data('action', 'follow')
+        }
+    }
+}
 
 Dnianas.Post.init();
 Dnianas.Comment.init();
