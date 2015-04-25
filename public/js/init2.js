@@ -245,7 +245,7 @@ Dnianas.User = {
     follow: function () {
         $followBtn = $(this);
         profileId = $followBtn.data('profile-id');
-        var self = this;
+        self = Dnianas.User;
 
         var request = $.ajax({
             url: '/follow',
@@ -258,7 +258,7 @@ Dnianas.User = {
         });
 
         request.done(function(data) {
-            self.renderFollow();
+            self.renderFollow(data);
         });
     },
 
@@ -278,3 +278,4 @@ Dnianas.User = {
 Dnianas.Post.init();
 Dnianas.Comment.init();
 Dnianas.Notification.init();
+Dnianas.User.init();
