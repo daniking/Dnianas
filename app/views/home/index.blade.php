@@ -16,4 +16,4 @@
     @include('home.right-sidebar')
     @include('home.profile-hover')
 @include('home._partials.logout_box')
-@include('home._partials.footer')
+@include('template._partials.footer')
