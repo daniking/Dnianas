@@ -31,7 +31,6 @@
                 </button>
             </div>
             <div id="titlelicomresh"></div>
-            <br>
             @include('posts._comment')
         </div>
     </div>

@@ -29,6 +29,7 @@
    </div>
 
     <div  id="user_hoprofily">
+        <div class="error" style="display:none"></div>
         @if( $user->id == Auth::user()->id )
             <div class="post-add" style="margin-left: 35px;">
                 @include('home.post-add')

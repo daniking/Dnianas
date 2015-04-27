@@ -787,7 +787,7 @@ a.comment-name {
 }
 .bar {
     position: relative;
-    top: 20px;
+    top: 0px;
 }
 .likeIcon {
     background: transparent;
@@ -820,5 +820,5 @@ div.post {
 }
 
 .post-content {
-    padding: 10px;
+    padding: 12px;
 }
