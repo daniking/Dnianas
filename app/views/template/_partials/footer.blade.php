@@ -14,6 +14,7 @@
     // Enable see more
     $('.post-content').readmore({
         speed: 200,
+        collapsedHeight: 30,
         moreLink: '<a href="#" class="see-more-link">See more</a>',
         lessLink: '<a href="#" class="see-more-link">See less</a>'
     });
