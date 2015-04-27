@@ -822,3 +822,11 @@ div.post {
 .post-content {
     padding: 12px;
 }
+
+.see-more-link {
+    margin-left: 10px;
+    font-size: 14px;
+}
+a.see-more-link {
+    color: #069;
+}
