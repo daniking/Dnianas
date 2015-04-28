@@ -19,7 +19,6 @@
             </button>
         </div>
         <div id="titlelicomresh" style="display: none;"></div>
-        <br>
         <div class="comment-wrapper">
             <div class="comment-insert">
                 <img src="{{ profile_picture(Auth::user()) }}" alt="Profile Picture" class="profile-picture">
