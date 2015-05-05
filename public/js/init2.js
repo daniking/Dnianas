@@ -1,8 +1,8 @@
 var Dnianas = Dnianas || {};
 
 var $loading = $('#ajax-loader'),
-    token = $('input[name=_token]').val(),
-    $body = $('body')
+token = $('input[name=_token]').val(),
+$body = $('body')
 
 // The default AJAX config.
 $.ajaxSetup({
@@ -60,10 +60,10 @@ Dnianas.Post = {
     },
 
     likePost: function () {
-        self = Dnianas.Post;
-        $likePostEl = $(this);
-        $postLikeCountEl = $likePostEl.children('#likeCount');
-        postLikeCount = $postLikeCountEl.data('count');
+        var self = Dnianas.Post;
+        var $likePostEl = $(this);
+        var $postLikeCountEl = $likePostEl.children('#likeCount');
+        var postLikeCount = $postLikeCountEl.data('count');
 
         var data = {
             post_id: $likePostEl.parents().get(2).dataset.id,
@@ -100,13 +100,14 @@ Dnianas.Post = {
         last_id = 0;
 
         if ($postEl.length) {
+
+            // Filter through the ids
             ids = $postEl.map(function () {
                 return +$(this).data('id') || 0;
             });
 
+            // Get the highest id attribute
             last_id = Math.max.apply(Math, ids);
-        } else {
-            last_id = 0;
         }
 
         var request = $.ajax({
@@ -196,6 +197,7 @@ Dnianas.Notification = {
         var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
         ids = [];
 
+        // Add unread notifications to the ids array.
         $notifications.each(function () {
             if ($(this).data('read') === 0) {
                 ids.push($(this).data('id'));
@@ -240,6 +242,7 @@ Dnianas.User = {
 
     bindEvents: function () {
         $(document).on('click', '#followBtn', this.follow);
+        $('#followBtn').hover(this.hoverIn, this.hoverOut);
     },
 
     follow: function () {
@@ -271,6 +274,28 @@ Dnianas.User = {
             $followBtn.removeClass('following');
             $followBtn.text('Follow');
             $followBtn.data('action', 'follow')
+        }
+    },
+
+    hoverIn: function() {
+        $followBtn = $(this);
+
+        // If it is a follow button
+        if($followBtn.data('action') == 'follow') {
+            $followBtn.css('background', '#497AC9');
+        } else {
+            $followBtn.text('Unfollow');
+            $followBtn.css('background', '#FC6262');
+        }
+    },
+    
+    hoverOut: function() {
+        if ($followBtn.data('action') == 'follow') {
+            $followBtn.text('Follow');
+            $followBtn.css('background', '');
+        } else if ($followBtn.data('action') == 'unfollow') {
+            $followBtn.text('Following');
+            $followBtn.css('background', '');
         }
     }
 }
