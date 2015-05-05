@@ -15,14 +15,14 @@ Route::get('/', 'HomeController@index');
  */
 Route::post('login', [
     'uses'  => 'AuthController@postLogin'
-    ]);
+]);
 
 /*
  * Register route
  */
 Route::post('register', [
     'uses'  => 'AuthController@postRegister'
-    ]);
+]);
 
 /*
  * Logout route
@@ -31,7 +31,7 @@ Route::get('logout', [
     'as' => 'logout',
     'uses' => 'AuthController@logout',
     'before' => 'auth'
-    ]);
+]);
 
 /*
  * Getting started route [GET]
@@ -40,7 +40,7 @@ Route::get('getting_started', [
     'as'        => 'getting_started_route',
     'uses'      => 'GettingStartedController@getGettingStarted',
     'before'    => 'auth'
-    ]);
+]);
 
 Route::get('getting_started/step_two', function () {
     return View::make('auth.step_two');
@@ -52,7 +52,7 @@ Route::get('getting_started/step_two', function () {
 Route::post('getting_started', [
     'uses'      => 'GettingStartedController@postGettingStarted',
     'before'    => 'auth'
-    ]);
+]);
 
 
 Route::post('getting_started/step_two/profile_picture', [
@@ -96,7 +96,8 @@ Route::post('comment/create', 'CommentController@create');
 Route::get('@{username}', [
     'as' => 'profile.show', 
     'uses' => 'HomeController@getProfile',
-    'before' => 'auth']);
+    'before' => 'auth'
+]);
 
 /**
  * When a user tries to like a post

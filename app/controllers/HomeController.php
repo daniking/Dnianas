@@ -77,6 +77,7 @@ class HomeController extends BaseController
                 return true;
             }
         });
+
         return View::make('profile.index')->with(compact('user', 'notifications', 'notificationCount'));
     }
 
