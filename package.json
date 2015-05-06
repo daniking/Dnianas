@@ -1,0 +1,28 @@
+{
+  "name": "Dnianas",
+  "version": "0.0.0",
+  "description": "Kurdish Social Network built with Laravel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AkarM13/Dnianas.git"
+  },
+  "keywords": [
+    "social",
+    "network",
+    "kurdish"
+  ],
+  "author": "Akar Muhamad",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/AkarM13/Dnianas/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.11",
+    "gulp-concat": "~2.5.2",
+    "gulp-watch": "~4.2.4"
+  }
+}
