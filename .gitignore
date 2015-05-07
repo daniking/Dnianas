@@ -5,6 +5,8 @@
 app/storage/views
 app/storage/sessions
 /public/photos
+public/js/application.js
+/public/stylesheet/application.css
 /bootstrap/compiled.php
 /vendor
 /.tags
