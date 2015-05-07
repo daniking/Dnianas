@@ -1,6 +1,7 @@
 var gulp    = require('gulp');
 var concat  = require('gulp-concat');
 var watch   = require('gulp-watch');
+var uglify  = require('gulp-uglify');
 var rootDir = 'app/assets/';
 var jsDir   = rootDir + 'javascripts/';
 var styleDir = 'public/style/';
@@ -17,6 +18,7 @@ gulp.task('scripts', function () {
             jsDir + 'init.js'
         ])
         .pipe(concat('application.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('./public/js'));
 });
 
