@@ -2,6 +2,7 @@ var gulp    = require('gulp');
 var concat  = require('gulp-concat');
 var watch   = require('gulp-watch');
 var uglify  = require('gulp-uglify');
+var minifyCss = require('gulp-minify-css');
 var rootDir = 'app/assets/';
 var jsDir   = rootDir + 'javascripts/';
 var styleDir = 'public/style/';
@@ -32,6 +33,7 @@ gulp.task('styles', function () {
             styleDir + 'media.css',
         ])
         .pipe(concat('application.css'))
+        .pipe(minifyCss({compatibility: 'ie8'}))
         .pipe(gulp.dest('./public/stylesheet'));
 });
 
