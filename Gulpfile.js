@@ -15,7 +15,8 @@ gulp.task('scripts', function () {
             jsDir + 'notification.js',
             jsDir + 'post.js',
             jsDir + 'user.js',
-            jsDir + 'init.js'
+            jsDir + 'init.js',
+            jsDir + 'dnianas.js'
         ])
         .pipe(concat('application.js'))
         .pipe(uglify())
