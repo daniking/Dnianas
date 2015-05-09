@@ -80,21 +80,28 @@ Dnianas.Post = {
         $postLikeCountEl.text(data.like_count);
     },
 
+    getMaxId: function($element) {
+        // Filter through the ids
+        ids = $element.map(function () {
+            return +$(this).data('id') || 0;
+        });
+
+        // Get the highest id attribute
+        last_id = Math.max.apply(Math, ids);
+
+        // Return the maximum id.
+        return last_id;
+    },
+
     getNewPosts: function () {
         var self = Dnianas.Post;
         var ids = [];
         var $postEl = $('.poster_memb .tab_post');
         last_id = 0;
 
-        if ($postEl.length) {
-
-            // Filter through the ids
-            ids = $postEl.map(function () {
-                return +$(this).data('id') || 0;
-            });
-
-            // Get the highest id attribute
-            last_id = Math.max.apply(Math, ids);
+        // Get the maximum id for the list of the posts.
+        if ($postEl.length > 0) {
+            self.getMaxId($postEl);
         }
 
         var request = $.ajax({
