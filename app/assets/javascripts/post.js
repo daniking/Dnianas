@@ -82,12 +82,12 @@ Dnianas.Post = {
 
     getMaxId: function($element) {
         // Filter through the ids
-        ids = $element.map(function () {
+        var ids = $element.map(function () {
             return +$(this).data('id') || 0;
         });
 
         // Get the highest id attribute
-        last_id = Math.max.apply(Math, ids);
+        var last_id = Math.max.apply(Math, ids);
 
         // Return the maximum id.
         return last_id;
@@ -99,7 +99,7 @@ Dnianas.Post = {
         var $postEl = $('.poster_memb .tab_post');
         last_id = 0;
 
-        // Get the maximum id for the list of the posts.
+        // If there was posts.
         if ($postEl.length > 0) {
             self.getMaxId($postEl);
         }
@@ -116,11 +116,9 @@ Dnianas.Post = {
     },
 
     renderLatestPost: function (data) {
-        if (data) {
-            if (data.is_new == 'true' && data.html) {
-                $('.no-posts').hide();
-                $(data.html).insertAfter('#postForm').hide().slideDown(500);
-            }
+        if (data && data.is_new == 'true' && data.html) {
+            $('.no-posts').hide();
+            $(data.html).insertAfter('#postForm').hide().slideDown(500);
         }
 
         // Run the function every 10 seconds.
