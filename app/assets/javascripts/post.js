@@ -110,7 +110,7 @@ Dnianas.Post = {
 
     renderLatestPost: function (data) {
         if (data) {
-            if (data.is_new = 'true' && data.html) {
+            if (data.is_new == 'true' && data.html) {
                 $('.no-posts').hide();
                 $(data.html).insertAfter('#postForm').hide().slideDown(500);
             }

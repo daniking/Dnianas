@@ -15,8 +15,6 @@ Dnianas.User = {
 
         var request = $.ajax({
             url: '/follow',
-            type: 'POST',
-            dataType: 'JSON',
             data: {
                 profile_id: profileId,
                 _token: token

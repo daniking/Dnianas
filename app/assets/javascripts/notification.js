@@ -33,8 +33,6 @@ Dnianas.Notification = {
         if (ids.length > 0) {
             var request = $.ajax({
                 url: '/notifications/read',
-                type: 'POST',
-                dataType: 'JSON',
                 data: {
                     notifications: ids,
                     _token: token,
