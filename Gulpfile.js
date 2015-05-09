@@ -31,6 +31,7 @@ gulp.task('styles', function () {
             styleDir + 'jqstdniapara.css',
             styleDir + 'header.css',
             styleDir + 'media.css',
+            styleDir + 'profile.css'
         ])
         .pipe(concat('application.css'))
         .pipe(minifyCss({compatibility: 'ie8'}))
