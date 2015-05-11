@@ -20,7 +20,6 @@ gulp.task('scripts', function () {
             jsDir + 'dnianas.js'
         ])
         .pipe(concat('application.js'))
-        .pipe(uglify())
         .pipe(gulp.dest('./public/js'));
 });
 
