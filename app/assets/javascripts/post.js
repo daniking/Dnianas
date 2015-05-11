@@ -101,7 +101,7 @@ Dnianas.Post = {
 
         // If there was posts.
         if ($postEl.length > 0) {
-            self.getMaxId($postEl);
+            last_id = self.getMaxId($postEl);
         }
 
         var request = $.ajax({
