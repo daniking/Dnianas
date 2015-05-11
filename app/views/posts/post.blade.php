@@ -1,4 +1,4 @@
-<div class="tab_post" id="users_shows" data-id="{{ $post_id }}">
+<div class="tab_post" id="users_shows" data-id="{{ $post_id }}" data-userid="{{ Auth::user()->id }}">
     <div id="abo_users_po">
         <img src="{{ profile_picture(Auth::user()) }}" id="clicksows">
         <span><a href="">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a></span>
