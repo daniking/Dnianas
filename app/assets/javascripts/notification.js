@@ -1,20 +1,15 @@
 Dnianas.Notification = {
     init: function () {
         this.bindEvents();
-        this.cache();
     },
 
     bindEvents: function () {
         $(document).on('click', '#opennotifii', this.markAsRead);
     },
 
-    cache: function () {
-        $notification = $('#opennotifii');
-    },
-
     countNotifications: function () {
         var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
-        ids = [];
+        var ids = [];
 
         // Add unread notifications to the ids array.
         $notifications.each(function () {
@@ -27,9 +22,10 @@ Dnianas.Notification = {
     },
 
     markAsRead: function () {
-        self = Dnianas.Notification;
-        ids = self.countNotifications();
+        // The notification ids
+        var ids = self.countNotifications();
 
+        // If there were notifications, then mark them as read.
         if (ids.length > 0) {
             var request = $.ajax({
                 url: '/notifications/read',
@@ -40,12 +36,13 @@ Dnianas.Notification = {
             });
 
             request.done(function (data) {
-                self.renderNotificationCount(data);
+                Dnianas.Notification.renderNotificationCount(data);
             });
         }
     },
 
     renderNotificationCount: function (data) {
+        var $notification = $('#opennotifii');
         if (data.seen) {
             $notification.find('.not_nu1').fadeOut(200);
         }
