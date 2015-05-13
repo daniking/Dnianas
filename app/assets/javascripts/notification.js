@@ -22,8 +22,8 @@ Dnianas.Notification = {
     },
 
     markAsRead: function () {
-        // The notification ids
-        var ids = self.countNotifications();
+        // Count the notifications.
+        var ids = Dnianas.Notification.countNotifications();
 
         // If there were notifications, then mark them as read.
         if (ids.length > 0) {
@@ -31,7 +31,7 @@ Dnianas.Notification = {
                 url: '/notifications/read',
                 data: {
                     notifications: ids,
-                    _token: token,
+                    _token: token
                 }
             });
 

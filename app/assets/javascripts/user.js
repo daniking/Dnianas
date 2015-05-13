@@ -9,9 +9,8 @@ Dnianas.User = {
     },
 
     follow: function () {
-        $followBtn = $(this);
-        profileId = $followBtn.data('profile-id');
-        self = Dnianas.User;
+        var $followBtn = $(this);
+        var profileId = $followBtn.data('profile-id');
 
         var request = $.ajax({
             url: '/follow',
@@ -22,11 +21,11 @@ Dnianas.User = {
         });
 
         request.done(function(data) {
-            self.renderFollow(data);
+            Dnianas.User.renderFollow(data, $followBtn);
         });
     },
 
-    renderFollow: function(data) {
+    renderFollow: function(data, $followBtn) {
         if (data.follow) {
             $followBtn.addClass('following');
             $followBtn.text('Unfollow');
