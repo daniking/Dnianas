@@ -16,8 +16,6 @@ Dnianas.Post = {
     },
 
     createPost: function (event) {
-        var self = Dnianas.Post;
-
         var request = $.ajax({
             url: '/posts/create',
             data: $(this).serialize(),
@@ -30,7 +28,7 @@ Dnianas.Post = {
         });
 
         request.done(function (data) {
-            self.renderCreatedPost(data);
+            Dnianas.Post.renderCreatedPost(data);
         });
 
         event.preventDefault();
@@ -47,37 +45,38 @@ Dnianas.Post = {
     },
 
     likePost: function () {
-        self = Dnianas.Post;
-        $likePostEl = $(this);
-        $postLikeCountEl = $likePostEl.children('#likeCount');
-        postLikeCount = $postLikeCountEl.data('count');
+        var $likePostEl = $(this);
+        var postLikeCount = $likePostEl.children('#likeCount').data('count');
 
-        var data = {
-            post_id: $likePostEl.parents().get(2).dataset.id,
-            user_id: $likePostEl.parents().get(2).dataset.userid,
-            like_count: postLikeCount,
-            _token: token
-        };
+        // Data for the AJAX request.
+        var post_id = $likePostEl.parents('.tab_post').data('id');
+        var user_id = $likePostEl.parents('.tab_post').data('userid');
 
         var request = $.ajax({
             url: '/posts/like',
-            data: data
+            data: {     
+                post_id: post_id,
+                user_id: user_id,
+                like_count: postLikeCount,
+                _token: token
+            }
         });
 
         request.done(function (data) {
-            self.renderPostLike(data);
+            Dnianas.Post.renderPostLike(data, $likePostEl);
         });
     },
 
-    renderPostLike: function (data) {
-        if (data.like) {
-            $likePostEl.children('.likeIcon').addClass('liked');
-            $postLikeCountEl.addClass('liked');
-        } else {
-            $likePostEl.children('.likeIcon').removeClass('liked');
-            $postLikeCountEl.removeClass('liked');
-        }
-        $postLikeCountEl.text(data.like_count);
+    renderPostLike: function (data, $postEl) {
+        var $likeCountEl = $postEl.children('#likeCount');
+        var $likeIconEl = $postEl.children('.likeIcon');
+
+        // Toggle the class based on a boolean result from the server.
+        $postEl.toggleClass('liked', data.like);
+        $likeIconEl.toggleClass('liked', data.like);
+
+        // Update the like count.
+        $likeCountEl.text(data.like_count);
     },
 
     getMaxId: function($element) {
@@ -94,14 +93,13 @@ Dnianas.Post = {
     },
 
     getNewPosts: function () {
-        var self = Dnianas.Post;
         var ids = [];
         var $postEl = $('.poster_memb .tab_post');
-        last_id = 0;
+        var last_id = 0;
 
         // If there was posts.
         if ($postEl.length > 0) {
-            last_id = self.getMaxId($postEl);
+            last_id = Dnianas.Post.getMaxId($postEl);
         }
 
         var request = $.ajax({
@@ -111,7 +109,7 @@ Dnianas.Post = {
         });
 
         request.done(function (data) {
-            self.renderLatestPost(data);
+            Dnianas.Post.renderLatestPost(data);
         });
     },
 
