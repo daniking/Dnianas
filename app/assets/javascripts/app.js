@@ -1,10 +1,11 @@
+"use strict"
 var Dnianas = Dnianas || {};
 
 
 // The default AJAX config.
 $.ajaxSetup({
     type: 'POST',
-    dataType: 'JSON',
+    dataType: 'JSON'
 });
 
 // Some global variables
