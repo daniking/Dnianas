@@ -7,19 +7,17 @@ Dnianas.Comment = {
         $(document).on('keypress', '.comment-input', this.comment);
     },
 
-    comment: function () {
-        self = Dnianas.Comment;
-
+    comment: function () {                
         if (event.which == 13 && !event.shiftKey) {
+            var $commentInput = $(this);
 
-            post_id = $(this).parents().get(3).dataset.id;
-            user_id = $(this).parents().get(3).dataset.userid;
-            $comment_input = $(this);
+            var post_id = $commentInput.parents('.tab_post').data('id');
+            var user_id = $commentInput.parents('.tab_post').data('userid');
 
             var request = $.ajax({
                 url: '/comment/create',
                 data: {
-                    text: $comment_input.val(),
+                    text: $commentInput.val(),
                     _token: token,
                     post_id: post_id,
                     user_id: user_id,
@@ -27,16 +25,17 @@ Dnianas.Comment = {
             });
 
             request.done(function (data) {
-                self.renderCreatedComment(data);
+                Dnianas.Comment.renderCreatedComment(data, $commentInput);
             });
 
+            // Reset the commment input.
             $(this).val('').blur();
         }
 
     },
 
-    renderCreatedComment: function (data) {
-        $(data.html).insertBefore($comment_input.parent());
+    renderCreatedComment: function (data, $commentInput) {
+        $(data.html).insertBefore($commentInput.parent());
     }
 
 };
