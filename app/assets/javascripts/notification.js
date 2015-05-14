@@ -8,7 +8,7 @@ Dnianas.Notification = {
     },
 
     countNotifications: function () {
-        var $notifications = $('.boxnotificationsusers').children().find('#boxsendnotifi');
+        var zzz$notifications = $('.boxnotificationsusers').children().find('.boxsendnotifi');
         var ids = [];
 
         // Add unread notifications to the ids array.

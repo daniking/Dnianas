@@ -46,7 +46,7 @@ Dnianas.Post = {
 
     likePost: function () {
         var $likePostEl = $(this);
-        var postLikeCount = $likePostEl.children('#likeCount').data('count');
+        var postLikeCount = $likePostEl.children('.likeCount').data('count');
 
         // Data for the AJAX request.
         var post_id = $likePostEl.parents('.tab_post').data('id');
@@ -68,7 +68,7 @@ Dnianas.Post = {
     },
 
     renderPostLike: function (data, $postEl) {
-        var $likeCountEl = $postEl.children('#likeCount');
+        var $likeCountEl = $postEl.children('.likeCount');
         var $likeIconEl = $postEl.children('.likeIcon');
 
         // Toggle the class based on a boolean result from the server.
@@ -93,7 +93,6 @@ Dnianas.Post = {
     },
 
     getNewPosts: function () {
-        var ids = [];
         var $postEl = $('.poster_memb .tab_post');
         var last_id = 0;
 

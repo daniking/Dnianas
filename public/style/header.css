@@ -226,14 +226,14 @@
 	width:100%;
 	min-height:100px;
 }
-#boxsendnotifi{
+.boxsendnotifi{
     padding: 5px;
 	width:97%;
 	height:55px;
 	border-bottom:1px solid #ccc;
 }
 
-#boxsendnotifi:hover {
+.boxsendnotifi:hover {
     background: #F2F2F2;
 }
 #picnotifishow{
@@ -246,7 +246,7 @@
 	border-radius:50px;
 	-webkit-border-radius:50px;
 }
-#namenotifishow{
+.namenotifishow{
 	color: #141823;
 	font-size:14px;
 	font-family:'Lato', Arial;
@@ -259,7 +259,7 @@
 	line-height:16px;
 	float:left;
 }
-#textnotifishow{
+.textnotifishow{
 	color: #777;
 	font-size:14px;
 	font-weight:400;
@@ -457,6 +457,6 @@
 .unread {
     background: #F1F1F1;
 }
-#boxsendnotifi.unread:hover {
+.boxsendnotifi.unread:hover {
     background: #FFF;
 }

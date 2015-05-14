@@ -14,18 +14,18 @@
             @foreach($notifications as $notification)
                 <a href="/">
                     @if($notification->seen == 0)
-                        <div id="boxsendnotifi" class="unread" data-id="{{ $notification->id }}" data-read="0">
+                        <div class="boxsendnotifi" class="unread" data-id="{{ $notification->id }}" data-read="0">
                     @else
-                        <div id="boxsendnotifi" data-id="{{ $notification->id }}">
+                        <div class="boxsendnotifi" data-id="{{ $notification->id }}">
                     @endif
                         <img src="{{ profile_picture($notification->sender) }}" id="picnotifishow">
-                        <span id="namenotifishow">{{ $notification->sender->first_name }}
+                        <span class="namenotifishow">{{ $notification->sender->first_name }}
                             @if($notification->notification_type == 'Like')
-                                <span id="textnotifishow">likes your status.</span>
+                                <span class="textnotifishow">likes your status.</span>
                             @elseif($notification->notification_type == 'Follow')
-                                <span id="textnotifishow">followed you.</span>
+                                <span class="textnotifishow">followed you.</span>
                             @elseif($notification->notification_type == 'Comment')
-                                <span id="textnotifishow">commented on your post.</span>
+                                <span class="textnotifishow">commented on your post.</span>
                             @endif
                             <div class="notification-time" data-livestamp="{{ format_date($notification->updated_at) }}"></div>
                         </span>
