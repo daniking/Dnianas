@@ -11,11 +11,11 @@
         <div class="bar">
             <button class="sc-bot-like _likes" id="likePost">
                 <span class="fa fa-star likeIcon"></span>
-                <span id="likeCount">0</span>
+                <span class="likeCount">0</span>
             </button>
             <button class="sc-bot-comm">
                 <span class="fa fa-comment commentIcon"></span>
-                <span id="commentCount">0</span>
+                <span class="commentCount">0</span>
             </button>
         </div>
         <div id="titlelicomresh" style="display: none;"></div>

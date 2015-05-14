@@ -19,15 +19,15 @@
                 <button class="sc-bot-like" id="likePost">
                     @if($post->isLikedBy(Auth::user(), $post->id))
                         <span class="fa fa-star likeIcon liked"></span>
-                        <span id="likeCount" class="liked" data-count="{{ $post->likes()->count() }}">{{ $post->likes()->count() }}</span>
+                        <span class="likeCount liked" data-count="{{ $post->likes()->count() }}">{{ $post->likes()->count() }}</span>
                     @else 
                         <span class="fa fa-star likeIcon"></span>
-                        <span id="likeCount" data-count="{{ $post->likes()->count() }}">{{ $post->likes()->count() }}</span>
+                        <span class="likeCount" data-count="{{ $post->likes()->count() }}">{{ $post->likes()->count() }}</span>
                     @endif
                 </button>
                 <button class="sc-bot-comm">
                     <span class="fa fa-comment commentIcon"></span>
-                    <span id="commentCount">{{ $post->comments()->count() }}</span>
+                    <span class="commentCount">{{ $post->comments()->count() }}</span>
                 </button>
             </div>
             <div id="titlelicomresh"></div>
