@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/style/update.css">
+    <link rel="stylesheet" href="{{ asset('/style/update.css') }}">
     <title>Step Two - Dnianas</title>
 </head>
 
@@ -61,7 +61,7 @@
     <a href="">advertising</a>
 </div>
 
-{{ HTML::script('js/jquery.min.js') }}
-{{ HTML::script('js/imageUpload.js') }}
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+{{ HTML::script('/js/imageUpload.js') }}
 </body>
 </html>

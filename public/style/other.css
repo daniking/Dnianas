@@ -1,0 +1,28 @@
+body{
+	background: #ddd;
+}
+a{
+	text-decoration: none;
+	font-family: Arial,sans-serif;
+}
+h1,h2,h3,h4,h5{
+	font-size:14px;
+	margin: 0xp 0px;
+	font-family: Arial,sans-serif;
+}
+h1{
+	margin:0px 0px;
+}
+h2{
+	margin:0px 0px;
+}
+h3{
+	margin:0px 0px;
+}
+span,p,b{
+	font-family: Arial,sans-serif;
+}
+input{
+	outline: none;
+	font-family: Arial,sans-serif;
+}

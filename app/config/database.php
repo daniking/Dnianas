@@ -56,8 +56,8 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => '127.0.0.1',
 			'database'  => 'dnianas',
-			'username'  => 'akar',
-			'password'  => 'raparen',
+			'username'  => 'root',
+			'password'  => '123',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_general_ci',
 			'prefix'    => '',
@@ -81,6 +81,7 @@ return array(
 			'username' => 'root',
 			'password' => '',
 			'prefix'   => '',
+			
 		),
 
 	),

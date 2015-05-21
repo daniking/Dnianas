@@ -166,3 +166,15 @@ $(document).mouseup(function()
 {
 $(".moresectionuser").hide();
 });
+
+
+
+
+
+
+
+$(".list_link").click(function(){
+$(".maincountsetting").hide;
+});
+
+

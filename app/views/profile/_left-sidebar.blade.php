@@ -1,13 +1,30 @@
 <div class="leftabot" id="memb_sos">
-    <h1>About</h1>
+    <h3 class="taptopus">About</h3>
     @if($user->about && $user->about->count()) 
-        <h2>Live in <span>{{ $user->about->address }}</span></h2>
-        <h2>Job Title<span>{{ $user->about->job_title }}</span></h2>
-        <h2>Website <span>{{ $user->about->website }}</span></h2>
+<div class="abo_us12"><h1>Studied at <span class="auo_12">Cihan</span></h1></div>
+<div class="abo_us12"><h1>Address<span class="auo_12">{{ $user->about->address }}</span></h1></div>
+<div class="abo_us12"><h1>Birthday<span class="auo_12"></span></h1></div>
+<div class="abo_us12"><h1>Lives in<span class="auo_12">{{ $user->about->address }}</span></h1></div>
+<div class="abo_us12"><h1>Website<span class="auo_12">{{ $user->about->website }}</span></h1></div>
+        
+<div class="ph_o_u11">
+<h3 class="taptopus">Photos</h3>
+<div class="ph_ofuser">
+<img src="{{ profile_picture($user) }}" class="taguserph">
+<img src="{{ profile_picture($user) }}" class="taguserph">
+<img src="{{ profile_picture($user) }}" class="taguserph">
 
-        <p class="text-about">About</p>
-        <p class="about-you" dir="ltr">{{ $user->about->about }}</p>
 </div>
+</div>
+<h3 class="taptopus">Followers</h3>
+<div class="usefollo">
+
+
+</div>
+<h3 class="taptopus">About Yourself</h3>
+        <div class="about-you" dir="ltr">{{ $user->about->about }}</div>
+
+</div>
+
     @else
-        <p class="about-you" dir="ltr"></p>
 @endif

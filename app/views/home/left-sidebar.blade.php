@@ -6,8 +6,7 @@
         <img src='{{ profile_picture(Auth::user()) }}'>
     </div>
     <div class="nam_ho">
-        <h1>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h1>
-        <a href="">edit profile</a>
+        <h1 class="nuleftsid">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} </h1>
     </div>
 
     <div class="all_users_ho">

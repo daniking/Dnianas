@@ -17,7 +17,9 @@ gulp.task('scripts', function () {
             jsDir + 'post.js',
             jsDir + 'user.js',
             jsDir + 'init.js',
-            jsDir + 'dnianas.js'
+            jsDir + 'dnianas.js',
+            jsDir + 'setting.js'
+             jsDir + 'update.js'
         ])
         .pipe(concat('application.js'))
         .pipe(gulp.dest('./public/js'));

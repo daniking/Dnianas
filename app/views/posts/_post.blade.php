@@ -1,4 +1,5 @@
     <div class="tab_post" id="users_shows" data-id="{{ $post->id }}" data-userid="{{ $post->user->id}}">
+    <div class="editabpo"><span  class="edtags"></span></div>
         <div id="abo_users_po">
             <img src="{{ profile_picture($post->user) }}" id="clicksows" >
             <div class="hover_profile">
@@ -8,11 +9,11 @@
                     <h1 class="users_small">{{ $post->user->first_name }} {{ $post->user->last_name }}</h1>
                 </a>
             </div>
-            <span style="padding:5px">{{ link_to_route('profile.show', $post->user->fullName(), $post->user->username) }}</span>
+            <span class="dnweb">{{ link_to_route('profile.show', $post->user->fullName(), $post->user->username) }}</span>
             <span class="data_post" data-livestamp="{{ format_date($post->posted_date) }}"></span>
         </div>
         <br>
-        <div class="post-content">{{  nl2br(e($post->post_content)) }}</div>
+        <div class="post-content"><span class="context"  >{{  nl2br(e($post->post_content)) }}</span></div>
         <br>
         <div class="place_com_li">
             <div class="bar">

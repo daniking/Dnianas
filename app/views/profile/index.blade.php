@@ -1,6 +1,9 @@
 @include('template._partials.header')
 @include('home.nav-top')
+
 <div class="main_con_prof">
+
+
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="cover11 _bord12" id="coversus">
             <img src="{{ cover_photo($user) }}">

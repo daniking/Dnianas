@@ -10,7 +10,9 @@
             @include('posts._post') 
         @endforeach
     @else 
-    <p class="no-posts">No posts to show</p>   
+    <p class="no-posts">NO POST TO SHOW<br>
+    <span class="tepo"></span><br>
+    <input type="submit" class="fifo55" value="Follow Friend"></p>   
     @endif
 </div>
     @include('home.right-sidebar')

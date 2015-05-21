@@ -1,5 +1,5 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="{{ asset('js/application.js?v=' . filemtime( 'js/application.js' )) }}"></script>
+<script src="{{ asset('js/application.js') }}"></script>
 <script type="text/javascript">
     var page = window.location.pathname;
     if(page === '/') {
