@@ -1,7 +1,8 @@
 .mainCountMSg{
-	width:1000px;
+	width:1100px;
 	min-height:600px;
 	margin:0px auto;
+	padding:0px 20px;
 }
 .UTitlemesg{
 	width:850px;
@@ -21,11 +22,13 @@
     font-weight: 300;
 	position:relative;
 	top:10px;
+	
 }
 .BoxMesstageH11{
 	background:#fff;
 	width:850px;
 	height:500px;
+	float:left;
 }
 .bOXlEFTuser{
 	width:230px;
@@ -52,4 +55,32 @@
 }
 .histMsg{
 	height:440px;
+}
+.RIMsgFoll{
+	width:200px;
+	height:500px;
+	float:left;
+	position:relative;
+	left:10px;
+}
+.whotfolow{
+	height:370px;
+	background:#fff;
+	border-bottom:1px solid #ccc;
+
+}
+.TX_1{
+	background:#f1f1f1;
+	border-bottom:1px solid #ccc;
+	padding:5px 10px;
+	color:#444;
+	font-size:14px;
+	font-weight:600;
+	
+}
+
+
+.advmsgs{
+	background:#fff;
+	height:130px;
 }

@@ -19,6 +19,18 @@
 </div>
 </div>
 
+<div class="RIMsgFoll">
+<div class="whotfolow">
+<h1 class="TX_1">Who to Follow</h1>
+
+</div>
+<div class="advmsgs">
+<h1 class="TX_1">Advertising</h1>
+</div>
+
+</div>
+
+
 </div>
 
 
