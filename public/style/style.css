@@ -242,7 +242,39 @@ input{
 	display:block;
 	cursor:pointer;
 	position:absolute;
-	z-index:400;
+	z-index:1;
+}
+.slideremovepost{
+	width:130px;
+	min-height:80px;
+	border:1px solid #f1f1f1;
+	background:#fff;
+	position:absolute;
+	z-index:300;
+	right:10px;
+	top:20px;
+}
+.HAlin{
+	background:#fff;
+	color:#fff;
+	display:block;
+	padding:5px 0px;
+	width:100%;
+	transition: all 0.5s ease-out;
+	border-bottom:1px solid #ddd;
+}
+
+.HAlin:hover{
+	background:#f1f1f1;
+	color:#444;
+	transition: all 0.5s ease-out;
+}
+._HAl2{
+	border-bottom:0px solid #ddd;
+}
+.ED_x5{
+	position:relative;
+	left:10px;
 }
 #abo_users_po {
     width: 100%;

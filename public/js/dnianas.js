@@ -169,7 +169,9 @@ $(".moresectionuser").hide();
 
 
 
-
+$(document).ready(function(e) {
+    $(".slideremovepost").hide;
+});
 
 
 

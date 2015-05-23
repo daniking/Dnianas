@@ -1,4 +1,4 @@
-.header,._fixs{
+.header{
 	height:50px;
 	width:100%;
 	min-width:1024px;
@@ -13,6 +13,7 @@
 	background-image:url(../img/body.jpg);
 	z-index: 300;
 
+
 }
 .header,._fixs{
 	position:fixed;
@@ -20,6 +21,7 @@
     right: 0;
     top: 0;
 	margin: 0;
+	z-index: 500;
 	
 }
 .main_con_hea{

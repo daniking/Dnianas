@@ -17,9 +17,8 @@ gulp.task('scripts', function () {
             jsDir + 'post.js',
             jsDir + 'user.js',
             jsDir + 'init.js',
-            jsDir + 'dnianas.js',
-            jsDir + 'setting.js'
-             jsDir + 'update.js'
+            jsDir + 'dnianas.js'
+            jsDir + 'update.js'
         ])
         .pipe(concat('application.js'))
         .pipe(gulp.dest('./public/js'));
@@ -33,6 +32,11 @@ gulp.task('styles', function () {
             styleDir + 'header.css',
             styleDir + 'media.css',
             styleDir + 'profile.css'
+            styleDir + 'wtf.css'
+            styleDir + 'status.css'
+            styleDir + 'messages.css'
+            styleDir + 'other.css'
+
         ])
         .pipe(concat('application.css'))
         .pipe(minifyCss({compatibility: 'ie8'}))

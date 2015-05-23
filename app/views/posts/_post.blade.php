@@ -1,9 +1,16 @@
     <div class="tab_post" id="users_shows" data-id="{{ $post->id }}" data-userid="{{ $post->user->id}}">
-    <div class="editabpo"><span  class="edtags"></span></div>
+    <div class="editabpo"><span  class="edtags">
+    
+    
+    
+    </span><div class="slideremovepost">
+    <a href="#" class="HAlin"><span class="ED_x5">Edit Post</span></a>
+      <a href="#" class="HAlin"><span class="ED_x5">Remove Post</span></a>
+      <a href="#" class="HAlin _HAl2"><span class="ED_x5">Like Post</span></a>
+    </div></div>
         <div id="abo_users_po">
             <img src="{{ profile_picture($post->user) }}" id="clicksows" >
             <div class="hover_profile">
-                <img src="{{ cover_photo($post->user) }}" class="small_cover">
                 <a href="profile.php">
                     <img src="{{ profile_picture($post->user) }}" class="small_profie">
                     <h1 class="users_small">{{ $post->user->first_name }} {{ $post->user->last_name }}</h1>
