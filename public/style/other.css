@@ -26,3 +26,48 @@ input{
 	outline: none;
 	font-family: Arial,sans-serif;
 }
+
+
+.maincountlong{
+	width:580px;
+	min-height:200px;
+	margin:5px auto;
+}
+.longstatus{
+	border: 1px solid #a29e9e;
+    min-height: 400px;
+    background: #FFF;
+	width: 600px;
+	float:left;
+}
+.taglinkdnia{
+    min-height: 40px;
+	width: 600px;
+	float:left;
+	margin:5px 0px;
+}
+#fo404_234{
+	width: 1000px;
+	height: 30px;
+	margin: 2px 0px;
+	position:relative;
+	top:5px;
+}
+#fo404_234 hr{
+	border:0px;
+	background:rgba(0,0,0,0.1);
+	height:1px;
+}
+#fo404_234 a,#fo404_234 span{
+	padding:4px 2px;
+	color:#444;
+	font-size:12px;
+	font-weight:500px;
+	transition: all 0.4s ease-out;
+	-webkit-transition: all 0.4s ease-out;
+}
+#fo404_234 a:hover{
+	color:#777;
+	transition: all 0.4s ease-out;
+	-webkit-transition: all 0.4s ease-out;
+}
