@@ -5,12 +5,11 @@ body {
     line-height: 1.28;
     text-align: left;
     direction: ltr;
-    font-family: 'Lato', Arial;
 }
 
 a {
-    color: #1E7BFF;
     text-decoration: none;
+    color: #444;
 }
 
 h1 {
@@ -33,9 +32,6 @@ h2 {
     font-weight: bold;
 }
 
-a {
-    text-decoration: none;
-}
 
 div {
     display: block;
@@ -142,14 +138,16 @@ input{
     top: -50px;
 }
 
-.all_users_ho h1 {
+.titlusertxt {
     font-size: 18px;
     font-weight: 300;
     position: relative;
     padding: 5px;
     color: rgba(255,255,255,.5);
 }
-
+._x1321{
+	border-bottom: 1px solid #314E6B;
+}
 .all_users_ho h2 {
     font-size: 14px;
     font-weight: 300;
@@ -183,7 +181,7 @@ input{
     transition: all 0.4s ease-out;
 }
 
-.all_users_ho span {
+.stttext{
     float: right;
     margin-right: 10PX;
     font-weight: bold;
@@ -197,7 +195,88 @@ input{
     padding: 5px;
     border-bottom: 1px solid #314E6B;
 }
+.taguser{
+	width:100%;
+	height:400px;
+}
+._UsF33{
+	zoom: 1;
+}
+.tabfollow{
+	border-bottom: 1px solid #314E6B;
+	height:50px;
+	width:100%;
+	cursor:pointer;
+}
+.imgfolow{
+	width:50px;
+	height:50px;
+	float:left;
+	position:relative;
+	left:5px;
+	top:5px;
+}
+.imgfolow_2{
+	width:40px;
+	height:40px;
+	border-radius:5px;
+}
+.UN_Folow{
+	position:relative;
+	float:left;
+}
+.UNflow{
+	float:left;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 17px;
+    position: relative;
+    padding: 3px;
+    color: rgba(255,255,255,.5);
+	margin:0px 0px;
+	position:relative;
+	top:5px;
+	font-family: Arial,sans-serif;
+}
+.usfloadd{
+	position:relative;
+	top:3px;
+	color: #777;
+    line-height: 17px;
+    font-size: 13px;
+	font-family: Arial,sans-serif;
+	padding: 3px;
+	}
+.usfloadd span{
+	left:2px;
+	position:relative;
+}
+.botsflow{
+	width:40px;
+	height:40px;
+	float:right;
+	position:relative;
+	top:13px;
+}
+.bottoflow{
+    width:25px;
+    height:25px;
+    outline:none;
+	background-image:url(../img/icons/follow.png);
+	background-position:center;
+	background-repeat:no-repeat;
+    background-color:rgba(0,0,0,0.2);
+    border:1px solid rgba(0,0,0,0.2);
+    color:#fff;
+    cursor:pointer;
+    transition: all 0.4s ease-out;
 
+}
+.bottoflow:hover{
+	background-position:center;
+	background-repeat:no-repeat;
+	background-image:url(../img/icons/followx1.png);
+}
 .poster_memb {
     width: 530px;
     min-height: 82px;
@@ -275,12 +354,13 @@ input{
 .ED_x5{
 	position:relative;
 	left:10px;
+    color:#444;
+    font-size: 14px;
 }
 #abo_users_po {
     width: 100%;
     height: 40px;
 }
-
 #clicksows {
     width: 40px;
     height: 40px;
@@ -319,11 +399,6 @@ input{
 	
 }
 
-
-
-
-
-
 .place_com_li {
     min-height: 50px;
     width: 100%;
@@ -355,7 +430,7 @@ input{
     left: 120px;
 }
 
-.left_abo_colishre span {
+.class="stttext"{
     color: #069;
     font-size: 12px;
     cursor: pointer;
