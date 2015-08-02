@@ -130,6 +130,7 @@ body {
 #user_lin_192 a{
     color: #3b5998;
     font-size: 14px;
+
     font-weight: bold;
     text-decoration: none;
     padding: 11px 14px;
@@ -217,7 +218,7 @@ body {
     float:left;
     position:relative;
     margin:10px 0px;
-	bottom:360px;
+	bottom:350px;
 	right:20px;
 }
 #memb_sos h1{
@@ -443,6 +444,3 @@ padding:10px 5px;
 .unfollow {
     background: #FF4747;
 }
-
-
-

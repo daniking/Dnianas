@@ -8,7 +8,7 @@
     <title>Dnianas</title>
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
 </head>
-<body dir="ltr" background="../../../public/img/back.jpg">
+<body dir="ltr" background="img/white_wall_hash.png">
     <div id="header">
         <a href="{{ URL::to('/') }}" class="logo">Dnianas</a>
     </div>
